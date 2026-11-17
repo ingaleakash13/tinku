@@ -1,34 +1,54 @@
-# Mia & Benny — weekly episode pipeline
+# टिंकू की महाभारत (Tinku's Mahabharat) — episode pipeline
 
-Original 2-minute animated kids episodes (ages 2–5). Mia is a cheerful girl (yellow dress, pink bows, hair puffs);
-Benny is her lavender-white bunny best friend (blue bow tie). Bright 2D style, clear narration, word-highlighted captions.
-Never use characters, songs, names or designs from existing shows (e.g. CoComelon) — everything must be original.
+A 45-episode animated kids series, one episode every 2 days at 5 PM IST, published Unlisted on YouTube via Metricool.
+(The older Mia & Benny pipeline in `pipeline/` is retired.)
 
-## Layout
-- `episodes/` — finished videos (`epNN_<slug>.mp4`) and caption files (`.en.srt`). Raw GitHub links to these are what Metricool publishes from.
-- `pipeline/setup.sh` — installs fonts, cairo, the Kokoro voice model, ffmpeg. Run first in a fresh workspace.
-- `pipeline/ep01/` — the complete working code for episode 1, the reference for every new episode:
-  - `script.py` — LINES: (scene, speaker, text, pause_before, cue) + VOICES (narrator af_heart, mia af_sky pitched ×1.13, benny am_puck pitched ×1.16).
-  - `tts.py` — records each line, writes `audio/lines/NN.wav` and `timeline.json`.
-  - `cues.py` — scene boundaries and action times derived from the timeline (shared by picture and sound).
-  - `audio.py` — 112-bpm ukulele music bed (ducks under speech), sound effects (boing, pop, thunk, swish, shimmer, water…), mix → `audio/mix.wav`.
-  - `draw.py` — cairo drawing: `mia()`, `benny()` characters (lip-sync from voice loudness, blinking, poses), scenery (sky, sun with face,
-    clouds, hills, fence, house, tree, raised garden bed), title card, outro card, iris transitions, captions with speaker name tag and word highlight.
-    The story-specific parts are `mia_state()`, `ben_state()`, `plants()`, `main_scene()` and the props.
-  - `render.py` — renders frame ranges to mp4 segments (run several in parallel, then concat + mux audio).
+## Non-negotiable rules
+- **Source:** write every episode fresh from the traditional epic (Vyasa's Mahabharata and its public retellings), in our own words.
+  Never use or adapt the script, dialogue or scene order of any TV show or film (e.g. the 2013 Star Plus "Mahabharat"),
+  and never copy actors' likenesses or a show's costume designs.
+- **Language:** all dialogue in Hindi; on-screen captions in English (with the speaker's name tag in Hindi).
+- **Host:** Tinku (a cute boy with glasses, fluffy brown hair, yellow T-shirt, jeans) opens in his room, opens the storybook,
+  narrates the story scenes (shown as a small talking circle top-left while he narrates), and returns at the end.
+- **Ending:** NO conclusion / "what did we learn" / moral summary. End with Tinku teasing what happens next episode, then
+  "तब तक के लिए, नमस्ते दोस्तों! फिर मिलेंगे!" and the outro card ("फिर मिलेंगे!" / "See you next time!" / next-episode title).
+- **Characters** speak their own lines in the story. Every character has their own distinct voice from `mahabharat/lib/voices.py`
+  (VOICE_CAST). Add new characters to VOICE_CAST with a voice distinct from others in the same scene.
+- **Look:** approved designs are in `mahabharat/lib/chars.py` (`tinku()`, `hero(key, …)`; sheet: `mahabharat/character_sheet.png`).
+  Do not redesign approved characters. New characters: add a CAST entry in the same style (bright 2D cartoon, men with short
+  neat neck-length hair, women graceful with almond eyes, jewelry; queens wear a queen crown). Bhishma uses the one `bheeshm` design throughout.
+- **Kid-friendly:** gentle handling of sad or violent moments (e.g. the Vasus rise as stars; battles shown as courage, never gore).
+- **Motion:** arms are two-part with elbows: pass poses as `((shoulder, elbow), (shoulder, elbow))`; use `talk(spk, t)` for natural
+  speaking gestures; walking bob, blinking, lip-sync from voice loudness.
+- **Scenes:** use the rich backgrounds in `mahabharat/lib/scenery.py` (`palace_scene_bg`, `river_bank_scene(dusk)`, `mandap_scene_bg`,
+  `room_bg`, `palace()`, `banyan()`, `mountains()`, `grass_field()`, …). Add new backgrounds there in the same detailed style
+  (gradients, layered depth, lighting, small animated life such as birds, flags, water shimmer, fireflies).
+- **Length:** whatever the story part needs, usually 2:30–5:00.
 
-## Making a new episode
-Run `WORK=/home/claude/work bash pipeline/setup.sh`, then copy the latest `pipeline/epNN/*.py` into `$WORK` and work there
-(the code expects `tts/` in the current directory). When done, also save the new code as `pipeline/epNN/` for the next episode.
+## How to make episode N
+1. `WORK=/home/claude/work bash pipeline/setup.sh` (fonts, cairo, Kokoro Hindi voices, pyworld, ffmpeg).
+2. Copy the latest `mahabharat/epNN/` to `mahabharat/epMM/` (MM = next number, two digits); symlink `tts -> /home/claude/work/tts`.
+3. Write `script.py`: EP_NUM, EP_TITLE_HI, EP_TITLE_EN, LINES = (scene, speaker, hindi, english, pause, cue), NAMES (Hindi name, colour).
+   Use VOICE_CAST from lib/voices.py in `tts.py` (import it) instead of a local VOICES dict.
+4. `python3 tts.py` → audio lines + timeline.json. Check: no silence > 0.35 s inside a line; Tinku's median F0 ≈ 280–300 Hz.
+5. Update `cues.py` scene list, `audio.py` (tanpura drone + bansuri in pauses + tabla only in festive scenes + scene SFX), and
+   `draw.py` scene functions and staging for the new story.
+6. Render stills at the busiest moments (`python3 draw.py t1 t2 …`), LOOK at them, fix overlaps/props/text before the full render.
+7. Full render: `render.py` in ~10 chunks, 2 in parallel; concat with `-c copy`; mux `audio/mix.wav` (AAC 192k, faststart).
+   Sample 8 frames from the final mp4 and check them.
+8. Save `episodes/mahabharat/epMM_<slug>.mp4` + `.en.srt`, commit with the code, push to main.
+9. Publish with Metricool (blogId 8170191, Asia/Calcutta) at 17:00 today (or ~10 minutes from now if 17:00 has passed):
+   youtube, privacy "unlisted", madeForKids true, isAiGeneratedContent true, category "EDUCATION",
+   title "टिंकू की महाभारत | एपिसोड N: <Hindi title> | <English title> 🏹", Hindi+English description, 10 tags, hashtags
+   (#TinkuKiMahabharat #Mahabharat #KidsStories #HindiKahani #MahabharatForKids …). Media = raw.githubusercontent.com link.
 
-Steps:
-1. Write a new original story in `script.py`: ~45 lines, about 2 minutes of speech plus pauses, one simple learning goal
-   (shapes, opposites, animal sounds, kindness, weather, sizes, sharing, bedtime, numbers 6–10…), a repeated chant, a call-and-response
-   question to the viewer, a hug/goodbye and "Bye-bye, friends! See you next time!". Keep the title card and outro card.
-2. `python3 tts.py`; check total length is 115–130 s; adjust pauses or lines if not.
-3. Rewrite the story-specific animation in `cues.py` / `draw.py` (new props, new backdrop details, new actions) and the sound cues in `audio.py`.
-   Reuse characters, scenery, captions, transitions and the music engine unchanged.
-4. Render stills at the busiest moments (`python3 draw.py t1 t2 …` → `stills/`), look at them, fix overlaps (arms behind heads, props in wrong
-   place, captions covering faces) BEFORE the full render.
-5. Full render with `render.py` in 8 parallel-by-2 chunks, concat with `-c copy`, add `audio/mix.wav` (AAC 192k, `-movflags +faststart`).
-6. Make the `.en.srt` from `timeline.json`. Sample 6 frames from the final mp4 and check them.
+## 45-episode plan (from the epic)
+1 राजा शांतनु और गंगा (done) · 2 देवव्रत की वापसी · 3 भीष्म प्रतिज्ञा · 4 सत्यवती के पुत्र · 5 अंबा, अंबिका, अंबालिका ·
+6 धृतराष्ट्र, पांडु और विदुर का जन्म · 7 गांधारी और कुंती · 8 पांडु बने राजा · 9 पांडवों का जन्म · 10 पांडु की विदाई ·
+11 हस्तिनापुर वापसी · 12 भीम और दुर्योधन · 13 गुरु द्रोण · 14 अर्जुन और चिड़िया की आँख · 15 एकलव्य की गुरुभक्ति ·
+16 रंगभूमि और कर्ण · 17 लाक्षागृह · 18 जंगल में बचाव · 19 भीम और हिडिंबा · 20 द्रौपदी स्वयंवर · 21 पाँच भाई, एक वचन ·
+22 इंद्रप्रस्थ का निर्माण · 23 कृष्ण और अर्जुन की मित्रता · 24 राजसूय यज्ञ · 25 दुर्योधन की जलन · 26 शकुनि की चाल ·
+27 द्यूत क्रीड़ा · 28 कृष्ण ने की द्रौपदी की रक्षा · 29 बारह वर्ष का वनवास · 30 यक्ष के प्रश्न · 31 अज्ञातवास ·
+32 बृहन्नला बने अर्जुन · 33 शांतिदूत कृष्ण · 34 कर्ण को सच का पता · 35 कुंती और कर्ण · 36 कौन किसके साथ ·
+37 गीता का उपदेश (भाग 1) · 38 गीता: कर्म करो (भाग 2) · 39 बाणों की शय्या पर भीष्म · 40 वीर अभिमन्यु · 41 दानवीर कर्ण ·
+42 कर्ण और अर्जुन · 43 भीम और दुर्योधन · 44 फिर से शांति · 45 महाभारत की कहानी पूरी हुई

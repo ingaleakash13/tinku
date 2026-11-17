@@ -5,7 +5,7 @@ WORK=${WORK:-/home/claude/work}
 mkdir -p "$WORK/tts" "$HOME/.fonts"
 apt-get update -qq >/dev/null 2>&1 || true
 apt-get install -y -qq libcairo2-dev pkg-config ffmpeg >/dev/null 2>&1 || true
-pip install -q --break-system-packages pycairo kokoro-onnx soundfile scipy numpy pillow 2>&1 | grep -v WARNING || true
+pip install -q --break-system-packages pycairo kokoro-onnx soundfile scipy numpy pillow pyworld 2>&1 | grep -v WARNING || true
 cd "$HOME/.fonts"
 [ -f "Fredoka%5Bwdth,wght%5D.ttf" ] || curl -sSfLO "https://raw.githubusercontent.com/google/fonts/main/ofl/fredoka/Fredoka%5Bwdth,wght%5D.ttf"
 [ -f "Baloo2%5Bwght%5D.ttf" ] || curl -sSfLO "https://raw.githubusercontent.com/google/fonts/main/ofl/baloo2/Baloo2%5Bwght%5D.ttf"
