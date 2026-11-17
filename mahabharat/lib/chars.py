@@ -626,6 +626,10 @@ _FONTS = {"hi": _os.path.expanduser("~/.fonts/Baloo2%5Bwght%5D.ttf"), "en": _os.
 _cache = {}
 
 def text_surface(text, size, fill="#ffffff", stroke=None, stroke_w=0, lang="hi", weight="ExtraBold"):
+    def _c(v):
+        if isinstance(v, tuple) and v and isinstance(v[0], float): return tuple(int(round(x * 255)) for x in v)
+        return v
+    fill = _c(fill); stroke = _c(stroke)
     key = (text, size, fill, stroke, stroke_w, lang, weight)
     if key in _cache: return _cache[key]
     f = ImageFont.truetype(_FONTS[lang], size, layout_engine=ImageFont.Layout.RAQM)
@@ -651,3 +655,138 @@ def draw_text(c, text, x, y, size, fill="#ffffff", stroke=None, stroke_w=0, lang
     ox = {"c": w / 2, "l": 0, "r": w}[anchor]
     c.set_source_surface(sf, x - ox, y - h / 2); c.paint_with_alpha(alpha)
     return w, h
+
+
+# ------------------------------------------------------------------ Tinku & Friends (kids series)
+def _kid_body(c, shirt, shirt_d, legs, shoes, skin, arms, hands_out, skirt=None):
+    if skirt:
+        for lx in (-16, 16):
+            rrect(c, lx - 9, -70, 18, 64, 8); fs(c, skin)
+            ell(c, lx + (3 if lx > 0 else -3), -8, 20, 10); fs(c, shoes)
+        c.move_to(-40, -196); c.curve_to(-48, -150, -66, -100, -72, -66); c.curve_to(-30, -56, 30, -56, 72, -66)
+        c.curve_to(66, -100, 48, -150, 40, -196); c.close_path()
+        c.set_source(lin_(0, -196, 0, -60, light(skirt, 0.15), dark(skirt, 0.88))); c.fill_preserve(); setc(c, dark(skirt, 0.65)); c.set_line_width(3); c.stroke()
+        for k in range(5): ell(c, -40 + k * 20, -92 + (k % 2) * 14, 5, 5); setc(c, (1, 1, 1, 0.8)); c.fill()
+        c.move_to(-70, -72); c.curve_to(-30, -60, 30, -60, 70, -72); setc(c, "#ffffff"); c.set_line_width(5); c.stroke()
+    else:
+        for lx in (-18, 18):
+            rrect(c, lx - 13, -92, 26, 84, 10); fs(c, legs)
+            ell(c, lx + (4 if lx > 0 else -4), -8, 22, 11); fs(c, shoes)
+        rrect(c, -34, -108, 68, 24, 8); fs(c, legs)
+        c.move_to(-40, -192); c.curve_to(-46, -150, -42, -120, -38, -98); c.line_to(38, -98); c.curve_to(42, -120, 46, -150, 40, -192); c.close_path()
+        c.set_source(lin_(0, -192, 0, -98, light(shirt, 0.1), shirt_d)); c.fill_preserve(); setc(c, dark(shirt, 0.65)); c.set_line_width(3); c.stroke()
+    hands = []
+    for sgn, a in ((-1, arms[0]), (1, arms[1])):
+        sx = sgn * 40
+        ell(c, sx + sgn * 4, -180, 15, 14); fs(c, skirt or shirt, dark(skirt or shirt, 0.65), 2.5)
+        hands.append(limb(c, sx + sgn * 4, -176, mir(a, sgn), 68, skin, 15))
+    return hands
+
+def lin_(x0, y0, x1, y1, a, b):
+    g = cairo.LinearGradient(x0, y0, x1, y1); g.add_color_stop_rgba(0, *a if not isinstance(a, str) else hexc(a)); g.add_color_stop_rgba(1, *b if not isinstance(b, str) else hexc(b)); return g
+
+def _kid_face(c, skin, m, look, closed, iris="#3a2414", lashes=False):
+    eyes(c, (-30, 30), 6, 18, 21, look, closed, iris)
+    if lashes and not closed:
+        for sgn in (-1, 1):
+            for ang in (0.9, 0.55):
+                px = sgn * 30 + sgn * 18 * math.cos(ang); py = 6 - 21 * math.sin(ang)
+                c.move_to(px, py); c.line_to(px + sgn * 6, py - 5)
+            setc(c, "#1a0f0a"); c.set_line_width(2.4); c.stroke()
+    ell(c, -50, 34, 13, 8); setc(c, (1, 0.45, 0.5, 0.42)); c.fill(); ell(c, 50, 34, 13, 8); c.fill()
+    c.move_to(-5, 26); c.curve_to(-2, 31, 2, 31, 5, 26); setc(c, dark(skin, 0.6)); c.set_line_width(3); c.stroke()
+    if m > 0.1:
+        mouth(c, 42, m, 16)
+    else:
+        c.move_to(-20, 42); c.curve_to(-10, 58, 10, 58, 20, 42); c.close_path(); fs(c, "#7c1d2c", "#4f0f1b", 2.5)
+        rrect(c, -13, 43, 26, 6, 3); setc(c, "#ffffff"); c.fill()
+
+def pinky(c, x, y, t=0.0, s=1.0, arms=(0.25, 0.25), m=0.0, look=0.0, closed=False, hopy=0.0, lean=0.0):
+    """Pinky: Tinku's friend, a cheerful girl (~6) with two pigtails, pink frock, hair clips."""
+    skin = "#e9b48a"; hair = "#2a1610"
+    c.save(); c.translate(x, y)
+    ell(c, 0, 2, 56 * s, 10 * s); setc(c, (0, 0, 0, 0.16)); c.fill()
+    c.translate(0, -hopy); c.scale(s, s); c.rotate(lean)
+    for sgn in (-1, 1):  # pigtails behind
+        c.save(); c.translate(sgn * 74, -284); c.rotate(-sgn * (0.95 + 0.06 * math.sin(t * 3)))
+        c.move_to(-16, 0); c.curve_to(-30, 40, -20, 90, 0, 104); c.curve_to(20, 90, 30, 40, 16, 0); c.close_path(); fs(c, hair)
+        c.move_to(-6, 30); c.curve_to(-10, 60, -4, 80, 2, 92); setc(c, (1, 1, 1, 0.15)); c.set_line_width(4); c.stroke()
+        c.restore()
+    hands = _kid_body(c, None, None, None, "#ff4f8b", skin, arms, None, skirt="#ff7ab0")
+    c.save(); c.translate(0, -262); c.rotate(math.sin(t * 2.0) * 0.03 + m * 0.04)
+    ell(c, -78, 6, 12, 16); fs(c, skin); ell(c, 78, 6, 12, 16); fs(c, skin)
+    ell(c, 0, 0, 80, 78); fs(c, skin, dark(skin, 0.72))
+    c.new_path(); c.arc(0, -4, 83, PI * 1.0, PI * 2.0)
+    c.curve_to(82, -24, 62, -34, 40, -30); c.curve_to(26, -50, 0, -52, -6, -36)
+    c.curve_to(-24, -50, -56, -44, -83, -4); c.close_path(); fs(c, hair)
+    for sgn in (-1, 1):  # hair ties where the pigtails start
+        ell(c, sgn * 74, -22, 11, 11); fs(c, "#ffd23f", "#c99a00", 2)
+    for k in range(5):
+        a = k * 2 * PI / 5; ell(c, -44 + 7 * math.cos(a), -52 + 7 * math.sin(a), 6, 6); setc(c, "#ff4f8b"); c.fill()
+    ell(c, -44, -52, 4, 4); setc(c, "#ffffff"); c.fill()
+    _kid_face(c, skin, m, look, closed, "#4a2a14", lashes=True)
+    ell(c, 0, -26, 3.5, 3.5); setc(c, "#d81b60"); c.fill()   # small bindi
+    c.restore()
+    dev = [c.user_to_device(*h) for h in hands]
+    c.restore(); return dev
+
+def golu(c, x, y, t=0.0, s=1.0, arms=(0.25, 0.25), m=0.0, look=0.0, closed=False, hopy=0.0, lean=0.0):
+    """Golu: the youngest friend (~4), chubby and giggly, round head, little tuft, green dungarees."""
+    skin = "#d9a074"; hair = "#2a1a12"
+    c.save(); c.translate(x, y)
+    ell(c, 0, 2, 54 * s, 10 * s); setc(c, (0, 0, 0, 0.16)); c.fill()
+    c.translate(0, -hopy); c.scale(s * 0.86, s * 0.86); c.rotate(lean)
+    for lx in (-18, 18):
+        rrect(c, lx - 14, -70, 28, 64, 12); fs(c, "#3fae4a")
+        ell(c, lx + (4 if lx > 0 else -4), -8, 22, 11); fs(c, "#2f7bff")
+    ell(c, 0, -130, 58, 70); fs(c, "#ff9f1a", "#c96a00", 3)      # round orange tee
+    c.move_to(-40, -150); c.curve_to(-44, -110, -44, -80, -40, -62); c.line_to(40, -62); c.curve_to(44, -80, 44, -110, 40, -150); c.close_path(); fs(c, "#3fae4a", "#2a7a33", 3)
+    for sgn in (-1, 1):
+        c.move_to(sgn * 32, -150); c.line_to(sgn * 26, -186); setc(c, "#3fae4a"); c.set_line_width(8); c.stroke()
+        ell(c, sgn * 28, -150, 5, 5); setc(c, "#ffd23f"); c.fill()
+    rrect(c, -16, -128, 32, 24, 6); fs(c, "#5fcf6a", "#2a7a33", 2)
+    hands = []
+    for sgn, a in ((-1, arms[0]), (1, arms[1])):
+        hands.append(limb(c, sgn * 48, -170, mir(a, sgn), 60, skin, 16))
+    c.save(); c.translate(0, -262); c.rotate(math.sin(t * 2.4) * 0.04 + m * 0.05)
+    ell(c, -84, 8, 13, 17); fs(c, skin); ell(c, 84, 8, 13, 17); fs(c, skin)
+    ell(c, 0, 0, 88, 82); fs(c, skin, dark(skin, 0.72))
+    c.new_path(); c.arc(0, -6, 86, PI * 1.12, PI * 1.88); c.curve_to(40, -64, -40, -64, -60, -66); c.close_path(); fs(c, hair)
+    c.move_to(-4, -84); c.curve_to(-14, -112, 10, -118, 8, -100); c.curve_to(6, -94, 2, -92, -4, -84); fs(c, hair)
+    _kid_face(c, skin, m, look, closed, "#3a2414")
+    ell(c, -54, 36, 16, 10); setc(c, (1, 0.45, 0.5, 0.45)); c.fill(); ell(c, 54, 36, 16, 10); c.fill()
+    c.restore()
+    dev = [c.user_to_device(*h) for h in hands]
+    c.restore(); return dev
+
+def moti(c, x, y, t=0.0, s=1.0, m=0.0, look=0.0, closed=False, hopy=0.0, wag=1.0):
+    """Moti: the friends' fluffy cream puppy with floppy brown ears and a red collar with a bell."""
+    fur = "#f3dfbf"; ear = "#a8673a"
+    c.save(); c.translate(x, y)
+    ell(c, 0, 2, 70 * s, 10 * s); setc(c, (0, 0, 0, 0.16)); c.fill()
+    c.translate(0, -hopy); c.scale(s, s)
+    c.save(); c.translate(64, -70); c.rotate(-0.6 + 0.4 * math.sin(t * 14) * wag)   # tail
+    ell(c, 0, -22, 10, 26); fs(c, fur, dark(fur, 0.75)); c.restore()
+    for lx in (-40, -16, 16, 40):
+        rrect(c, lx - 11, -50, 22, 46, 10); fs(c, fur, dark(fur, 0.75))
+        ell(c, lx, -6, 14, 8); fs(c, light(fur, 0.3), dark(fur, 0.75))
+    ell(c, 0, -70, 72, 40); fs(c, fur, dark(fur, 0.75))
+    ell(c, 24, -72, 22, 16); setc(c, (0.66, 0.4, 0.23, 0.45)); c.fill()   # spot
+    c.move_to(-90, -88); c.curve_to(-66, -70, -34, -70, -12, -88); setc(c, "#e8322f"); c.set_line_width(10); c.stroke()
+    ell(c, -50, -74, 8, 8); fs(c, "#ffd23f", "#c99a00", 2)
+    c.save(); c.translate(-50, -130); c.rotate(math.sin(t * 2.4) * 0.05)
+    ell(c, 0, 0, 62, 56); fs(c, fur, dark(fur, 0.75))
+    for sgn in (-1, 1):  # floppy ears over the sides of the head
+        c.save(); c.translate(sgn * 50, -30); c.rotate(sgn * (0.2 + 0.06 * math.sin(t * 5)))
+        ell(c, 0, 30, 19, 40); fs(c, ear, dark(ear, 0.7)); c.restore()
+    ell(c, 0, 24, 34, 24); fs(c, light(fur, 0.4), dark(fur, 0.8), 2)
+    eyes(c, (-22, 22), -6, 13, 15, look, closed, "#2a1a10")
+    ell(c, 0, 14, 11, 8); fs(c, "#2b1b14", "#140b06", 2); ell(c, -3, 11, 3, 2); setc(c, (1, 1, 1, 0.7)); c.fill()
+    if m > 0.1:
+        ell(c, 0, 36, 10, 6 + 6 * m); fs(c, "#7c1d2c", "#4f0f1b", 2); ell(c, 0, 42 + 4 * m, 7, 6); setc(c, "#ff7a8f"); c.fill()
+    else:
+        c.move_to(0, 22); c.line_to(0, 28); c.arc(-7, 28, 7, 0.1 * PI, 0.9 * PI); c.move_to(14, 28); c.arc(7, 28, 7, 0.1 * PI, 0.9 * PI)
+        setc(c, "#4f2a14"); c.set_line_width(2.5); c.stroke()
+        ell(c, 4, 38, 7, 8); fs(c, "#ff7a8f", "#d9406a", 1.5)
+    c.restore()
+    c.restore()

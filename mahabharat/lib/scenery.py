@@ -354,3 +354,43 @@ def mandap_scene_bg(c, t):
         c.set_source(g); c.arc(x, yb + 14, 50, 0, 2 * PI); c.fill()
         c.arc(x, yb + 14, 14, 0, PI); fs(c, GOLD, GOLD_D, 2)
         c.move_to(x - 4, yb + 14); c.curve_to(x - 5, yb + 4, x, yb, x, yb - 4 + 2 * math.sin(t * 9)); c.curve_to(x, yb, x + 5, yb + 4, x + 4, yb + 14); c.close_path(); setc(c, "#ffcf3f"); c.fill()
+
+
+def park_bg(c, t):
+    """Sunny park / playground for Tinku & Friends."""
+    sky(c, [(0, "#4ab2ff"), (0.65, "#a9dcff"), (1, "#eaf7ff")], 470, sun=(1130, 100, 42, "#fff3b0"), rays=1.0, t=t)
+    clouds(c, t, 0.95, n=5, ymax=170, seed=6)
+    for hx, r, col in ((150, 420, "#a6e07f"), (760, 520, "#95d870"), (1300, 420, "#a6e07f")):
+        ell(c, hx, 500, r, r * 0.32); setc(c, col); c.fill()
+    treeline(c, 470, 41, "#6cbf55", n=50)
+    grass_field(c, 468, "#8ddc62", "#4fae44", t=t, seed=12)
+    # path
+    c.move_to(0, 640); c.curve_to(300, 600, 700, 690, 1280, 620); c.line_to(1280, 680); c.curve_to(700, 740, 300, 650, 0, 700); c.close_path()
+    setc(c, (0.93, 0.83, 0.62, 0.9)); c.fill()
+    # swing set (back left)
+    c.save(); c.translate(150, 470)
+    for x0, x1 in ((-80, -60), (80, 60)):
+        c.move_to(x0, 0); c.line_to(x1 * 0.2, -150); setc(c, "#e8432f"); c.set_line_width(8); c.stroke()
+    c.move_to(-70, -150); c.line_to(70, -150); setc(c, "#e8432f"); c.set_line_width(10); c.stroke()
+    for k, sx in enumerate((-35, 35)):
+        a = 0.25 * math.sin(t * 2 + k * 1.5)
+        ex = sx + 90 * math.sin(a); ey = -150 + 90 * math.cos(a)
+        c.move_to(sx - 12, -150); c.line_to(ex - 12, ey); c.move_to(sx + 12, -150); c.line_to(ex + 12, ey); setc(c, "#6b6b6b"); c.set_line_width(2); c.stroke()
+        rrect(c, ex - 18, ey - 4, 36, 8, 3); fs(c, "#ffd23f", "#c99a00", 2)
+    c.restore()
+    # slide (back right)
+    c.save(); c.translate(1150, 470)
+    c.move_to(-30, 0); c.line_to(-30, -120); c.move_to(0, 0); c.line_to(0, -120); setc(c, "#2f7bff"); c.set_line_width(6); c.stroke()
+    for k in range(5): c.move_to(-30, -20 - k * 22); c.line_to(0, -20 - k * 22)
+    setc(c, "#2f7bff"); c.set_line_width(4); c.stroke()
+    c.move_to(0, -120); c.curve_to(40, -110, 80, -30, 130, 0); c.line_to(140, -6); c.curve_to(90, -36, 50, -116, 0, -130); c.close_path(); fs(c, "#ffd23f", "#c99a00", 2)
+    rrect(c, -38, -134, 46, 14, 4); fs(c, "#ff5b5b", "#a8302a", 2)
+    c.restore()
+    banyan(c, 60, 520, 0.7, 0, t)
+    for fx, col in ((420, "#ff5f8f"), (980, "#ffb000"), (1230, "#a04dff")):
+        for k in range(5):
+            x = fx + k * 18; y = 486 + (k % 2) * 6
+            c.move_to(x, y + 20); c.line_to(x, y); setc(c, "#3f9e3f"); c.set_line_width(2); c.stroke()
+            for a in range(5): ell(c, x + 5 * math.cos(a * 1.256), y + 5 * math.sin(a * 1.256), 4, 4); setc(c, col); c.fill()
+            ell(c, x, y, 2.5, 2.5); setc(c, "#ffe066"); c.fill()
+    birds(c, t, 3, 7)

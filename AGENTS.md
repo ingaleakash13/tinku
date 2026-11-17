@@ -52,3 +52,35 @@ A 45-episode animated kids series, one episode every Friday at 5 PM IST, publish
 32 बृहन्नला बने अर्जुन · 33 शांतिदूत कृष्ण · 34 कर्ण को सच का पता · 35 कुंती और कर्ण · 36 कौन किसके साथ ·
 37 गीता का उपदेश (भाग 1) · 38 गीता: कर्म करो (भाग 2) · 39 बाणों की शय्या पर भीष्म · 40 वीर अभिमन्यु · 41 दानवीर कर्ण ·
 42 कर्ण और अर्जुन · 43 भीम और दुर्योधन · 44 फिर से शांति · 45 महाभारत की कहानी पूरी हुई
+
+---
+
+# Tinku & Friends (टिंकू और दोस्त) — kids learning series
+
+Short animated learning videos for babies, Nursery, LKG, UKG and Classes 1–5. Published every **Monday and Wednesday at 5 PM IST**,
+Unlisted, made for kids, via Metricool. Code: `tinku_friends/epNN/` (episode 1 = reference). Shared character/scenery code is in
+`mahabharat/lib/` (`tinku()`, `pinky()`, `golu()`, `moti()`, `park_bg()`, …). Friends sheet: `tinku_friends/friends_sheet.png`.
+
+## Rules
+- **Cast:** Tinku (7, glasses, yellow tee), Pinky (6, pigtails, pink frock), Golu (4, chubby, green dungarees), Moti (puppy, barks only).
+  Do not redesign them. New props/backgrounds in the same bright style.
+- **No introductions** ("I'm Tinku…"): title card, then straight into the topic. End with a one-line teaser of the next episode,
+  "Bye-bye!" and the outro card. No moral/conclusion summary.
+- **Length 2:00–3:00** (check after TTS; add repetitions, examples or a sing-along recap to reach 2:00; trim to stay under 3:00).
+- **Alternate levels:** odd episodes = little ones (babies–UKG); even episodes = Classes 1–5.
+- **Language:** English for English/maths/science/GK topics (English captions); Hindi for Hindi-language topics (Hindi captions
+  + English helper words). Voices from `FRIENDS_VOICES` in `mahabharat/lib/voices.py`, recorded in one breath, inner pauses tightened.
+- **Teaching style:** big clear visuals that pop exactly when the word is spoken, repetition (a friend echoes the key word),
+  colourful numbered/lettered cards, kid-pace speech (speed ≈ 0.85), cheerful ukulele bed, pop/boing/shimmer SFX.
+- **Original content only:** write your own rhymes/chants; never reproduce copyrighted songs (traditional public-domain nursery
+  rhymes are fine, but prefer originals).
+
+## Topic plan (continue in order; skip any already in episodes/tinku_friends)
+1 Let's Count 1 to 10 (done) · 2 Times table of 2 · 3 Colors of the Rainbow · 4 Parts of a Plant · 5 Shapes Around Us ·
+6 Hindi Varnamala: स्वर (अ–अः) · 7 Animals and Their Sounds · 8 Our Solar System · 9 ABC: A to M · 10 Times table of 3 ·
+11 ABC: N to Z · 12 The Water Cycle · 13 Fruits We Love · 14 Hindi व्यंजन (क–ञ) · 15 Vegetables · 16 Nouns: Naming Words ·
+17 Big and Small (opposites) · 18 Parts of Our Body & Five Senses · 19 Counting 11 to 20 · 20 Times table of 4 · 21 Brush Your Teeth! ·
+22 Days of the Week & Months · 23 Vehicles on the Road · 24 Hindi व्यंजन (ट–म) · 25 Wild and Pet Animals · 26 Addition up to 10 ·
+27 Good Manners: Please, Sorry, Thank You · 28 Seasons of India · 29 Birds Around Us · 30 Times table of 5 · 31 Fruits & Colors Match ·
+32 Hindi मात्राएँ (ा ि ी) · 33 Up and Down, In and Out · 34 Healthy Food · 35 Community Helpers · 36 Subtraction up to 10 ·
+37 Bedtime Routine · 38 Our National Symbols · 39 Insects & Bugs · 40 Times table of 10

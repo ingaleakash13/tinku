@@ -49,3 +49,15 @@ NAME_COLORS = {
     "arjun": "#c0392b", "bheem": "#7a3fbf", "yudhishthir": "#b58900", "karn": "#e04a1f", "duryodhan": "#2c8f5a",
     "draupadi": "#d81b60", "shakuni": "#4b2a6e", "abhimanyu": "#2f7bff", "nakul": "#14a3a3", "sahadev": "#3fae4a",
 }
+
+
+# Tinku & Friends (kids series). English topics use the *_en voices, Hindi topics the *_hi voices.
+# Targets (median F0): Tinku ~285 Hz, Pinky ~300–315 Hz, Golu ~340–370 Hz. Moti barks are synthesized SFX.
+FRIENDS_VOICES = {
+    "tinku_en": ("af_river", 0.86, 1.55, 1.12),
+    "pinky_en": ("af_bella", 0.86, 1.48, 1.12),
+    "golu_en":  ("af_heart", 0.84, 1.70, 1.20),
+    "tinku_hi": ("hf_beta", 0.95, 1.65, 1.15),
+    "pinky_hi": ("hf_alpha", 0.95, 1.45, 1.12),   # measure F0 and adjust to target on first Hindi episode
+    "golu_hi":  ("hf_beta", 0.92, 1.95, 1.22),
+}
