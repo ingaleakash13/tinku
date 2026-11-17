@@ -57,7 +57,7 @@ A 45-episode animated kids series, one episode every Friday at 5 PM IST, publish
 
 # Tinku & Friends (टिंकू और दोस्त) — kids learning series
 
-Short animated learning videos for babies, Nursery, LKG, UKG and Classes 1–5. Published every **Monday and Wednesday at 5 PM IST**,
+Short animated learning videos for babies, Nursery, LKG, UKG and Classes 1–5. Published every **Monday and Wednesday at 5 PM IST** (ep 1: Wed 18 Nov 2026),
 Unlisted, made for kids, via Metricool. Code: `tinku_friends/epNN/` (episode 1 = reference). Shared character/scenery code is in
 `mahabharat/lib/` (`tinku()`, `pinky()`, `golu()`, `moti()`, `park_bg()`, …). Friends sheet: `tinku_friends/friends_sheet.png`.
 
@@ -67,7 +67,7 @@ Unlisted, made for kids, via Metricool. Code: `tinku_friends/epNN/` (episode 1 =
 - **No introductions** ("I'm Tinku…"): title card, then straight into the topic. End with a one-line teaser of the next episode,
   "Bye-bye!" and the outro card. No moral/conclusion summary.
 - **Length 2:00–3:00** (check after TTS; add repetitions, examples or a sing-along recap to reach 2:00; trim to stay under 3:00).
-- **Alternate levels:** odd episodes = little ones (babies–UKG); even episodes = Classes 1–5.
+- **Levels:** follow the topic plan, which mixes little-ones topics (babies–UKG) and Classes 1–5 topics. Each episode's teaser must name the NEXT topic in the plan.
 - **Language:** English for English/maths/science/GK topics (English captions); Hindi for Hindi-language topics (Hindi captions
   + English helper words). Voices from `FRIENDS_VOICES` in `mahabharat/lib/voices.py`, recorded in one breath, inner pauses tightened.
 - **Teaching style:** big clear visuals that pop exactly when the word is spoken, repetition (a friend echoes the key word),
@@ -76,7 +76,7 @@ Unlisted, made for kids, via Metricool. Code: `tinku_friends/epNN/` (episode 1 =
   rhymes are fine, but prefer originals).
 
 ## Topic plan (continue in order; skip any already in episodes/tinku_friends)
-1 Let's Count 1 to 10 (done) · 2 Times table of 2 · 3 Colors of the Rainbow · 4 Parts of a Plant · 5 Shapes Around Us ·
+1 Let's Count 1 to 10 (done) · 2 Colors of the Rainbow (ep 1's teaser promises this) · 3 Times table of 2 · 4 Parts of a Plant · 5 Shapes Around Us ·
 6 Hindi Varnamala: स्वर (अ–अः) · 7 Animals and Their Sounds · 8 Our Solar System · 9 ABC: A to M · 10 Times table of 3 ·
 11 ABC: N to Z · 12 The Water Cycle · 13 Fruits We Love · 14 Hindi व्यंजन (क–ञ) · 15 Vegetables · 16 Nouns: Naming Words ·
 17 Big and Small (opposites) · 18 Parts of Our Body & Five Senses · 19 Counting 11 to 20 · 20 Times table of 4 · 21 Brush Your Teeth! ·
