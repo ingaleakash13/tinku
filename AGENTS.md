@@ -1,6 +1,6 @@
 # टिंकू की महाभारत (Tinku's Mahabharat) — episode pipeline
 
-A 45-episode animated kids series, one episode every 2 days at 5 PM IST, published Unlisted on YouTube via Metricool.
+A 45-episode animated kids series, one episode every Friday at 5 PM IST, published Unlisted on YouTube via Metricool.
 (The older Mia & Benny pipeline in `pipeline/` is retired.)
 
 ## Non-negotiable rules
@@ -37,7 +37,7 @@ A 45-episode animated kids series, one episode every 2 days at 5 PM IST, publish
 7. Full render: `render.py` in ~10 chunks, 2 in parallel; concat with `-c copy`; mux `audio/mix.wav` (AAC 192k, faststart).
    Sample 8 frames from the final mp4 and check them.
 8. Save `episodes/mahabharat/epMM_<slug>.mp4` + `.en.srt`, commit with the code, push to main.
-9. Publish with Metricool (blogId 8170191, Asia/Calcutta) at 17:00 today (or ~10 minutes from now if 17:00 has passed):
+9. Publish with Metricool (blogId 8170191, Asia/Calcutta) on Friday at 17:00 (or ~10 minutes from now if 17:00 has passed):
    youtube, privacy "unlisted", madeForKids true, isAiGeneratedContent true, category "EDUCATION",
    title "टिंकू की महाभारत | एपिसोड N: <Hindi title> | <English title> 🏹", Hindi+English description, 10 tags, hashtags
    (#TinkuKiMahabharat #Mahabharat #KidsStories #HindiKahani #MahabharatForKids …). Media = raw.githubusercontent.com link.
