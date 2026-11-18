@@ -10,7 +10,7 @@ const ease = x => { x = clamp(x); return x * x * (3 - 2 * x); };
 const back = (x, s = 1.7) => { x = clamp(x); x -= 1; return x * x * ((s + 1) * x + s) + 1; };
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
-renderer.setSize(W, H); renderer.setPixelRatio(1);
+renderer.setPixelRatio(1.3); renderer.setSize(W, H);
 renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 document.getElementById('stage').appendChild(renderer.domElement);
@@ -54,15 +54,17 @@ function face(head, o) {
     const shine = mesh(sph(o.eyeR * 0.2), '#ffffff', { outline: 0, emissive: 0.8 }); at(shine, o.eyeR * 0.2, o.eyeR * 0.25, o.eyeR * 0.72, e);
     if (o.lashes) { const l = mesh(new THREE.BoxGeometry(o.eyeR * 0.7, 0.012, 0.01), '#1a0f0a', { outline: 0 }); at(l, s * o.eyeR * 0.6, o.eyeR * 0.95, o.eyeR * 0.3, e); l.rotation.z = s * 0.5; }
     eyes.push(e);
+    const brow = mesh(cap(0.014, o.eyeR * 0.8), o.brow || '#3a2414', { outline: 0 }); brow.rotation.z = PI / 2 + s * 0.18;
+    at(brow, s * o.eyeX, o.eyeY + o.eyeR * 1.55, o.eyeZ + 0.02, head);
     const cheek = mesh(sph(o.eyeR * 0.6), '#ff8a9a', { outline: 0 }); cheek.scale.set(1.2, 0.7, 0.3); at(cheek, s * o.eyeX * 1.55, o.eyeY - o.eyeR * 1.6, o.eyeZ - 0.03, head);
     cheek.material = new THREE.MeshBasicMaterial({ color: '#ff8a9a', transparent: true, opacity: 0.55 });
   }
   const nose = mesh(sph(0.03), o.skinD, { outline: 0 }); at(nose, 0, o.eyeY - o.eyeR * 1.2, o.eyeZ + 0.03, head);
   // smile (closed) + open mouth (singing)
-  const smile = mesh(new THREE.TorusGeometry(0.075, 0.016, 8, 24, PI), '#7c1d2c', { outline: 0 });
+  const smile = mesh(new THREE.TorusGeometry(0.085, 0.02, 8, 24, PI), '#7c1d2c', { outline: 0 });
   smile.rotation.z = PI; at(smile, 0, o.mouthY + 0.04, o.eyeZ - 0.005, head);
   const open = new THREE.Group(); at(open, 0, o.mouthY, o.eyeZ - 0.02, head);
-  const lip = mesh(sph(0.075), '#7c1d2c', { outline: 0.01 }); lip.scale.set(1, 1, 0.4); open.add(lip);
+  const lip = mesh(sph(0.085), '#7c1d2c', { outline: 0.01 }); lip.scale.set(1, 1, 0.4); open.add(lip);
   const tongue = mesh(sph(0.045), '#ff7a8f', { outline: 0 }); at(tongue, 0, -0.035, 0.015, open); tongue.scale.set(1.1, 0.6, 0.4);
   const teeth = mesh(new THREE.BoxGeometry(0.08, 0.02, 0.02), '#ffffff', { outline: 0 }); at(teeth, 0, 0.05, 0.02, open);
   return { eyes, smile, open };
@@ -117,9 +119,9 @@ function makeTinku() {
   }
   pts.push([0, 0.36, 0], [0.12, 0.34, 0.1], [-0.12, 0.34, 0.1], [0, 0.3, 0.2], [0.16, 0.26, 0.2], [-0.16, 0.26, 0.2], [0, 0.32, -0.15]);
   for (const [x, y, z] of pts) { if (z > 0.22 && y < 0.25) continue; at(mesh(sph(0.115, 16, 12), hairCol, { outline: 0.02 }), x, y, z, head); }
-  const f = face(head, { eyeX: 0.13, eyeY: 0.02, eyeZ: 0.3, eyeR: 0.085, mouthY: -0.17, skinD: '#c8926c' });
+  const f = face(head, { eyeX: 0.135, eyeY: 0.02, eyeZ: 0.3, eyeR: 0.1, mouthY: -0.17, skinD: '#c8926c', brow: '#5a3416' });
   // glasses
-  for (const s of [-1, 1]) { const g = mesh(new THREE.TorusGeometry(0.105, 0.016, 10, 32), '#2b2d42', { outline: 0 }); at(g, s * 0.13, 0.02, 0.37, head); }
+  for (const s of [-1, 1]) { const g = mesh(new THREE.TorusGeometry(0.122, 0.017, 10, 32), '#2b2d42', { outline: 0 }); at(g, s * 0.135, 0.02, 0.37, head); }
   const br = mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.06), '#2b2d42', { outline: 0 }); br.rotation.z = PI / 2; at(br, 0, 0.04, 0.38, head);
   k.face = f; k.name = 'tinku'; return k;
 }
@@ -150,7 +152,7 @@ function makePinky() {
   for (let i = 0; i < 5; i++) { const a = i * PI * 2 / 5; at(mesh(sph(0.03), '#ff4f8b', { outline: 0 }), -0.17 + Math.cos(a) * 0.04, 0.3 + Math.sin(a) * 0.04, 0.24, head); }
   at(mesh(sph(0.022), '#ffffff', { outline: 0 }), -0.17, 0.3, 0.26, head);
   at(mesh(sph(0.018), '#d81b60', { outline: 0 }), 0, 0.14, 0.33, head);
-  k.face = face(head, { eyeX: 0.13, eyeY: 0.03, eyeZ: 0.29, eyeR: 0.085, mouthY: -0.16, skinD: '#c48a62', lashes: true, iris: '#4a2a14' });
+  k.face = face(head, { eyeX: 0.135, eyeY: 0.03, eyeZ: 0.29, eyeR: 0.1, mouthY: -0.16, brow: '#2a1610', skinD: '#c48a62', lashes: true, iris: '#4a2a14' });
   k.name = 'pinky'; return k;
 }
 function makeGolu() {
@@ -173,7 +175,7 @@ function makeGolu() {
   for (const s of [-1, 1]) at(mesh(sph(0.075), skin), s * 0.4, 0, 0, head);
   const capg = new THREE.SphereGeometry(0.41, 32, 16, 0, PI * 2, 0, PI * 0.36); const hc = mesh(capg, '#2a1a12'); hc.rotation.x = -0.45; at(hc, 0, 0.02, -0.03, head);
   const tuft = mesh(sph(0.07), '#2a1a12'); tuft.scale.set(0.6, 1.5, 0.6); tuft.rotation.z = -0.4; at(tuft, 0.02, 0.43, 0.05, head);
-  k.face = face(head, { eyeX: 0.14, eyeY: 0.0, eyeZ: 0.33, eyeR: 0.09, mouthY: -0.2, skinD: '#b07a50' });
+  k.face = face(head, { eyeX: 0.145, eyeY: 0.0, eyeZ: 0.33, eyeR: 0.105, mouthY: -0.2, brow: '#2a1a12', skinD: '#b07a50' });
   k.name = 'golu'; return k;
 }
 function makeMoti() {
@@ -197,7 +199,7 @@ function makeMoti() {
     const eg = new THREE.Group(); at(eg, s * 0.22, 0.12, 0, head);
     const e = mesh(sph(0.11), ear); e.scale.set(0.55, 1.4, 0.8); at(e, s * 0.04, -0.14, 0, eg); k.ears.push(eg);
   }
-  k.face = face(head, { eyeX: 0.1, eyeY: 0.06, eyeZ: 0.21, eyeR: 0.07, mouthY: -0.17, skinD: '#2b1b14', iris: '#2a1a10' });
+  k.face = face(head, { eyeX: 0.1, eyeY: 0.06, eyeZ: 0.21, eyeR: 0.075, mouthY: -0.17, skinD: '#2b1b14', iris: '#2a1a10', brow: '#a8673a' });
   k.face.open.position.z = 0.27; k.face.smile.position.z = 0.29;
   k.name = 'moti'; return k;
 }
@@ -283,8 +285,9 @@ const balls = RAIN.map((c, i) => {
 // ---------- cast
 const kids = [makeTinku(), makePinky(), makeGolu()];
 const moti = makeMoti();
-const XS = [-1.9, -0.55, 0.75, 2.05];
+const XS = [-1.9, -0.55, 0.75, 2.05]; const KX = { tinku: XS[0], pinky: XS[1], golu: XS[2] };
 kids.forEach((k, i) => { k.root.position.set(XS[i], 0, 0.6 + (i === 1 ? 0.15 : 0)); scene.add(k.root); });
+[...kids, moti].forEach(k => k.head.traverse(o => { if (o.isMesh) { o.receiveShadow = false; o.castShadow = false; } }));
 moti.root.position.set(XS[3], 0, 0.9); moti.root.rotation.y = -0.5; scene.add(moti.root);
 
 // ---------- audio-driven helpers
@@ -320,9 +323,18 @@ window.renderAt = function (t) {
   // camera: gentle orbit + push-in + downbeat kick
   const lt = t - D.t0;
   const ang = 0.18 * Math.sin(lt * 0.18) - 0.05;
-  const dist = intro ? 9.5 - 1.5 * ease(lt / 6) : 7.6 - 0.9 * ease((t - D.introEnd) / 14);
-  camera.position.set(Math.sin(ang) * dist, 2.0 + 0.25 * Math.sin(lt * 0.3), Math.cos(ang) * dist + 0.6);
-  camera.lookAt(0, intro ? 2.2 : 1.15, 0);
+  // who is singing now? ease the camera toward a close-up of them, wide again between lines
+  let sx = 0, close = 0;
+  for (const l of D.lines) {
+    if (l.spk in KX && t >= l.start - 0.6 && t <= l.end + 0.4) {
+      const k = Math.min(ease((t - l.start + 0.6) / 0.7), 1 - ease((t - l.end - 0.1) / 0.5)); if (k > close) { close = k; sx = KX[l.spk]; }
+    }
+  }
+  if (intro) close = 0;
+  const dist = (intro ? 9.5 - 1.5 * ease(lt / 6) : 7.4) * (1 - 0.42 * close);
+  const tx = sx * close;
+  camera.position.set(tx + Math.sin(ang) * dist, 2.0 + 0.25 * Math.sin(lt * 0.3) - 0.55 * close, Math.cos(ang) * dist + 0.6);
+  camera.lookAt(tx, intro ? 2.2 : 1.15 + 0.3 * close, 0);
   camera.fov = 34 - 0.8 * Math.exp(-phBar * 10); camera.updateProjectionMatrix();
   // rainbow grows colour by colour as each colour is sung
   RAIN.forEach((c, i) => {

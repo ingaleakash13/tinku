@@ -15,11 +15,19 @@ rng = np.random.default_rng(11)
 def hz(m): return 440.0 * 2 ** ((m - 69) / 12)
 
 _cache = {}
+def voice_style(v):
+    """'af_heart' or a blend like 'af_heart*0.6+am_puck*0.4' (mixed Kokoro style vectors)."""
+    if "+" not in v and "*" not in v: return v
+    out = None
+    for part in v.split("+"):
+        name, w = part.split("*"); st = k.get_voice_style(name) * float(w)
+        out = st if out is None else out + st
+    return out.astype(np.float32)
 def analyse(word, voice, speed):
     key = (word, voice)
     if key in _cache: return _cache[key]
     txt = word.strip(",!").replace("-", "")
-    x, _ = k.create(txt + ".", voice=voice, speed=speed, lang="en-us")
+    x, _ = k.create(txt + ".", voice=voice_style(voice), speed=speed, lang="en-us")
     idx = np.where(np.abs(x) > 0.01)[0]
     x = x[max(0, idx[0] - int(0.02 * SR)): idx[-1] + int(0.04 * SR)].astype(np.float64)
     f0, tm = pw.harvest(x, SR, f0_floor=80, f0_ceil=700, frame_period=FP)
