@@ -64,16 +64,18 @@ def sing_word(word, notes, t_beat, voice, speed, fk, prev_m):
             tail = b - j; b = j
             n_out = max(4, n_out - tail)
         idx = stretch_idx(b - a, voiced[a:b], n_out) + a
+        idx = np.clip(idx, a, b - 1); i0 = np.floor(idx).astype(int); i1 = np.minimum(i0 + 1, b - 1); fr = (idx - i0)[:, None]
         ii = np.clip(np.round(idx).astype(int), a, b - 1)
+        SPi = np.exp(np.log(sp[i0] + 1e-12) * (1 - fr) + np.log(sp[i1] + 1e-12) * fr); APi = ap[i0] * (1 - fr) + ap[i1] * fr
         tt = np.arange(n_out) * HOP
         target = hz(m)
         start_f = hz(prev_m) if prev_m else target * 0.94
         glide = np.exp(-tt / 0.045)
         fq = target * (start_f / target) ** glide
-        vib = 1 + 0.018 * np.sin(2 * np.pi * 5.6 * tt + rng.uniform(0, 6)) * np.clip((tt - 0.22) / 0.25, 0, 1)
+        vib = 1 + 0.011 * np.sin(2 * np.pi * 5.6 * tt + rng.uniform(0, 6)) * np.clip((tt - 0.22) / 0.25, 0, 1)
         fq = fq * vib * (1 + 0.004 * rng.standard_normal())
         vo = voiced[ii]
-        out_f0.append(np.where(vo, fq, 0.0)); out_sp.append(sp[ii]); out_ap.append(ap[ii])
+        out_f0.append(np.where(vo, fq, 0.0)); out_sp.append(SPi); out_ap.append(APi)
         if tail:
             out_f0.append(f0[b:b + tail] * 0); out_sp.append(sp[b:b + tail]); out_ap.append(ap[b:b + tail])
         prev_m = m
@@ -86,6 +88,7 @@ def sing_word(word, notes, t_beat, voice, speed, fk, prev_m):
 
 def sing_line(l, singer):
     voice, speed, f0k, fk = FRIENDS_VOICES[f"{singer}_en"]
+    fk = 1.0 + (fk - 1.0) * 0.5
     beat = l["beat"]; prev = None; parts = []
     for w, notes in l["notes"]:
         if w is None: beat += sum(d for _, d in notes); prev = None; continue
@@ -102,8 +105,8 @@ for li, l in enumerate(LINES):
     t_first, t_last = 1e9, 0
     for gi, s in enumerate(l["singers"]):
         for t0, y in sing_line(l, s):
-            if group: t0 += [0.0, 0.018, 0.009][gi]
-            y = y / (np.abs(y).max() + 1e-9) * (0.55 if group else 0.85)
+            if group: t0 += [0.0, 0.028, 0.041][gi]
+            y = y / (np.abs(y).max() + 1e-9) * ([0.8, 0.32, 0.28][gi] if group else 0.85)
             i = int(t0 * SR); tracks[s][i:i + len(y)] += y[:N - i]
             t_first = min(t_first, t0); t_last = max(t_last, t0 + len(y) / SR)
     timeline.append(dict(i=li, cue=l["cue"], spk=l["spk"], singers=l["singers"], cap=l["cap"], start=round(t_first, 3), end=round(t_last, 3),
@@ -111,6 +114,6 @@ for li, l in enumerate(LINES):
     print(f"{li:02d} {l['cue']:12s} {t_first:7.2f}-{t_last:7.2f} {l['cap']}", flush=True)
 for s, x in tracks.items():
     wet = np.convolve(x, _ir)[:N]
-    sf.write(f"audio/lines/vox_{s}.wav", (x * 0.85 + wet * 4.0).astype(np.float32), SR)
+    sf.write(f"audio/lines/vox_{s}.wav", (x * 0.92 + wet * 1.2).astype(np.float32), SR)
 json.dump(dict(lines=timeline, song_end=SONG_END), open("timeline.json", "w"), indent=1)
 print("done")

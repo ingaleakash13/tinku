@@ -120,6 +120,10 @@ bar += 4
 SECTIONS.append((bar, 2, "card", "outro", ["G", "C"], None))
 bar += 2
 TOTAL_BARS = bar
+# sing in a lower key (Ab major): closer to the voices' natural pitch = much clearer words
+TRANSPOSE = -4
+for l in LINES:
+    l["notes"] = [(w, [(m + TRANSPOSE if m else m, d) for m, d in nn]) for w, nn in l["notes"]]
 SONG_END = TOTAL_BARS * BAR * B
 
 def T(beat): return beat * B

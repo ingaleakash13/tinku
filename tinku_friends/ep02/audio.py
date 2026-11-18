@@ -1,7 +1,7 @@
 """Full band backing for the song: drums, bass, ukulele strums, piano doubling the tune, bells, SFX, vocals."""
 import json, numpy as np, soundfile as sf
 from scipy.signal import resample_poly, butter, sosfilt
-from script import SECTIONS, LINES, B, BAR, T, SONG_END, CHORUS, COLORS
+from script import SECTIONS, LINES, B, BAR, T, SONG_END, CHORUS, COLORS, TRANSPOSE
 
 SR = 48000; DURATION = SONG_END + 0.5; N = int(DURATION * SR)
 rng = np.random.default_rng(7)
@@ -47,6 +47,7 @@ def tom(f): t = np.arange(int(0.3 * SR)) / SR; return np.sin(2 * np.pi * np.cums
 
 CH = {"C": [60, 64, 67], "G": [59, 62, 67], "Am": [57, 60, 64], "F": [57, 60, 65], "Dm": [57, 62, 65], "Em": [59, 64, 67]}
 ROOT = {"C": 36, "G": 43, "Am": 45, "F": 41, "Dm": 38, "Em": 40}
+CH = {k: [m + TRANSPOSE for m in v] for k, v in CH.items()}; ROOT = {k: v + TRANSPOSE for k, v in ROOT.items()}
 
 for sb, nb, kind, scene, chords, info in SECTIONS:
     for b in range(nb):
@@ -86,13 +87,13 @@ for l in LINES:
     beat = l["beat"]
     for w, notes in l["notes"]:
         for m, d in notes:
-            if m: add(keys, piano(m, d * B * 0.9), T(beat), 0.16 if l["spk"] == "all" else 0.12)
+            if m: add(keys, piano(m, d * B * 0.9), T(beat), 0.07 if l["spk"] == "all" else 0.05)
             beat += d
 for i, notes in enumerate(CHORUS[:2]):
     beat = (0 + 2 * i) * BAR
     for w, nn in notes:
         for m, d in nn:
-            if m: add(keys, glock(hz(m + 12), d * B + 0.6, 0.4), T(beat), 0.32)
+            if m: add(keys, glock(hz(m + 12 + TRANSPOSE), d * B + 0.6, 0.4), T(beat), 0.32)
             beat += d
 
 # SFX: shimmer + pop on every colour word, Moti barks in each verse's fill bar, fun extras
@@ -124,9 +125,21 @@ shimmer(0.1, (72, 76, 79, 84, 88, 91, 96), 0.06, 0.2)
 vox = np.zeros(N)
 for s in ("tinku", "pinky", "golu"):
     x, sr = sf.read(f"audio/lines/vox_{s}.wav"); x = resample_poly(x, SR, sr)[:N]; vox[:len(x)] += x
-music = drums * 0.8 + bass * 0.75 + uke * 0.75 + keys * 0.9
+def peak(x, f, gdb, q=1.0):
+    from scipy.signal import lfilter
+    A = 10 ** (gdb / 40); w = 2 * np.pi * f / SR; al = np.sin(w) / (2 * q)
+    b = [1 + al * A, -2 * np.cos(w), 1 - al * A]; a_ = [1 + al / A, -2 * np.cos(w), 1 - al / A]
+    return lfilter(np.array(b) / a_[0], np.array(a_) / a_[0], x)
+vox = sosfilt(butter(2, 140, btype="high", fs=SR, output="sos"), vox)
+vox = peak(peak(vox, 3200, 5.0, 0.8), 350, -3.0, 0.9)
+music = drums * 0.7 + bass * 0.7 + uke * 0.6 + keys * 0.9
+music = peak(music, 2500, -4.0, 0.7)   # leave room for the words
+ve = np.convolve(np.abs(vox), np.ones(int(0.08 * SR)) / int(0.08 * SR), "same")
+duck = 1 - 0.35 * np.clip(ve / (np.percentile(ve, 95) + 1e-9), 0, 1)
 fade = np.ones(N); fl = int(2.0 * SR); fade[-fl:] = np.linspace(1, 0, fl)
-mix = (vox * 1.0 + music * 0.6 + sfx * 0.8) * fade
-mix = np.tanh(mix * 1.2) * 0.9
+vox = vox / (np.abs(vox).max() + 1e-9) * 0.8
+mix = (vox * 1.0 + music * 0.42 * duck + sfx * 0.55) * fade
+mix = mix / (np.abs(mix).max() + 1e-9) * 0.95
+mix = np.tanh(mix * 1.05) * 0.95
 sf.write("audio/mix.wav", np.stack([mix, mix * 0.98 + 0.02 * np.roll(mix, 300)], 1), SR, subtype="PCM_16")
 print("ok", round(DURATION, 2), "peak", np.abs(mix).max().round(3))
