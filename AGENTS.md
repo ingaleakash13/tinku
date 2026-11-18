@@ -73,11 +73,11 @@ Unlisted, made for kids, via Metricool. Code: `tinku_friends/epNN/` (episode 1 =
 - **SONG FORMAT (from ep 2 — the owner asked for song videos, not talk-over-a-board):** every episode is an ORIGINAL
   sung song with music + video. Copy `tinku_friends/ep02/` (reference) and follow it:
   - `script.py`: lyrics + melody as notes per syllable (`(word, [(midi, beats)…])`), ~110 bpm, C major, range C4–C5.
-    Structure: 4-bar instrumental intro on the title card → catchy chorus (all three sing) → verses (one lead singer each,
-    friends echo the key word, then a 1-bar fill where Moti barks on the beat) → chorus again (2–3×) → sung teaser naming
+    Structure: 4-bar instrumental intro on the title card → catchy chorus (ONE kid per line, taking turns — never all singing together; owner's rule) → verses (one lead singer each,
+    one friend echoes the key word, then a 1-bar fill where Moti barks on the beat) → chorus again (2–3×) → sung teaser naming
     the NEXT topic → sung "Bye-bye!" → outro card. Length 2:00–3:00 (change bpm/verses to fit).
   - `sing.py`: Kokoro speaks each word, WORLD re-times every syllable onto its note and replaces the pitch with the
-    melody (glide + vibrato), formant shift from FRIENDS_VOICES; choruses layer the three kids. `audio.py`: full band
+    melody (glide + vibrato), formant shift from FRIENDS_VOICES. Keep the WORLD engine (owner rejected the PSOLA engine). `audio.py`: full band
     (kick/snare/clap/hats, bass, ukulele strums, piano doubling the tune, toms fills, crash) + pops/shimmer on key words.
   - `draw.py`: a NEW full-screen world for every verse (circle-wipe transitions), kids DANCE to the beat (arm pumps, clap,
     sway, jumps), camera push-in + downbeat kick, big word card + objects that pop exactly on the sung word, lyric captions.
