@@ -14,7 +14,8 @@ rng = np.random.default_rng(11)
 
 def hz(m): return 440.0 * 2 ** ((m - 69) / 12)
 
-_cache = {}
+_cache = {}; _raw = {}
+ENGINE = os.environ.get('SING_ENGINE', 'psola')
 def voice_style(v):
     """'af_heart' or a blend like 'af_heart*0.6+am_puck*0.4' (mixed Kokoro style vectors)."""
     if "+" not in v and "*" not in v: return v
@@ -32,7 +33,7 @@ def analyse(word, voice, speed):
     x = x[max(0, idx[0] - int(0.02 * SR)): idx[-1] + int(0.04 * SR)].astype(np.float64)
     f0, tm = pw.harvest(x, SR, f0_floor=80, f0_ceil=700, frame_period=FP)
     sp = pw.cheaptrick(x, f0, tm, SR); ap = pw.d4c(x, f0, tm, SR)
-    _cache[key] = (f0, sp, ap); return _cache[key]
+    _cache[key] = (f0, sp, ap); _raw[key] = x; return _cache[key]
 
 def stretch_idx(n_in, voiced, n_out):
     """Frame map: unvoiced (consonant) frames keep speed when possible, voiced frames absorb the stretch."""
@@ -107,6 +108,84 @@ def sing_word(word, notes, t_beat, voice, speed, fk, prev_m, legato=False):
     e = np.ones(len(y)); r = int(0.012 * SR); e[:r] = np.linspace(0, 1, r); e[-r:] = np.linspace(1, 0, r)
     return T(t_beat) - pre * HOP, (y * e).astype(np.float32), prev_m
 
+import parselmouth
+from parselmouth.praat import call
+
+def sing_word_psola(word, notes, t_beat, voice, speed, fk, prev_m, legato=False):
+    """Same timing plan as sing_word, but Praat PSOLA moves pitch/duration on the REAL waveform (crisper words)."""
+    f0, sp, ap = analyse(word, voice, speed); x = _raw[(word, voice)]
+    voiced = f0 > 0; n = len(f0)
+    i = 0
+    while i < n:
+        if not voiced[i]:
+            j = i
+            while j < n and not voiced[j]: j += 1
+            if i > 0 and j < n and (j - i) <= 6: voiced[i:j] = True
+            i = j
+        else: i += 1
+    vi = np.where(voiced)[0]
+    if len(vi) == 0: vi = np.array([0, n - 1])
+    v0, v1 = vi[0], vi[-1] + 1; ns = len(notes)
+    gaps = [i for i in range(v0 + 1, v1) if not voiced[i] and voiced[i - 1]]
+    bounds = [v0]
+    for s_ in range(1, ns):
+        target = v0 + (v1 - v0) * s_ / ns
+        cand = [g for g in gaps if abs(g - target) < (v1 - v0) / ns * 0.5]
+        bounds.append(min(cand, key=lambda g: abs(g - target)) if cand else int(round(target)))
+    bounds.append(n)
+    dur_x = len(x) / SR
+    knots_o, knots_n = [0.0], [0.0]           # original-time -> output-time map
+    def seg(t0o, t1o, factor):
+        if t1o <= t0o: return
+        knots_o.append(t1o); knots_n.append(knots_n[-1] + (t1o - t0o) * factor); factors.append((t0o, t1o, factor))
+    factors = []
+    seg(0, v0 * HOP, 1.0)
+    pitch_pts = []
+    for s_, (m, beats) in enumerate(notes):
+        a, b = bounds[s_], bounds[s_ + 1]
+        last = s_ == ns - 1
+        dur = beats * B - (0.015 if (last and legato) else (beats * B * 0.08 + 0.02) if last else 0.0)
+        tail = 0
+        if last:
+            j = b
+            while j > a and not voiced[j - 1]: j -= 1
+            tail = b - j; b = j
+            dur = max(0.04, dur - tail * HOP)
+        vv = voiced[a:b]; nv = vv.sum() * HOP; nu = (b - a) * HOP - nv
+        if nv <= 0 or dur <= nu: rv = ru = dur / max(HOP, (b - a) * HOP)
+        else: rv, ru = (dur - nu) / nv, 1.0
+        t_syl = knots_n[-1]
+        k = a
+        while k < b:                            # runs of voiced / unvoiced frames
+            j = k
+            while j < b and voiced[j] == voiced[k]: j += 1
+            seg(k * HOP, j * HOP, rv if voiced[k] else ru); k = j
+        # pitch: melody note with glide from the previous note + gentle vibrato (in OUTPUT time)
+        target = hz(m); start_f = hz(prev_m) if prev_m else target * 0.94
+        for tt in np.arange(0, dur + 1e-6, 0.01):
+            fq = target * (start_f / target) ** np.exp(-tt / 0.045)
+            fq *= 1 + 0.011 * np.sin(2 * np.pi * 5.6 * tt) * np.clip((tt - 0.22) / 0.25, 0, 1)
+            pitch_pts.append((t_syl + tt, fq))
+        if tail: seg(b * HOP, (b + tail) * HOP, 1.0)
+        prev_m = m
+    seg(knots_o[-1], dur_x, 1.0)
+    ko, kn = np.array(knots_o), np.array(knots_n)
+    snd = parselmouth.Sound(x.astype(np.float64), SR)
+    man = call(snd, "To Manipulation", 0.01, 75, 700)
+    dt = call("Create DurationTier", "d", 0, dur_x)
+    for t0o, t1o, f in factors:
+        call(dt, "Add point", t0o + 1e-4, f); call(dt, "Add point", t1o - 1e-4, f)
+    pt = call("Create PitchTier", "p", 0, dur_x)
+    for tn, fq in pitch_pts:
+        to = float(np.interp(tn, kn, ko))
+        if 0 < to < dur_x: call(pt, "Add point", to, fq)
+    call([man, dt], "Replace duration tier"); call([man, pt], "Replace pitch tier")
+    out = call(man, "Get resynthesis (overlap-add)")
+    if abs(fk - 1.0) > 1e-3: out = call(out, "Change gender", 75, 700, fk, 0, 1, 1)
+    y = out.values[0].astype(np.float32)
+    e = np.ones(len(y)); r = int(0.012 * SR); e[:r] = np.linspace(0, 1, r); e[-r:] = np.linspace(1, 0, r)
+    return T(t_beat) - v0 * HOP, (y * e).astype(np.float32), prev_m
+
 def sing_line(l, singer):
     voice, speed, f0k, fk = FRIENDS_VOICES[f"{singer}_en"]
     fk = 1.0 + (fk - 1.0) * 0.5
@@ -115,7 +194,8 @@ def sing_line(l, singer):
     for wi, (w, notes) in enumerate(items):
         if w is None: beat += sum(d for _, d in notes); prev = None; continue
         nxt_word = wi + 1 < len(items) and items[wi + 1][0] is not None
-        t0, y, prev = sing_word(w, notes, beat, voice, 1.0, fk, prev, legato=nxt_word)
+        fn = sing_word_psola if ENGINE == 'psola' else sing_word
+        t0, y, prev = fn(w, notes, beat, voice, 1.0, fk, prev, legato=nxt_word)
         parts.append((t0, y)); beat += sum(d for _, d in notes)
     return parts
 
