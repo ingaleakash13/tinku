@@ -52,9 +52,10 @@ NAME_COLORS = {
 
 
 # Tinku & Friends (kids series). English topics use the *_en voices, Hindi topics the *_hi voices.
+# Blended voices ('a*0.5+b*0.5') work in sing.py; for spoken TTS build the style with voice_style() the same way.
 # Targets (median F0): Tinku ~285 Hz, Pinky ~300–315 Hz, Golu ~340–370 Hz. Moti barks are synthesized SFX.
 FRIENDS_VOICES = {
-    "tinku_en": ("af_river", 0.86, 1.55, 1.12),
+    "tinku_en": ("af_heart*0.5+am_michael*0.5", 0.86, 1.55, 1.20),   # owner's pick (blend of two Kokoro styles; sing.py voice_style())
     "pinky_en": ("af_bella", 0.86, 1.48, 1.12),
     "golu_en":  ("af_heart", 0.84, 1.70, 1.20),
     "tinku_hi": ("hf_beta", 0.95, 1.65, 1.15),
