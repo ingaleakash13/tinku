@@ -15,7 +15,7 @@ rng = np.random.default_rng(11)
 def hz(m): return 440.0 * 2 ** ((m - 69) / 12)
 
 _cache = {}; _raw = {}
-ENGINE = os.environ.get('SING_ENGINE', 'psola')
+ENGINE = os.environ.get('SING_ENGINE', 'world')   # owner's A/B: WORLD sounds better than PSOLA
 def voice_style(v):
     """'af_heart' or a blend like 'af_heart*0.6+am_puck*0.4' (mixed Kokoro style vectors)."""
     if "+" not in v and "*" not in v: return v
