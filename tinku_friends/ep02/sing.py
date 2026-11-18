@@ -43,10 +43,19 @@ def stretch_idx(n_in, voiced, n_out):
     w = np.where(voiced, rv, 1.0); cum = np.concatenate([[0], np.cumsum(w)])
     return np.interp(np.arange(n_out) + 0.5, cum, np.arange(n_in + 1)) - 0.5
 
-def sing_word(word, notes, t_beat, voice, speed, fk, prev_m):
+def sing_word(word, notes, t_beat, voice, speed, fk, prev_m, legato=False):
     """Returns (start_time, audio) — voicing of syllable 1 lands on t_beat."""
     f0, sp, ap = analyse(word, voice, speed)
     voiced = f0 > 0; n = len(f0)
+    # harvest flickers to 'unvoiced' inside vowels -> the voice drops to a whisper mid-note. Close short gaps.
+    i = 0
+    while i < n:
+        if not voiced[i]:
+            j = i
+            while j < n and not voiced[j]: j += 1
+            if i > 0 and j < n and (j - i) <= 6: voiced[i:j] = True
+            i = j
+        else: i += 1
     vi = np.where(voiced)[0]
     if len(vi) == 0: vi = np.array([0, n - 1])
     v0, v1 = vi[0], vi[-1] + 1
@@ -63,7 +72,8 @@ def sing_word(word, notes, t_beat, voice, speed, fk, prev_m):
     out_f0, out_sp, out_ap = [f0[:pre] * 0], [sp[:pre]], [ap[:pre]]
     for s, (m, beats) in enumerate(notes):
         a, b = bounds[s], bounds[s + 1]
-        dur = beats * B * (0.9 if s == ns - 1 else 1.0) - (0.03 if s == ns - 1 else 0.0)
+        last = s == ns - 1
+        dur = beats * B - (0.015 if (last and legato) else (beats * B * 0.08 + 0.02) if last else 0.0)
         n_out = max(4, int(dur / HOP))
         tail = 0
         if s == ns - 1:   # keep unvoiced word ending (t, s, k…) at natural length after the note
@@ -87,7 +97,10 @@ def sing_word(word, notes, t_beat, voice, speed, fk, prev_m):
         if tail:
             out_f0.append(f0[b:b + tail] * 0); out_sp.append(sp[b:b + tail]); out_ap.append(ap[b:b + tail])
         prev_m = m
-    F0 = np.concatenate(out_f0); SP = np.concatenate(out_sp); AP = np.ascontiguousarray(np.concatenate(out_ap))
+    F0 = np.concatenate(out_f0); SP = np.concatenate(out_sp); AP = np.concatenate(out_ap)
+    vmask = F0 > 0     # keep vowels firm and clear: limit breathiness in voiced frames
+    lim = np.ones(AP.shape[1]); lim[: int(AP.shape[1] * 4000 / (SR / 2))] = 0.35
+    AP[vmask] = np.minimum(AP[vmask], lim); AP = np.ascontiguousarray(AP)
     nb = SP.shape[1]; src = np.clip(np.arange(nb) / fk, 0, nb - 1)
     SP = np.ascontiguousarray(np.stack([np.interp(src, np.arange(nb), row) for row in SP]))
     y = pw.synthesize(F0, SP, AP, SR, frame_period=FP)
@@ -98,9 +111,11 @@ def sing_line(l, singer):
     voice, speed, f0k, fk = FRIENDS_VOICES[f"{singer}_en"]
     fk = 1.0 + (fk - 1.0) * 0.5
     beat = l["beat"]; prev = None; parts = []
-    for w, notes in l["notes"]:
+    items = l["notes"]
+    for wi, (w, notes) in enumerate(items):
         if w is None: beat += sum(d for _, d in notes); prev = None; continue
-        t0, y, prev = sing_word(w, notes, beat, voice, 1.0, fk, prev)
+        nxt_word = wi + 1 < len(items) and items[wi + 1][0] is not None
+        t0, y, prev = sing_word(w, notes, beat, voice, 1.0, fk, prev, legato=nxt_word)
         parts.append((t0, y)); beat += sum(d for _, d in notes)
     return parts
 
