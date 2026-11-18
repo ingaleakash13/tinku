@@ -70,13 +70,25 @@ Unlisted, made for kids, via Metricool. Code: `tinku_friends/epNN/` (episode 1 =
 - **Levels:** follow the topic plan, which mixes little-ones topics (babies–UKG) and Classes 1–5 topics. Each episode's teaser must name the NEXT topic in the plan.
 - **Language:** English for English/maths/science/GK topics (English captions); Hindi for Hindi-language topics (Hindi captions
   + English helper words). Voices from `FRIENDS_VOICES` in `mahabharat/lib/voices.py`, recorded in one breath, inner pauses tightened.
-- **Teaching style:** big clear visuals that pop exactly when the word is spoken, repetition (a friend echoes the key word),
-  colourful numbered/lettered cards, kid-pace speech (speed ≈ 0.85), cheerful ukulele bed, pop/boing/shimmer SFX.
+- **SONG FORMAT (from ep 2 — the owner asked for song videos, not talk-over-a-board):** every episode is an ORIGINAL
+  sung song with music + video. Copy `tinku_friends/ep02/` (reference) and follow it:
+  - `script.py`: lyrics + melody as notes per syllable (`(word, [(midi, beats)…])`), ~110 bpm, C major, range C4–C5.
+    Structure: 4-bar instrumental intro on the title card → catchy chorus (all three sing) → verses (one lead singer each,
+    friends echo the key word, then a 1-bar fill where Moti barks on the beat) → chorus again (2–3×) → sung teaser naming
+    the NEXT topic → sung "Bye-bye!" → outro card. Length 2:00–3:00 (change bpm/verses to fit).
+  - `sing.py`: Kokoro speaks each word, WORLD re-times every syllable onto its note and replaces the pitch with the
+    melody (glide + vibrato), formant shift from FRIENDS_VOICES; choruses layer the three kids. `audio.py`: full band
+    (kick/snare/clap/hats, bass, ukulele strums, piano doubling the tune, toms fills, crash) + pops/shimmer on key words.
+  - `draw.py`: a NEW full-screen world for every verse (circle-wipe transitions), kids DANCE to the beat (arm pumps, clap,
+    sway, jumps), camera push-in + downbeat kick, big word card + objects that pop exactly on the sung word, lyric captions.
+  - Render: `J=2 ./run_render.sh` (chunks in parallel, concat, mux AAC 192k faststart).
+- **Teaching style:** big clear visuals that pop exactly when the word is sung, repetition (friends echo the key word),
+  colourful cards, cheerful band, pop/boing/shimmer SFX.
 - **Original content only:** write your own rhymes/chants; never reproduce copyrighted songs (traditional public-domain nursery
   rhymes are fine, but prefer originals).
 
 ## Topic plan (continue in order; skip any already in episodes/tinku_friends)
-1 Let's Count 1 to 10 (done) · 2 Colors of the Rainbow (ep 1's teaser promises this) · 3 Times table of 2 · 4 Parts of a Plant · 5 Shapes Around Us ·
+1 Let's Count 1 to 10 (done) · 2 Colors of the Rainbow (done, first song episode) · 3 Times table of 2 · 4 Parts of a Plant · 5 Shapes Around Us ·
 6 Hindi Varnamala: स्वर (अ–अः) · 7 Animals and Their Sounds · 8 Our Solar System · 9 ABC: A to M · 10 Times table of 3 ·
 11 ABC: N to Z · 12 The Water Cycle · 13 Fruits We Love · 14 Hindi व्यंजन (क–ञ) · 15 Vegetables · 16 Nouns: Naming Words ·
 17 Big and Small (opposites) · 18 Parts of Our Body & Five Senses · 19 Counting 11 to 20 · 20 Times table of 4 · 21 Brush Your Teeth! ·

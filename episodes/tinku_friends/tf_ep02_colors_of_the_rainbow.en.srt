@@ -1,0 +1,139 @@
+1
+00:00:08,527 --> 00:00:12,840
+Everyone: ♪ Red, orange, yellow, green, ♪
+
+2
+00:00:12,890 --> 00:00:17,109
+Everyone: ♪ Blue, indigo, violet! ♪
+
+3
+00:00:17,254 --> 00:00:21,568
+Everyone: ♪ Seven colors shining bright, ♪
+
+4
+00:00:21,618 --> 00:00:25,836
+Everyone: ♪ Rainbow, rainbow, what a sight! ♪
+
+5
+00:00:25,981 --> 00:00:30,295
+Pinky: ♪ Red is the apple shiny and sweet, ♪
+
+6
+00:00:30,345 --> 00:00:34,659
+Pinky: ♪ Red is the fire truck, zoom down the street! ♪
+
+7
+00:00:34,709 --> 00:00:37,290
+Everyone: ♪ Red! Red! Red! ♪
+
+8
+00:00:39,072 --> 00:00:43,386
+Golu: ♪ Orange is the orange juicy and round, ♪
+
+9
+00:00:43,436 --> 00:00:47,750
+Golu: ♪ Orange is the pumpkin big on the ground! ♪
+
+10
+00:00:47,799 --> 00:00:50,381
+Everyone: ♪ Orange! Orange! Orange! ♪
+
+11
+00:00:52,163 --> 00:00:56,477
+Tinku: ♪ Yellow is the sunshine golden and bright, ♪
+
+12
+00:00:56,527 --> 00:01:00,840
+Tinku: ♪ Yellow is the duckling, quack, quack, quack, quack! ♪
+
+13
+00:01:00,890 --> 00:01:03,472
+Everyone: ♪ Yellow! Yellow! Yellow! ♪
+
+14
+00:01:05,254 --> 00:01:09,568
+Pinky: ♪ Green is the grass where the froggies hop, ♪
+
+15
+00:01:09,618 --> 00:01:13,931
+Pinky: ♪ Green is the leaf on the tall tree top! ♪
+
+16
+00:01:13,981 --> 00:01:16,563
+Everyone: ♪ Green! Green! Green! ♪
+
+17
+00:01:18,345 --> 00:01:22,659
+Everyone: ♪ Red, orange, yellow, green, ♪
+
+18
+00:01:22,709 --> 00:01:26,927
+Everyone: ♪ Blue, indigo, violet! ♪
+
+19
+00:01:27,072 --> 00:01:31,386
+Everyone: ♪ Seven colors shining bright, ♪
+
+20
+00:01:31,436 --> 00:01:35,654
+Everyone: ♪ Rainbow, rainbow, what a sight! ♪
+
+21
+00:01:35,799 --> 00:01:40,113
+Golu: ♪ Blue is the sky, so big and so wide, ♪
+
+22
+00:01:40,163 --> 00:01:44,477
+Golu: ♪ Blue is the sea where the fishes glide! ♪
+
+23
+00:01:44,527 --> 00:01:47,109
+Everyone: ♪ Blue! Blue! Blue! ♪
+
+24
+00:01:48,890 --> 00:01:53,204
+Tinku: ♪ Indigo is the night sky, sleepy and deep, ♪
+
+25
+00:01:53,254 --> 00:01:57,568
+Tinku: ♪ Indigo is the blanket where Moti sleeps! ♪
+
+26
+00:01:57,618 --> 00:02:00,199
+Everyone: ♪ Indigo! Indigo! Indigo! ♪
+
+27
+00:02:01,981 --> 00:02:06,295
+Pinky: ♪ Violet is the butterfly, flutter, fly! ♪
+
+28
+00:02:06,345 --> 00:02:10,659
+Pinky: ♪ Violet is the plum, so yummy, oh my! ♪
+
+29
+00:02:10,709 --> 00:02:13,290
+Everyone: ♪ Violet! Violet! Violet! ♪
+
+30
+00:02:15,072 --> 00:02:19,386
+Everyone: ♪ Red, orange, yellow, green, ♪
+
+31
+00:02:19,436 --> 00:02:23,654
+Everyone: ♪ Blue, indigo, violet! ♪
+
+32
+00:02:23,800 --> 00:02:28,113
+Everyone: ♪ Seven colors shining bright, ♪
+
+33
+00:02:28,163 --> 00:02:32,381
+Everyone: ♪ Rainbow, rainbow, what a sight! ♪
+
+34
+00:02:32,527 --> 00:02:36,840
+Tinku: ♪ Next time we learn times table of 2! ♪
+
+35
+00:02:36,890 --> 00:02:41,654
+Everyone: ♪ Bye-bye! Bye-bye! See you soon! ♪
