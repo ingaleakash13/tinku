@@ -73,7 +73,7 @@ VERSE_CHORDS = ["C", "G", "Am", "G C", "F", "G"]
 OUTRO = [
     ("tinku", [("Next", [(67, 1)]), ("time", [(67, 1)]), ("we", [(69, .5)]), ("learn", [(72, 1)]), ("times", [(69, 1)]), ("table", [(67, .5), (64, .5)]), ("of", [(65, .5)]), ("two!", [(67, 2)])],
      "Next time we learn times table of 2!", "next"),
-    ("all", [("Bye-", [(72, 1)]), ("bye!", [(67, 1)]), ("Bye-", [(69, 1)]), ("bye!", [(64, 1)]), ("See", [(65, .5)]), ("you", [(64, .5)]), ("soon!", [(60, 2)]), (None, [(None, 1)])],
+    ("pinky", [("Bye-", [(72, 1)]), ("bye!", [(67, 1)]), ("Bye-", [(69, 1)]), ("bye!", [(64, 1)]), ("See", [(65, .5)]), ("you", [(64, .5)]), ("soon!", [(60, 2)]), (None, [(None, 1)])],
      "Bye-bye! Bye-bye! See you soon!", "bye"),
 ]
 OUTRO_CHORDS = ["C", "F", "C", "G C"]
@@ -85,11 +85,13 @@ LINES = []         # sung lines with absolute beats
 bar = INTRO_BARS
 SECTIONS.append((0, INTRO_BARS, "intro", "title", ["C", "F", "G", "C"], None))
 
+SOLO = ["tinku", "pinky", "golu"]; CH_START = {"ch1": 0, "ch2": 1, "ch3": 2}
 def add_chorus(tag):
     global bar
     SECTIONS.append((bar, 8, "chorus", "rainbow", CHORUS_CHORDS, tag))
     for i, notes in enumerate(CHORUS):
-        LINES.append(dict(beat=(bar + 2 * i) * BAR, singers=["tinku", "pinky", "golu"], notes=notes, cap=CHORUS_CAP[i], cue=f"{tag}_{i}", scene="rainbow", spk="all"))
+        who = SOLO[(i + CH_START[tag]) % 3]          # one kid per line, never all together
+        LINES.append(dict(beat=(bar + 2 * i) * BAR, singers=[who], notes=notes, cap=CHORUS_CAP[i], cue=f"{tag}_{i}", scene="rainbow", spk=who))
     bar += 8
 
 ECHO = {"pinky": ["tinku", "golu"], "golu": ["tinku", "pinky"], "tinku": ["pinky", "golu"]}
@@ -105,7 +107,7 @@ def add_verse(i):
     for p in (72, 69, 72):
         echo.append((cw + "!", [(p, d) for d in split(len(colsyl), 1.0)]))
     echo.append((None, [(None, 1)]))
-    LINES.append(dict(beat=(bar + 4) * BAR, singers=ECHO[singer], notes=echo, cap=f"{cw}! {cw}! {cw}!", cue=f"{key}_echo", scene=scene, spk="all"))
+    LINES.append(dict(beat=(bar + 4) * BAR, singers=[ECHO[singer][0]], notes=echo, cap=f"{cw}! {cw}! {cw}!", cue=f"{key}_echo", scene=scene, spk=ECHO[singer][0]))
     bar += 6   # bar 6 of the verse = instrumental fill (Moti barks on the beat)
 
 add_chorus("ch1")
