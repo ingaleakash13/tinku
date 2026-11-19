@@ -61,7 +61,7 @@ Standalone animated stories for kids (babies–Class 5): scary-but-safe, funny, 
 mystery, festivals. EVERY video is a NEW, complete story — no "Episode N" anywhere (not on screen, not in titles).
 Published every **Wednesday 17:00, Friday 18:00, Saturday 17:00 and Sunday 09:00 IST** via Metricool (blogId 8170191, Asia/Calcutta)
 (Friday is 18:00 so it doesn't clash with Tinku ki Mahabharat at 17:00):
-  1. the full story video → YouTube (type "video", unlisted, madeForKids, isAiGeneratedContent, category EDUCATION or FILM_ANIMATION);
+  1. the full story video → YouTube (type "video", PUBLIC, madeForKids, isAiGeneratedContent, category EDUCATION or FILM_ANIMATION);
   2. a 30-second vertical cut → ONE post with providers youtube (type "short") + instagram (type "REEL", isAiGenerated true).
 Code: `tinku_friends/epNN/` (NN = running number for folders/files only; ep02 = reference story pipeline). Shared character/scenery
 code is in `mahabharat/lib/` (`tinku()`, `pinky()`, `golu()`, `moti()`, `park_bg()`, …). Friends sheet: `tinku_friends/friends_sheet.png`.
@@ -70,9 +70,11 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
 
 ## Rules
 - **Cast:** Tinku (7, glasses, yellow tee), Pinky (6, pigtails, pink frock), Golu (4, chubby, green dungarees), Moti (puppy, barks only).
-  Do not redesign them (2D, normal). New props/backgrounds/side characters in the same bright 2D style.
-- **Start immediately:** NO title card, NO episode name, NO introductions at the start — the first frame is already the story
-  (a small "Tinku & Friends" corner badge is fine). End with a one-line teaser naming the NEXT story in the plan, "Bye-bye!" and the
+  Do not redesign them (2D, normal). NOT every video needs every character: use only who the story needs — a solo moment,
+  two friends, Moti alone, or one kid telling a funny joke/riddle to the camera are all fine. Vary it. New props/backgrounds/side characters in the same bright 2D style.
+- **Start immediately:** NO title card, NO episode name, NO introductions at the start — the first frame is already the story.
+- **No brand text in the video:** never show or say "Tinku & Friends" anywhere in the video or the Short/Reel (no badge, no title,
+  no outro brand). Character names in captions are fine. End with a one-line teaser naming the NEXT story in the plan, "Bye-bye!" and the
   outro card ("Bye-bye!" / "See you next time!" / "Next: <next story title>"). No moral/conclusion summary.
 - **Voices:** normal SPEAKING voices (never singing), one character per line, from `FRIENDS_VOICES` in `mahabharat/lib/voices.py`;
   recorded in one breath, inner pauses tightened; auto-match F0 targets (Tinku ~285 Hz, Pinky ~310, Golu ~350).
@@ -81,7 +83,7 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
 - **Look & motion:** dancing/bouncing is fine in happy moments; talk gestures, blinking, lip-sync from voice loudness; camera moves
   (push-in, small shake on scary stings), circle-wipe between scenes, mood music (playful ukulele, spooky drone + pizzicato,
   comic boing reveal), SFX.
-- **Length:** full story 2:00–3:00; Short/Reel exactly ≤30 s (`short.py T0 T1 out.mp4`, 1080×1920, big captions).
+- **Length:** full story 2:00–3:00 (a quick joke/riddle video may be 0:45–1:30); Short/Reel exactly ≤30 s (`short.py T0 T1 out.mp4`, 1080×1920, big captions).
 - **Original content only:** our own stories and dialogue; never adapt TV shows/films/books.
 - **Calendar events (owner's rule):** every publish day, first check this calendar. If an event falls ON the publish day or
   BEFORE the next publish day (i.e. it would otherwise be missed), make an ORIGINAL kid-friendly story themed on that event
@@ -117,7 +119,8 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
 
 ## SEO for titles, captions & hashtags (YouTube + Instagram) — owner wants maximum views
 - **Keyword first.** Titles start with what parents/kids search for, in the story's language AND Hinglish/English:
-  e.g. "Bhoot Wali Kahani 👻 पार्क का भूत | Funny Ghost Story for Kids | Tinku & Friends". Keep YouTube titles ≤ 70 chars where
+  e.g. "Bhoot Wali Kahani 👻 पार्क का भूत | Funny Ghost Story for Kids in Hindi". Do NOT add "| Tinku & Friends" to titles
+  (use the space for search words). Keep YouTube titles ≤ 70 chars where
   possible (put the most important words in the first 40), one or two emojis, no clickbait lies.
 - **Hook = curiosity, no spoilers.** Shorts/Reels titles and the first caption line are a question or cliff-hanger
   ("A GHOST in the park?! 👻 Wait… why does it have a TAIL? 🐶").
@@ -133,8 +136,9 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
   CTA "Follow @iamtinku13 for new stories every Wed, Fri, Sat & Sun 💛 | Share with a friend 👫 | Comment your favourite part 👇",
   then 5–8 hashtags: 2 brand (#TinkuAndFriends #TinkuKiKahani), 3 niche (#HindiKahani #KidsStories #BhootKiKahani…),
   1–2 broad (#KidsCartoon #Reels), event hashtag for festival stories (#Diwali2027…). No banned/irrelevant tags.
+- **Captions + hashtags are written fresh for EVERY video** at upload time (full video and Short/Reel each get their own).
 - **Shorts:** title includes "#Shorts"; first 2 seconds of the Short must already show the hook (the cut starts mid-action).
-- **Every post:** madeForKids true, isAiGeneratedContent/isAiGenerated true (honest labelling protects reach), category
+- **Every post:** YouTube privacy PUBLIC (unlisted never shows in search/feeds), madeForKids true, isAiGeneratedContent/isAiGenerated true (honest labelling protects reach), category
   FILM_ANIMATION; publish at the scheduled slot (peak times: evenings, Sunday morning).
 
 ## Story plan (continue in order; skip any already in episodes/tinku_friends; add more original stories when it runs out)
