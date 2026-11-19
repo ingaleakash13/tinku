@@ -55,44 +55,39 @@ A 45-episode animated kids series, one episode every Friday at 5 PM IST, publish
 
 ---
 
-# Tinku & Friends (टिंकू और दोस्त) — kids learning series
+# Tinku & Friends (टिंकू और दोस्त) — kids STORIES
 
-Short animated learning videos for babies, Nursery, LKG, UKG and Classes 1–5. Published every **Monday and Wednesday at 5 PM IST** (ep 1: Wed 18 Nov 2026),
-Unlisted, made for kids, via Metricool. Code: `tinku_friends/epNN/` (episode 1 = reference). Shared character/scenery code is in
-`mahabharat/lib/` (`tinku()`, `pinky()`, `golu()`, `moti()`, `park_bg()`, …). Friends sheet: `tinku_friends/friends_sheet.png`.
+Standalone animated stories for kids (babies–Class 5): scary-but-safe, funny, learning, friendship, feelings, adventure,
+mystery, festivals. EVERY video is a NEW, complete story — no "Episode N" anywhere (not on screen, not in titles).
+Published every **Monday and Wednesday at 5 PM IST** via Metricool (blogId 8170191, Asia/Calcutta):
+  1. the full story video → YouTube (type "video", unlisted, madeForKids, isAiGeneratedContent, category EDUCATION or FILM_ANIMATION);
+  2. a 30-second vertical cut → ONE post with providers youtube (type "short") + instagram (type "REEL", isAiGenerated true).
+Code: `tinku_friends/epNN/` (NN = running number for folders/files only; ep02 = reference story pipeline). Shared character/scenery
+code is in `mahabharat/lib/` (`tinku()`, `pinky()`, `golu()`, `moti()`, `park_bg()`, …). Friends sheet: `tinku_friends/friends_sheet.png`.
+(Earlier experiments: `tinku_friends/archive_colors_song/` = sung song version, `tinku_friends/3d_test/` = 3D test — owner chose
+normal 2D characters and normal speaking voices; do not use singing, 3D or Kling.)
 
 ## Rules
 - **Cast:** Tinku (7, glasses, yellow tee), Pinky (6, pigtails, pink frock), Golu (4, chubby, green dungarees), Moti (puppy, barks only).
-  Do not redesign them. New props/backgrounds in the same bright style.
-- **No introductions** ("I'm Tinku…"): title card, then straight into the topic. End with a one-line teaser of the next episode,
-  "Bye-bye!" and the outro card. No moral/conclusion summary.
-- **Length 2:00–3:00** (check after TTS; add repetitions, examples or a sing-along recap to reach 2:00; trim to stay under 3:00).
-- **Levels:** follow the topic plan, which mixes little-ones topics (babies–UKG) and Classes 1–5 topics. Each episode's teaser must name the NEXT topic in the plan.
-- **Language:** English for English/maths/science/GK topics (English captions); Hindi for Hindi-language topics (Hindi captions
-  + English helper words). Voices from `FRIENDS_VOICES` in `mahabharat/lib/voices.py`, recorded in one breath, inner pauses tightened.
-- **SONG FORMAT (from ep 2 — the owner asked for song videos, not talk-over-a-board):** every episode is an ORIGINAL
-  sung song with music + video. Copy `tinku_friends/ep02/` (reference) and follow it:
-  - `script.py`: lyrics + melody as notes per syllable (`(word, [(midi, beats)…])`), ~110 bpm, C major, range C4–C5.
-    Structure: 4-bar instrumental intro on the title card → catchy chorus (ONE kid per line, taking turns — never all singing together; owner's rule) → verses (one lead singer each,
-    one friend echoes the key word, then a 1-bar fill where Moti barks on the beat) → chorus again (2–3×) → sung teaser naming
-    the NEXT topic → sung "Bye-bye!" → outro card. Length 2:00–3:00 (change bpm/verses to fit).
-  - `sing.py`: Kokoro speaks each word, WORLD re-times every syllable onto its note and replaces the pitch with the
-    melody (glide + vibrato), formant shift from FRIENDS_VOICES. Keep the WORLD engine (owner rejected the PSOLA engine). `audio.py`: full band
-    (kick/snare/clap/hats, bass, ukulele strums, piano doubling the tune, toms fills, crash) + pops/shimmer on key words.
-  - `draw.py`: a NEW full-screen world for every verse (circle-wipe transitions), kids DANCE to the beat (arm pumps, clap,
-    sway, jumps), camera push-in + downbeat kick, big word card + objects that pop exactly on the sung word, lyric captions.
-  - Render: `J=2 ./run_render.sh` (chunks in parallel, concat, mux AAC 192k faststart).
-- **Teaching style:** big clear visuals that pop exactly when the word is sung, repetition (friends echo the key word),
-  colourful cards, cheerful band, pop/boing/shimmer SFX.
-- **Original content only:** write your own rhymes/chants; never reproduce copyrighted songs (traditional public-domain nursery
-  rhymes are fine, but prefer originals).
+  Do not redesign them (2D, normal). New props/backgrounds/side characters in the same bright 2D style.
+- **Start immediately:** NO title card, NO episode name, NO introductions at the start — the first frame is already the story
+  (a small "Tinku & Friends" corner badge is fine). End with a one-line teaser naming the NEXT story in the plan, "Bye-bye!" and the
+  outro card ("Bye-bye!" / "See you next time!" / "Next: <next story title>"). No moral/conclusion summary.
+- **Voices:** normal SPEAKING voices (never singing), one character per line, from `FRIENDS_VOICES` in `mahabharat/lib/voices.py`;
+  recorded in one breath, inner pauses tightened; auto-match F0 targets (Tinku ~285 Hz, Pinky ~310, Golu ~350).
+- **Language:** mixed by story — the plan marks each story (H) Hindi dialogue + English captions, or (E) English.
+- **Kid-safe scary:** spooky = shadows, sounds, a "ghost" that turns out to be something funny; never gore, never real danger left unresolved.
+- **Look & motion:** dancing/bouncing is fine in happy moments; talk gestures, blinking, lip-sync from voice loudness; camera moves
+  (push-in, small shake on scary stings), circle-wipe between scenes, mood music (playful ukulele, spooky drone + pizzicato,
+  comic boing reveal), SFX.
+- **Length:** full story 2:00–3:00; Short/Reel exactly ≤30 s (`short.py T0 T1 out.mp4`, 1080×1920, big captions).
+- **Original content only:** our own stories and dialogue; never adapt TV shows/films/books.
 
-## Topic plan (continue in order; skip any already in episodes/tinku_friends)
-1 Let's Count 1 to 10 (done) · 2 Colors of the Rainbow (done, first song episode) · 3 Times table of 2 · 4 Parts of a Plant · 5 Shapes Around Us ·
-6 Hindi Varnamala: स्वर (अ–अः) · 7 Animals and Their Sounds · 8 Our Solar System · 9 ABC: A to M · 10 Times table of 3 ·
-11 ABC: N to Z · 12 The Water Cycle · 13 Fruits We Love · 14 Hindi व्यंजन (क–ञ) · 15 Vegetables · 16 Nouns: Naming Words ·
-17 Big and Small (opposites) · 18 Parts of Our Body & Five Senses · 19 Counting 11 to 20 · 20 Times table of 4 · 21 Brush Your Teeth! ·
-22 Days of the Week & Months · 23 Vehicles on the Road · 24 Hindi व्यंजन (ट–म) · 25 Wild and Pet Animals · 26 Addition up to 10 ·
-27 Good Manners: Please, Sorry, Thank You · 28 Seasons of India · 29 Birds Around Us · 30 Times table of 5 · 31 Fruits & Colors Match ·
-32 Hindi मात्राएँ (ा ि ी) · 33 Up and Down, In and Out · 34 Healthy Food · 35 Community Helpers · 36 Subtraction up to 10 ·
-37 Bedtime Routine · 38 Our National Symbols · 39 Insects & Bugs · 40 Times table of 10
+## Story plan (continue in order; skip any already in episodes/tinku_friends; add more original stories when it runs out)
+1 Let's Count 1 to 10 (done, old learning format) · 2 पार्क का भूत / The Park Ghost (H, spooky-funny) · 3 Golu's Giant Sneeze (E, funny) ·
+4 मोती खो गया / Moti Is Lost (H, friendship) · 5 Why Does the Moon Follow Us? (E, learning) · 6 आधी रात का राक्षस / The Midnight Fridge Monster (H, spooky-funny) ·
+7 Pinky's Kite Contest (E, friendship) · 8 बारिश में बिल्ली / The Kitten in the Rain (H, kindness) · 9 Tinku's Fizzy Volcano (E, learning-funny) ·
+10 फुसफुसाता पेड़ / The Whispering Tree (H, mystery) · 11 Golu Is Scared of the Dark (E, feelings) · 12 आम चोर / The Mango Thief (H, funny mystery) ·
+13 The Robot Who Couldn't Dance (E, funny) · 14 दिवाली की लाइटें / The Diwali Lights Mix-up (H, festival) · 15 The Treasure Map (E, adventure) ·
+16 मेरा लड्डू किसने खाया? / Who Ate My Ladoo? (H, funny) · 17 The Shy New Friend (E, friendship) · 18 दादाजी की जादुई टॉर्च / Grandpa's Magic Torch (H, spooky-learning) ·
+19 The Seed That Grew Overnight (E, learning) · 20 मोती और मधुमक्खी / Moti and the Bee (H, funny) · 21 The Haunted School Bus (E, spooky-funny)
