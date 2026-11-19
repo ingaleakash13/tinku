@@ -115,6 +115,28 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
   | ~4 Nov 2027 | Chhath | | 14 Nov | Children's Day |
   | ~13 Nov 2027 | Guru Nanak Jayanti | | 19 Nov | International Men's Day |
 
+## SEO for titles, captions & hashtags (YouTube + Instagram) — owner wants maximum views
+- **Keyword first.** Titles start with what parents/kids search for, in the story's language AND Hinglish/English:
+  e.g. "Bhoot Wali Kahani 👻 पार्क का भूत | Funny Ghost Story for Kids | Tinku & Friends". Keep YouTube titles ≤ 70 chars where
+  possible (put the most important words in the first 40), one or two emojis, no clickbait lies.
+- **Hook = curiosity, no spoilers.** Shorts/Reels titles and the first caption line are a question or cliff-hanger
+  ("A GHOST in the park?! 👻 Wait… why does it have a TAIL? 🐶").
+- **YouTube description:** line 1–2 = hook + main keywords (these show in search); then a 2–3 line story summary with natural
+  keywords (Hindi kahani, cartoon for kids, moral-free funny story, bedtime story, hindi cartoon, kids story in hindi/english,
+  festival name for event stories); who it's for (age/classes); schedule line; next story; then 3 hashtags that appear above
+  the title (#TinkuAndFriends + 2 topic tags) followed by 5–8 more (≤ 15 total — YouTube ignores all hashtags if there are more).
+  Made-for-kids videos have comments off, so the call to action is "Share with a friend who loves stories! 🔔 Subscribe".
+- **YouTube tags (10–15):** mix exact phrases in Hindi script, Hinglish and English (e.g. "bhoot wali kahani", "hindi kahani",
+  "cartoon kahani", "kids story in hindi", "funny ghost story", "tinku and friends", "moral stories" is NOT used), plus the event
+  name and year for festival stories (e.g. "diwali story for kids 2027").
+- **Instagram Reel caption:** line 1 hook (with 1–2 emojis), line 2–3 keyword-rich description (Instagram search reads captions),
+  CTA "Follow @iamtinku13 for new stories every Wed, Fri, Sat & Sun 💛 | Share with a friend 👫 | Comment your favourite part 👇",
+  then 5–8 hashtags: 2 brand (#TinkuAndFriends #TinkuKiKahani), 3 niche (#HindiKahani #KidsStories #BhootKiKahani…),
+  1–2 broad (#KidsCartoon #Reels), event hashtag for festival stories (#Diwali2027…). No banned/irrelevant tags.
+- **Shorts:** title includes "#Shorts"; first 2 seconds of the Short must already show the hook (the cut starts mid-action).
+- **Every post:** madeForKids true, isAiGeneratedContent/isAiGenerated true (honest labelling protects reach), category
+  FILM_ANIMATION; publish at the scheduled slot (peak times: evenings, Sunday morning).
+
 ## Story plan (continue in order; skip any already in episodes/tinku_friends; add more original stories when it runs out)
 1 Let's Count 1 to 10 (done, old learning format) · 2 पार्क का भूत / The Park Ghost (H, spooky-funny) · 3 Golu's Giant Sneeze (E, funny) ·
 4 मोती खो गया / Moti Is Lost (H, friendship) · 5 Why Does the Moon Follow Us? (E, learning) · 6 आधी रात का राक्षस / The Midnight Fridge Monster (H, spooky-funny) ·
