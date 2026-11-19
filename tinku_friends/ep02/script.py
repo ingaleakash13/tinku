@@ -72,7 +72,7 @@ VERSE_CHORDS = ["C", "G", "Am", "G C", "F", "G"]
 # ---------------------------------------------------------------- outro (teaser + bye)
 OUTRO = [
     ("tinku", [("Next", [(67, 1)]), ("time", [(67, 1)]), ("we", [(69, .5)]), ("learn", [(72, 1)]), ("times", [(69, 1)]), ("table", [(67, .5), (64, .5)]), ("of", [(65, .5)]), ("two!", [(67, 2)])],
-     "Next time we learn times table of 2!", "next"),
+     "Next time, we'll learn the times table of 2!", "next"),
     ("pinky", [("Bye-", [(72, 1)]), ("bye!", [(67, 1)]), ("Bye-", [(69, 1)]), ("bye!", [(64, 1)]), ("See", [(65, .5)]), ("you", [(64, .5)]), ("soon!", [(60, 2)]), (None, [(None, 1)])],
      "Bye-bye! Bye-bye! See you soon!", "bye"),
 ]

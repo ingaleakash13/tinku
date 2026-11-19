@@ -13,7 +13,7 @@ draw.captions = lambda c, t: None
 def echo_short(c, t, key, colsyl, cue):
     l = LBY[cue]; word = "".join(colsyl).upper(); col = COL[key]
     for k in range(3):
-        t0 = T(l["beat"] + k)
+        t0 = draw._WT[cue][k][1] if draw.SPOKEN else T(l["beat"] + k)
         if t < t0 - 0.05: continue
         q = back(prog(t, t0 - 0.05, t0 + 0.25))
         if q < 0.02: continue

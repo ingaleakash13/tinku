@@ -26,7 +26,17 @@ def section_at(t):
     return SECTIONS[-1]
 def sec_t(s): return T(s[0] * BAR), T((s[0] + s[1]) * BAR)
 LBY = {l["cue"]: l for l in LINES}
+_TL = json.load(open("timeline.json")) if os.path.exists("timeline.json") else {}
+SPOKEN = bool(_TL.get("spoken"))
+_WT = {l["cue"]: l["words"] for l in _TL.get("lines", [])}
 def word_time(cue, word, nth=0):
+    if SPOKEN:   # spoken voices: use the measured time each word is said
+        k = 0
+        for w, tw in _WT[cue]:
+            if w.lower().startswith(word.lower().strip(",!")) or (word == "Mohtee" and w.lower() == "moti"):
+                if k == nth: return tw
+                k += 1
+        raise KeyError((cue, word))
     l = LBY[cue]; beat = l["beat"]; k = 0
     for w, notes in l["notes"]:
         if w and w.strip(",!").lower().startswith(word.lower()):
@@ -369,7 +379,7 @@ def color_card(c, t, key, colsyl, t0):
 def echo_words(c, t, key, colsyl, cue):
     l = LBY[cue]; word = "".join(colsyl).upper(); col = COL[key]
     for k in range(3):
-        t0 = T(l["beat"] + k)
+        t0 = _WT[cue][k][1] if SPOKEN else T(l["beat"] + k)
         if t < t0 - 0.05: continue
         q = back(prog(t, t0 - 0.05, t0 + 0.25))
         if q < 0.02: continue
@@ -444,7 +454,7 @@ def captions(c, t):
     c.select_font_face("Fredoka", cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD); c.set_font_size(34)
     c.move_to(640 - tw / 2, by + 41); setc(c, "#2b2d42"); c.show_text(txt)
     for nx in (bx + 30, bx + bw - 30):
-        note_glyph(c, nx, by + 30, col, t)
+        if not SPOKEN: note_glyph(c, nx, by + 30, col, t)
     c.pop_group_to_source(); c.paint_with_alpha(al)
 
 # ---------------------------------------------------------------- scene for a section

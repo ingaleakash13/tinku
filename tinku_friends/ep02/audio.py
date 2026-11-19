@@ -3,6 +3,8 @@ import json, numpy as np, soundfile as sf
 from scipy.signal import resample_poly, butter, sosfilt
 from script import SECTIONS, LINES, B, BAR, T, SONG_END, CHORUS, COLORS, TRANSPOSE
 
+import os
+SPOKEN = os.path.exists('timeline.json') and json.load(open('timeline.json')).get('spoken', False)
 SR = 48000; DURATION = SONG_END + 0.5; N = int(DURATION * SR)
 rng = np.random.default_rng(7)
 drums = np.zeros(N); bass = np.zeros(N); uke = np.zeros(N); keys = np.zeros(N); sfx = np.zeros(N)
@@ -87,7 +89,7 @@ for l in LINES:
     beat = l["beat"]
     for w, notes in l["notes"]:
         for m, d in notes:
-            if m: add(keys, piano(m, d * B * 0.9), T(beat), 0.07 if l["spk"] == "all" else 0.05)
+            if m and not SPOKEN: add(keys, piano(m, d * B * 0.9), T(beat), 0.07 if l["spk"] == "all" else 0.05)
             beat += d
 for i, notes in enumerate(CHORUS[:2]):
     beat = (0 + 2 * i) * BAR
@@ -113,7 +115,8 @@ for sb, nb, kind, scene, chords, info in SECTIONS:
         shimmer(T(sb * BAR))
 for l in LINES:
     if l["cue"].endswith("_echo"):
-        for k in range(3): pop(T(l["beat"] + k), hz(84 + [0, 4, 7][k]))
+        tl_w = {x["cue"]: x["words"] for x in json.load(open("timeline.json"))["lines"]} if SPOKEN else {}
+        for k in range(3): pop(tl_w[l["cue"]][k][1] if SPOKEN else T(l["beat"] + k), hz(84 + [0, 4, 7][k]))
     if l["cue"].startswith("ch"):
         shimmer(T(l["beat"]), (79, 84, 88, 91), 0.04, 0.08)
     if l["cue"] == "red_b": honk(T(l["beat"] + 2.5)); honk(T(l["beat"] + 3.0))
