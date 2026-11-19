@@ -135,10 +135,10 @@ vox = peak(peak(vox, 3200, 5.0, 0.8), 350, -3.0, 0.9)
 music = drums * 0.7 + bass * 0.7 + uke * 0.6 + keys * 0.9
 music = peak(music, 2500, -4.0, 0.7)   # leave room for the words
 ve = np.convolve(np.abs(vox), np.ones(int(0.08 * SR)) / int(0.08 * SR), "same")
-duck = 1 - 0.35 * np.clip(ve / (np.percentile(ve, 95) + 1e-9), 0, 1)
+duck = 1 - 0.5 * np.clip(ve / (np.percentile(ve, 95) + 1e-9), 0, 1)
 fade = np.ones(N); fl = int(2.0 * SR); fade[-fl:] = np.linspace(1, 0, fl)
 vox = vox / (np.abs(vox).max() + 1e-9) * 0.8
-mix = (vox * 1.0 + music * 0.42 * duck + sfx * 0.55) * fade
+mix = (vox * 1.0 + music * 0.36 * duck + sfx * 0.55) * fade
 mix = mix / (np.abs(mix).max() + 1e-9) * 0.95
 mix = np.tanh(mix * 1.05) * 0.95
 sf.write("audio/mix.wav", np.stack([mix, mix * 0.98 + 0.02 * np.roll(mix, 300)], 1), SR, subtype="PCM_16")

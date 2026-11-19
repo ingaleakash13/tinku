@@ -104,6 +104,7 @@ def sing_word(word, notes, t_beat, voice, speed, fk, prev_m, legato=False):
     AP[vmask] = np.minimum(AP[vmask], lim); AP = np.ascontiguousarray(AP)
     nb = SP.shape[1]; src = np.clip(np.arange(nb) / fk, 0, nb - 1)
     SP = np.ascontiguousarray(np.stack([np.interp(src, np.arange(nb), row) for row in SP]))
+    SP[F0 == 0] *= 2.5          # consonants (s, t, p, k…) a little louder = clearer words
     y = pw.synthesize(F0, SP, AP, SR, frame_period=FP)
     e = np.ones(len(y)); r = int(0.012 * SR); e[:r] = np.linspace(0, 1, r); e[-r:] = np.linspace(1, 0, r)
     return T(t_beat) - pre * HOP, (y * e).astype(np.float32), prev_m
@@ -188,7 +189,7 @@ def sing_word_psola(word, notes, t_beat, voice, speed, fk, prev_m, legato=False)
 
 def sing_line(l, singer):
     voice, speed, f0k, fk = FRIENDS_VOICES[f"{singer}_en"]
-    fk = 1.0 + (fk - 1.0) * 0.5
+    fk = 1.0 + (fk - 1.0) * 0.35   # light child-voice shift: stronger shifts blur words
     beat = l["beat"]; prev = None; parts = []
     items = l["notes"]
     for wi, (w, notes) in enumerate(items):
