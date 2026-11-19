@@ -58,7 +58,7 @@ FRIENDS_VOICES = {
     "tinku_en": ("af_heart*0.5+am_michael*0.5", 0.86, 1.55, 1.20),   # owner's pick (blend of two Kokoro styles; sing.py voice_style())
     "pinky_en": ("af_bella", 0.86, 1.48, 1.12),
     "golu_en":  ("af_heart", 0.84, 1.70, 1.20),
-    "tinku_hi": ("hf_beta", 0.95, 1.65, 1.15),
+    "tinku_hi": ("hf_beta*0.5+hm_psi*0.5", 0.95, 1.65, 1.10),   # boy: blend of a female + male Hindi style
     "pinky_hi": ("hf_alpha", 0.95, 1.45, 1.12),   # measure F0 and adjust to target on first Hindi episode
     "golu_hi":  ("hf_beta", 0.92, 1.95, 1.22),
 }

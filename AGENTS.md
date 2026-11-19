@@ -82,6 +82,10 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
   comic boing reveal), SFX.
 - **Length:** full story 2:00–3:00; Short/Reel exactly ≤30 s (`short.py T0 T1 out.mp4`, 1080×1920, big captions).
 - **Original content only:** our own stories and dialogue; never adapt TV shows/films/books.
+- **Calendar events:** before picking the next story, check the dates. If a festival or special day (e.g. Children's Day 14 Nov,
+  Christmas, New Year, Makar Sankranti, Republic Day, Holi, Ram Navami, Earth Day, Environment Day, Raksha Bandhan, Independence Day,
+  Janmashtami, Ganesh Chaturthi, Teachers' Day, Navratri/Dussehra, Diwali, Bhai Dooj, Guru Nanak Jayanti) falls on the publish day or
+  within the next 3 days, make an ORIGINAL story themed on that event instead (add it to the plan as "(event)"), then continue the plan.
 
 ## Story plan (continue in order; skip any already in episodes/tinku_friends; add more original stories when it runs out)
 1 Let's Count 1 to 10 (done, old learning format) · 2 पार्क का भूत / The Park Ghost (H, spooky-funny) · 3 Golu's Giant Sneeze (E, funny) ·
