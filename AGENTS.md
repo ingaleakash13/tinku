@@ -82,10 +82,37 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
   comic boing reveal), SFX.
 - **Length:** full story 2:00–3:00; Short/Reel exactly ≤30 s (`short.py T0 T1 out.mp4`, 1080×1920, big captions).
 - **Original content only:** our own stories and dialogue; never adapt TV shows/films/books.
-- **Calendar events:** before picking the next story, check the dates. If a festival or special day (e.g. Children's Day 14 Nov,
-  Christmas, New Year, Makar Sankranti, Republic Day, Holi, Ram Navami, Earth Day, Environment Day, Raksha Bandhan, Independence Day,
-  Janmashtami, Ganesh Chaturthi, Teachers' Day, Navratri/Dussehra, Diwali, Bhai Dooj, Guru Nanak Jayanti) falls on the publish day or
-  within the next 3 days, make an ORIGINAL story themed on that event instead (add it to the plan as "(event)"), then continue the plan.
+- **Calendar events (owner's rule):** every publish day, first check this calendar. If an event falls ON the publish day or
+  BEFORE the next publish day (i.e. it would otherwise be missed), make an ORIGINAL kid-friendly story themed on that event
+  (add it to the plan as "(event)"). If several events qualify, pick the bigger one. If there is NO event, make the next story
+  from the plan (or a fresh random original story — any genre — when the plan runs out). Re-check lunar-festival dates
+  (marked ~) with a quick web search before using them; they can shift by a day.
+  Kid-friendly framing: Valentine's Week / Valentine's Day = love for friends, family and pets (cards, kindness, sharing — no
+  romance); Halloween = costume party and pumpkins, scary-but-funny; Men's/Women's/Mother's/Father's Day = celebrating dads,
+  moms, grandparents, helpers; national days = pride, flag, parade, songs (no politics).
+
+  | Date | Event | | Date | Event |
+  |---|---|---|---|---|
+  | 25 Dec | Christmas | | 1 Jan | New Year |
+  | 13 Jan | Lohri | | 14/15 Jan (2027: Fri 15) | Makar Sankranti / Pongal / kite day |
+  | 26 Jan | Republic Day (India) | | ~11 Feb 2027 | Vasant Panchami |
+  | 7–14 Feb | Valentine's Week (Rose 7, Chocolate 9, Teddy 10, Promise 11, Hug 12) | | 14 Feb | Valentine's Day |
+  | ~6 Mar 2027 | Maha Shivratri | | 8 Mar | International Women's Day |
+  | ~9 Mar 2027 | Eid al-Fitr | | ~22 Mar 2027 (Holika Dahan 21) | Holi |
+  | ~28 Mar 2027 | Easter | | 1 Apr | April Fools' Day |
+  | ~7 Apr 2027 | Gudi Padwa / Ugadi | | 14 Apr | Baisakhi / Ambedkar Jayanti |
+  | ~15 Apr 2027 | Ram Navami | | 22 Apr | Earth Day |
+  | 2nd Sun May (2027: 9 May) | Mother's Day | | ~17 May 2027 | Eid al-Adha |
+  | ~20 May 2027 | Buddha Purnima | | 5 Jun | World Environment Day |
+  | 3rd Sun Jun (2027: 20 Jun) | Father's Day | | 21 Jun | International Yoga Day |
+  | 1st Sun Aug (2027: 1 Aug) | Friendship Day | | 15 Aug | Independence Day (India) |
+  | ~17 Aug 2027 | Raksha Bandhan | | ~25 Aug 2027 | Janmashtami |
+  | 5 Sep | Teachers' Day | | ~4 Sep 2027 | Ganesh Chaturthi |
+  | ~12 Sep 2027 | Onam | | ~30 Sep 2027 | Navratri begins |
+  | 2 Oct | Gandhi Jayanti | | ~9 Oct 2027 | Dussehra |
+  | 31 Oct | Halloween | | ~29 Oct 2027 (Dhanteras 27, Bhai Dooj 31) | Diwali |
+  | ~4 Nov 2027 | Chhath | | 14 Nov | Children's Day |
+  | ~13 Nov 2027 | Guru Nanak Jayanti | | 19 Nov | International Men's Day |
 
 ## Story plan (continue in order; skip any already in episodes/tinku_friends; add more original stories when it runs out)
 1 Let's Count 1 to 10 (done, old learning format) · 2 पार्क का भूत / The Park Ghost (H, spooky-funny) · 3 Golu's Giant Sneeze (E, funny) ·
