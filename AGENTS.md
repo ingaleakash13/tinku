@@ -59,7 +59,8 @@ A 45-episode animated kids series, one episode every Friday at 5 PM IST, publish
 
 Standalone animated stories for kids (babies–Class 5): scary-but-safe, funny, learning, friendship, feelings, adventure,
 mystery, festivals. EVERY video is a NEW, complete story — no "Episode N" anywhere (not on screen, not in titles).
-Published every **Monday and Wednesday at 5 PM IST** via Metricool (blogId 8170191, Asia/Calcutta):
+Published every **Wednesday 17:00, Friday 18:00, Saturday 17:00 and Sunday 09:00 IST** via Metricool (blogId 8170191, Asia/Calcutta)
+(Friday is 18:00 so it doesn't clash with Tinku ki Mahabharat at 17:00):
   1. the full story video → YouTube (type "video", unlisted, madeForKids, isAiGeneratedContent, category EDUCATION or FILM_ANIMATION);
   2. a 30-second vertical cut → ONE post with providers youtube (type "short") + instagram (type "REEL", isAiGenerated true).
 Code: `tinku_friends/epNN/` (NN = running number for folders/files only; ep02 = reference story pipeline). Shared character/scenery
