@@ -1,12 +1,12 @@
 """30-second vertical Short / Instagram Reel cut from the story (1080x1920): blurred background, sharp re-framed
-panel, big captions (no brand text in the video). usage: python3 short.py T_START T_END out.mp4 [crop_center_x]"""
+panel, NO captions and no brand text. usage: python3 short.py T_START T_END out.mp4 [crop_center_x]"""
 import sys, math, subprocess, cairo
 from draw import *
 
 SW, SH = 1080, 1920
 T0, T1, OUT = float(sys.argv[1]), float(sys.argv[2]), sys.argv[3]
 CX = float(sys.argv[4]) if len(sys.argv) > 4 else 690
-CW = 900; SC = SW / CW; PH = int(720 * SC); PY = 420
+CW = 900; SC = SW / CW; PH = int(720 * SC); PY = (SH - PH) // 2   # no on-screen captions in Shorts/Reels (owner's rule)
 
 def wrap(c, txt, size, maxw):
     c.select_font_face("Fredoka", cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD); c.set_font_size(size)
@@ -56,7 +56,6 @@ for f in range(int((T1 - T0) * 30)):
     c.save(); c.rectangle(0, PY, SW, PH); c.clip(); c.translate(0, PY); c.scale(SC, SC); c.translate(-(CX - CW / 2), 0)
     c.set_source_surface(src, 0, 0); c.paint(); c.restore()
     c.rectangle(0, PY, SW, 6); setc(c, (1, 1, 1, 0.9)); c.fill(); c.rectangle(0, PY + PH - 6, SW, 6); c.fill()
-    short_caption(c, t)
     fa = clamp(min((t - T0) / 0.2, (T1 - t) / 0.6))
     if fa < 1: c.rectangle(0, 0, SW, SH); setc(c, (0, 0, 0, 1 - fa)); c.fill()
     out.flush(); p.stdin.write(bytes(out.get_data()))

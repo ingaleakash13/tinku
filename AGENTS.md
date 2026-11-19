@@ -83,7 +83,7 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
 - **Look & motion:** dancing/bouncing is fine in happy moments; talk gestures, blinking, lip-sync from voice loudness; camera moves
   (push-in, small shake on scary stings), circle-wipe between scenes, mood music (playful ukulele, spooky drone + pizzicato,
   comic boing reveal), SFX.
-- **Length:** full story 2:00–3:00 (a quick joke/riddle video may be 0:45–1:30); Short/Reel exactly ≤30 s (`short.py T0 T1 out.mp4`, 1080×1920, big captions).
+- **Length:** full story 2:00–3:00 (a quick joke/riddle video may be 0:45–1:30); Short/Reel exactly ≤30 s (`short.py T0 T1 out.mp4`, 1080×1920, NO on-screen captions — the full video keeps its captions).
 - **Original content only:** our own stories and dialogue; never adapt TV shows/films/books.
 - **Calendar events (owner's rule):** every publish day, first check this calendar. If an event falls ON the publish day or
   BEFORE the next publish day (i.e. it would otherwise be missed), make an ORIGINAL kid-friendly story themed on that event
