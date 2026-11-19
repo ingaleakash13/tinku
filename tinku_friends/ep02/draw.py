@@ -1,4 +1,4 @@
-"""Tinku & Friends story: The Park Ghost. Starts straight in the story (no title card)."""
+"""Story: The Park Ghost. Starts straight in the story (no title card, no brand text)."""
 import sys, os, math, random, numpy as np, soundfile as sf, cairo
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "mahabharat", "lib"))
 from chars import *
@@ -333,7 +333,6 @@ def frame(t, surf=None, with_captions=True):
     if T_HIDE <= t < T_HIDE + 0.25 or T_REVEAL <= t < T_REVEAL + 0.25:   # quick flash cut
         c.rectangle(0, 0, W, H); setc(c, (1, 1, 1, 0.5 * (1 - (t - (T_HIDE if t < T_REVEAL else T_REVEAL)) / 0.25))); c.fill()
     c.restore()
-    if t < T_OUTRO: badge(c)
     if with_captions: captions(c, t)
     f = clamp(min(t / 0.25, (DURATION - t) / 1.5))
     if f < 1: c.rectangle(0, 0, W, H); setc(c, (0, 0, 0, 1 - f)); c.fill()
