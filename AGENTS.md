@@ -147,6 +147,7 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
   FILM_ANIMATION; publish at the scheduled slot (peak times: evenings, Sunday morning).
 
 ## Story plan (continue in order; skip any already in episodes/tinku_friends; add more original stories when it runs out)
+(trend weekend 21–22 Nov 2026, owner's request — video-game wave, all done: ग्रैंड टिंकू एडवेंचर / Grand Tinku Adventure (H, Sat 09:00) · गोलू और आख़िरी बॉस / Golu vs the Final Boss (H, Sat 17:00) · Pinky and the Secret Level (E, Sun 09:00). Original game world only — no real game's name/logo/characters in the video; regular plan resumes Wed 25 Nov with 3 Golu's Giant Sneeze.)
 1 Let's Count 1 to 10 (done, old learning format) · 2 पार्क का भूत / The Park Ghost (H, spooky-funny) · 3 Golu's Giant Sneeze (E, funny) ·
 4 मोती खो गया / Moti Is Lost (H, friendship) · 5 Why Does the Moon Follow Us? (E, learning) · 6 आधी रात का राक्षस / The Midnight Fridge Monster (H, spooky-funny) ·
 7 Pinky's Kite Contest (E, friendship) · 8 बारिश में बिल्ली / The Kitten in the Rain (H, kindness) · 9 Tinku's Fizzy Volcano (E, learning-funny) ·
