@@ -1,0 +1,15 @@
+tts
+audio/
+parts/
+stills/
+__pycache__/
+final.mp4
+video.mp4
+timeline.json
+sing.log
+final.mp4
+short.mp4
+chk/
+render.log
+tts.log
+short.mp4
