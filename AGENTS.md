@@ -41,7 +41,7 @@ A 45-episode animated kids series, one episode every Friday at 5 PM IST, publish
    youtube, privacy "unlisted", madeForKids true, isAiGeneratedContent true, category "EDUCATION",
    title "टिंकू की महाभारत | एपिसोड N: <Hindi title> | <English title> 🏹", Hindi+English description, 10 tags, hashtags
    (#TinkuKiMahabharat #Mahabharat #KidsStories #HindiKahani #MahabharatForKids …). Media = raw.githubusercontent.com link.
-   ALSO post the same full episode to Instagram at the same time as a SEPARATE post: provider instagram, instagramData
+   ALSO post the same full episode to Instagram the same Friday at 20:00 IST (or ~10 minutes from now if 20:00 has passed) as a SEPARATE post: provider instagram, instagramData
    {type "REEL", showReelOnFeed true, isAiGenerated true}, same media; caption = curiosity hook line (1–2 emojis), Hindi+English
    keyword lines with the episode title, "📖 A new episode every Friday at 5 PM!", next episode title, CTA
    "Follow @iamtinku13 for the next episode 💛 | Share with a friend 👫 | Comment your favourite part 👇", 6–8 hashtags
