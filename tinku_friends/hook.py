@@ -1,6 +1,8 @@
-"""Opening HOOK (2-3 s) + cover thumbnails for Tinku & Friends stories (no brand text anywhere).
+"""Opening HOOK (one COMPLETE 5-8 s scene) + cover thumbnails for Tinku & Friends stories (no brand text anywhere).
 
-The hook is a flash-forward of the most exciting/funny moment of the story (push-in zoom, whoosh + boom sting) with a big
+The hook is a flash-forward of the most exciting/funny moment of the story, as one COMPLETE little scene (owner, 21 Nov 2026):
+T0 = just before the first line/action of the beat starts, DUR = until just after its last line ends (5-8 s; take the
+timings from the .en.srt) — never cut mid-sentence or mid-action (push-in zoom, whoosh + boom sting) with a big
 curiosity line on screen (a question / cliff-hanger, never a spoiler of the ending, never a lie), then a white flash cuts
 into the story itself. Works on the finished mp4s, so nothing needs re-rendering.
 
@@ -14,7 +16,7 @@ usage:
            and OUT_BASE_thumb.jpg (1280x720, YouTube thumbnail)
 env: HOOK_TOP=1 puts the 16:9 hook/thumbnail text at the top (use when the action is low in the frame);
      HOOK_Y0=40 moves the vertical crop down (scenes whose ground sits low). Keep crop_center_x within 450..830.
-  python3 hook.py captions SHORT_HOOK.mp4 FULL_HOOK.srt SCRIPT.py SHORT_T0 OUT.mp4
+  python3 hook.py captions SHORT_HOOK.mp4 FULL_HOOK.srt SCRIPT.py SHORT_T0 OUT.mp4 HOOK_DUR
         -> burns big Reel captions (speaker name tag + English line, below the picture) into an already-hooked Short;
            SHORT_T0 = the T0 given to short.py. (New stories: short.py draws these captions itself.)
 LINE1 = small yellow teaser line (e.g. "WAIT FOR IT..."), LINE2 = the big hook question. Devanagari works (Baloo 2).
@@ -258,5 +260,5 @@ if __name__ == "__main__":
             th.convert("RGB").save(base + "_thumb.jpg", quality=92)
         elif mode == "captions":
             src, srt, script, st0, out = sys.argv[2], sys.argv[3], sys.argv[4], float(sys.argv[5]), sys.argv[6]
-            burn_captions(src, srt, script, st0, out)
+            burn_captions(src, srt, script, st0, out, float(sys.argv[7]) if len(sys.argv) > 7 else 2.8)
         print("ok", mode)

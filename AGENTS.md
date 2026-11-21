@@ -48,10 +48,10 @@ A 45-episode animated kids series, one episode every Friday at 5 PM IST, publish
    (#TinkuKiMahabharat #Mahabharat #MahabharatForKids #HindiKahani #KidsStories #IndianMythology #KidsCartoon #Reels).
    **Since 21 Nov 2026 (owner): the Instagram Reel is NOT the full episode** — it is a 30 s vertical cut (copy
    `tinku_friends/ep02/short.py` into the episode folder and adapt it: blurred background, sharp panel, big English captions with
-   the Hindi name tag) of the most dramatic 30 s, with the 2–3 s hook in front (`tinku_friends/hook.py short`), plus a cover
+   the Hindi name tag) of the most dramatic 30 s, with the 5–8 s complete hook scene in front (`tinku_friends/hook.py short`), plus a cover
    (`hook.py cover`) passed as videoThumbnailUrl. Its caption says "Full episode on YouTube — link in bio 🔗" (the YouTube
    episode is unlisted, so the link in the Instagram bio is the way in). The full YouTube episode also opens with the
-   2–3 s hook (`hook.py full`, shift the .en.srt) and gets the `_thumb.jpg` as videoThumbnailUrl. Files:
+   5–8 s complete hook scene (`hook.py full`, shift the .en.srt) and gets the `_thumb.jpg` as videoThumbnailUrl. Files:
    `episodes/mahabharat/epNN_<slug>.mp4`, `_short.mp4`, `_cover.jpg`, `_thumb.jpg`, `.en.srt`.
 
 ## 45-episode plan (from the epic)
@@ -84,8 +84,10 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
 - **Cast:** Tinku (7, glasses, yellow tee), Pinky (6, pigtails, pink frock), Golu (4, chubby, green dungarees), Moti (puppy, barks only).
   Do not redesign them (2D, normal). NOT every video needs every character: use only who the story needs — a solo moment,
   two friends, Moti alone, or one kid telling a funny joke/riddle to the camera are all fine. Vary it. New props/backgrounds/side characters in the same bright 2D style.
-- **Open with a 2–3 s HOOK, then start immediately:** every full video AND every Short/Reel opens with a 2.5–3 s flash-forward
-  of the most exciting/funny moment (push-in zoom, whoosh + boom sting, big curiosity text: yellow teaser line + white question,
+- **Open with a HOOK SCENE, then start immediately:** every full video AND every Short/Reel opens with a flash-forward of the
+  most exciting/funny moment as ONE COMPLETE little scene of 5–8 s (owner, 21 Nov 2026): it starts just before the first line/
+  action of that beat and ends just after its last line — never cut mid-sentence or mid-action (take times from the .en.srt)
+  (push-in zoom, whoosh + boom sting, big curiosity text: yellow teaser line + white question,
   e.g. "THE FINAL BOSS IS A PIGEON?!" / "Can Golu win without a fight?"), then a white flash cuts into the story. Suspense and
   curiosity only — never spoil the ending, never a lie, never brand text. Make it with `tinku_friends/hook.py` on the finished
   mp4s (`full` and `short` modes; the Short stays exactly 30 s; shift the .en.srt by the hook length). After the hook: still NO
