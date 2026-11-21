@@ -93,11 +93,11 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
   mp4s (`full` and `short` modes; the Short stays exactly 30 s; shift the .en.srt by the hook length). After the hook: still NO
   title card, NO episode name, NO introductions — the story starts right away. The first frame must never be black.
 - **No brand text in the video:** never show or say "Tinku & Friends" anywhere in the video or the Short/Reel (no badge, no title,
-  no outro brand). Character names in captions are fine. End with a one-line teaser naming the NEXT story in the plan, "Bye-bye!" and the
-  outro card ("Bye-bye!" / "See you next time!" / "Next: <next story title>"). No moral/conclusion summary.
+  no outro brand). Character names in captions are fine. End with a one-line teaser of the NEXT story (named if decided, otherwise a generic tease), "Bye-bye!" and the
+  outro card ("Bye-bye!" / "See you next time!" / "Next: <next story title>" or "Next: a new story on <day>!"). No moral/conclusion summary.
 - **Voices:** normal SPEAKING voices (never singing), one character per line, from `FRIENDS_VOICES` in `mahabharat/lib/voices.py`;
   recorded in one breath, inner pauses tightened; auto-match F0 targets (Tinku ~285 Hz, Pinky ~310, Golu ~350).
-- **Language:** mixed by story — the plan marks each story (H) Hindi dialogue + English captions, or (E) English.
+- **Language:** mixed by story — (H) Hindi dialogue + English captions, or (E) English; pick what fits the trend, alternate when unsure.
 - **Kid-safe scary:** spooky = shadows, sounds, a "ghost" that turns out to be something funny; never gore, never real danger left unresolved.
 - **Look & motion:** dancing/bouncing is fine in happy moments; talk gestures, blinking, lip-sync from voice loudness; camera moves
   (push-in, small shake on scary stings), circle-wipe between scenes, mood music (playful ukulele, spooky drone + pizzicato,
@@ -105,6 +105,10 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
 - **Length:** full story 2:00–3:00 (a quick joke/riddle video may be 0:45–1:30); Short/Reel exactly ≤30 s (`short.py T0 T1 out.mp4`, 1080×1920, WITH big on-screen captions under the picture — speaker name tag + English line; owner's rule since 21 Nov 2026, because most Reels are watched muted).
 - **Original content only:** our own stories and dialogue; never adapt TV shows/films/books.
 - **How to choose each story (owner, 21 Nov 2026 — festival FIRST, otherwise TRENDING):**
+  0. **Promised story first:** if the previous video's ending teaser named a specific next story, make that one (keep the
+     promise), using the trending format and search words where they fit. (Wed 25 Nov 2026 = Golu's Giant Sneeze.)
+     From now on the ending teaser does NOT have to name a planned title: when the next story isn't decided yet, tease
+     generically ("Next time: a brand-new funny adventure!") and the outro card says "Next: a new story on <day>!".
   1. **Festival/event:** if an event in the calendar below falls ON the publish day or BEFORE the next publish slot, make an
      ORIGINAL kid-friendly story on it — but still do the trend research (step 2) and borrow the trending format, title
      style and search words for that festival (e.g. what "Diwali cartoon" videos are getting views this week).
@@ -117,16 +121,11 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
      never use their video footage. Topics, formats, title keywords and thumbnail *styles* are fine to follow
      (ideas aren't owned; exact copies get copyright strikes and YouTube's "reused content" penalty).
      Log it in the "Trend log" below (date, trend found, our story) and don't repeat a topic used in the last 4 weeks.
-  0. **Promised story first:** if the previous video's ending teaser named a specific next story, make that one (keep the
-     promise), using the trending format and search words where they fit. (Wed 25 Nov 2026 = Golu's Giant Sneeze.)
-     From now on the ending teaser does NOT have to name a planned title: when the next story isn't decided yet, tease
-     generically ("Next time: a brand-new funny adventure!") and the outro card says "Next: a new story on <day>!".
   3. **Fallback:** if trend research fails or finds nothing usable, make the next story from the plan below.
   Use the trending search words in titles, tags and captions (SEO section).
 - **Calendar events:**  every publish day, first check this calendar. If an event falls ON the publish day or
   BEFORE the next publish day (i.e. it would otherwise be missed), make an ORIGINAL kid-friendly story themed on that event
-  (add it to the plan as "(event)"). If several events qualify, pick the bigger one. If there is NO event, make the next story
-  from the plan (or a fresh random original story — any genre — when the plan runs out). Re-check lunar-festival dates
+  (log it as "(event)"). If several events qualify, pick the bigger one. If there is NO event, follow the trending rule above. Re-check lunar-festival dates
   (marked ~) with a quick web search before using them; they can shift by a day.
   Kid-friendly framing: Valentine's Week / Valentine's Day = love for friends, family and pets (cards, kindness, sharing — no
   romance); Halloween = costume party and pumpkins, scary-but-funny; Men's/Women's/Mother's/Father's Day = celebrating dads,
