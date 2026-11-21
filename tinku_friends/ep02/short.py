@@ -56,7 +56,7 @@ for f in range(int((T1 - T0) * 30)):
     c.save(); c.rectangle(0, PY, SW, PH); c.clip(); c.translate(0, PY); c.scale(SC, SC); c.translate(-(CX - CW / 2), 0)
     c.set_source_surface(src, 0, 0); c.paint(); c.restore()
     c.rectangle(0, PY, SW, 6); setc(c, (1, 1, 1, 0.9)); c.fill(); c.rectangle(0, PY + PH - 6, SW, 6); c.fill()
-    fa = clamp(min((t - T0) / 0.2, (T1 - t) / 0.6))
+    fa = clamp((T1 - t) / 0.6)   # no fade-in: the first frame must never be black (Instagram uses it as the cover)
     if fa < 1: c.rectangle(0, 0, SW, SH); setc(c, (0, 0, 0, 1 - fa)); c.fill()
     out.flush(); p.stdin.write(bytes(out.get_data()))
 p.stdin.close(); p.wait(); print("short ok", OUT)

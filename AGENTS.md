@@ -77,7 +77,12 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
 - **Cast:** Tinku (7, glasses, yellow tee), Pinky (6, pigtails, pink frock), Golu (4, chubby, green dungarees), Moti (puppy, barks only).
   Do not redesign them (2D, normal). NOT every video needs every character: use only who the story needs — a solo moment,
   two friends, Moti alone, or one kid telling a funny joke/riddle to the camera are all fine. Vary it. New props/backgrounds/side characters in the same bright 2D style.
-- **Start immediately:** NO title card, NO episode name, NO introductions at the start — the first frame is already the story.
+- **Open with a 2–3 s HOOK, then start immediately:** every full video AND every Short/Reel opens with a 2.5–3 s flash-forward
+  of the most exciting/funny moment (push-in zoom, whoosh + boom sting, big curiosity text: yellow teaser line + white question,
+  e.g. "THE FINAL BOSS IS A PIGEON?!" / "Can Golu win without a fight?"), then a white flash cuts into the story. Suspense and
+  curiosity only — never spoil the ending, never a lie, never brand text. Make it with `tinku_friends/hook.py` on the finished
+  mp4s (`full` and `short` modes; the Short stays exactly 30 s; shift the .en.srt by the hook length). After the hook: still NO
+  title card, NO episode name, NO introductions — the story starts right away. The first frame must never be black.
 - **No brand text in the video:** never show or say "Tinku & Friends" anywhere in the video or the Short/Reel (no badge, no title,
   no outro brand). Character names in captions are fine. End with a one-line teaser naming the NEXT story in the plan, "Bye-bye!" and the
   outro card ("Bye-bye!" / "See you next time!" / "Next: <next story title>"). No moral/conclusion summary.
@@ -143,6 +148,14 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
   1–2 broad (#KidsCartoon #Reels), event hashtag for festival stories (#Diwali2027…). No banned/irrelevant tags.
 - **Captions + hashtags are written fresh for EVERY video** at upload time (full video and Short/Reel each get their own).
 - **Shorts:** title includes "#Shorts"; first 2 seconds of the Short must already show the hook (the cut starts mid-action).
+- **Covers/thumbnails (every post):** `python3 tinku_friends/hook.py cover FULL.mp4 T "LINE1" "LINE2" episodes/tinku_friends/tf_epNN_<slug>`
+  makes `_cover.jpg` (1080×1920, text inside the centre 3:4 so the Instagram grid crop keeps it) and `_thumb.jpg` (1280×720).
+  Commit both and pass the raw URL as `videoThumbnailUrl` (cover.jpg for the Short+Reel post, thumb.jpg for the full video) —
+  without it Instagram used the black first frame as the cover.
+- **Reel reach checklist:** Instagram is a parents' platform (13+) and most people watch muted — the hook text must tell the
+  story without sound; write the Reel caption for parents (search words + a question that invites comments); reply to every
+  comment in the first hour; 3–5 relevant hashtags beat 8 generic ones (#Shorts does nothing on Instagram); a loopable last
+  second helps replays.
 - **Every post:** YouTube privacy PUBLIC (unlisted never shows in search/feeds), madeForKids true, isAiGeneratedContent/isAiGenerated true (honest labelling protects reach), category
   FILM_ANIMATION; publish at the scheduled slot (peak times: evenings, Sunday morning).
 
