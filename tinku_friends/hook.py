@@ -14,6 +14,9 @@ usage:
            and OUT_BASE_thumb.jpg (1280x720, YouTube thumbnail)
 env: HOOK_TOP=1 puts the 16:9 hook/thumbnail text at the top (use when the action is low in the frame);
      HOOK_Y0=40 moves the vertical crop down (scenes whose ground sits low). Keep crop_center_x within 450..830.
+  python3 hook.py captions SHORT_HOOK.mp4 FULL_HOOK.srt SCRIPT.py SHORT_T0 OUT.mp4
+        -> burns big Reel captions (speaker name tag + English line, below the picture) into an already-hooked Short;
+           SHORT_T0 = the T0 given to short.py. (New stories: short.py draws these captions itself.)
 LINE1 = small yellow teaser line (e.g. "WAIT FOR IT..."), LINE2 = the big hook question. Devanagari works (Baloo 2).
 """
 import sys, os, subprocess, tempfile, numpy as np
@@ -145,6 +148,71 @@ def hook_frames(src, t0, dur, l1, l2, mode, cx=690):
         out.append(fr)
     return out
 
+def read_srt(path):
+    import re
+    subs = []
+    for blk in open(path, encoding="utf-8").read().strip().split("\n\n"):
+        ls = blk.strip().splitlines()
+        if len(ls) < 3: continue
+        a, b = [sum(float(x) * m for x, m in zip(re.split("[:,]", ts)[:3], (3600, 60, 1))) + int(ts.split(",")[1]) / 1000
+                for ts in ls[1].split(" --> ")]
+        subs.append((a, b, " ".join(ls[2:])))
+    return subs
+
+def reel_caption(W, sub, name, col, al):
+    """white rounded caption box with a coloured name tag, placed just under the picture (above Instagram's bottom UI)"""
+    lay = Image.new("RGBA", (W, 1920), (0, 0, 0, 0)); d = ImageDraw.Draw(lay)
+    f = font(sub, 60); words = sub.split(); lines = [sub]
+    if d.textlength(sub, font=f) > 940:
+        best = None
+        for i in range(1, len(words)):
+            a, b = " ".join(words[:i]), " ".join(words[i:]); w = max(d.textlength(a, font=f), d.textlength(b, font=f))
+            if best is None or w < best[0]: best = (w, [a, b])
+        lines = best[1]
+        while max(d.textlength(x, font=f) for x in lines) > 960 and f.size > 36: f = font(sub, f.size - 4)
+    bh = 44 + 76 * len(lines); by = 1400; bx, bw = 45, 990
+    d.rounded_rectangle((bx + 5, by + 7, bx + bw + 5, by + bh + 7), 34, fill=(20, 8, 40, 90))
+    d.rounded_rectangle((bx, by, bx + bw, by + bh), 34, fill=(255, 255, 255, 245), outline=col, width=8)
+    for i, ln in enumerate(lines): d.text((W / 2, by + 60 + i * 76), ln, font=f, anchor="mm", fill=(43, 45, 66))
+    if name:
+        nf = font(name, 40); nw = d.textlength(name, font=nf)
+        d.rounded_rectangle((bx + 30, by - 34, bx + 30 + nw + 40, by + 26), 30, fill=col, outline=(255, 255, 255), width=4)
+        d.text((bx + 50, by - 4), name, font=nf, anchor="lm", fill=(255, 255, 255))
+    if al < 1: lay.putalpha(lay.getchannel("A").point(lambda a: int(a * al)))
+    return lay
+
+def burn_captions(src, srt, script, st0, out, hook=2.8):
+    ns = {}; exec(open(script, encoding="utf-8").read(), ns)
+    lines, names = ns["LINES"], ns["NAMES"]; subs = read_srt(srt)
+    meta = []
+    for i, (a, b, txt) in enumerate(subs):
+        spk = lines[i][1] if i < len(lines) else None
+        nm, col = names.get(spk, ("", "#7a5cc8"))
+        c = col.lstrip("#"); meta.append((a, b, txt, nm, tuple(int(c[k:k + 2], 16) for k in (0, 2, 4))))
+    W, H = 1080, 1920
+    raw = subprocess.Popen(["ffmpeg", "-v", "error", "-i", src, "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], stdout=subprocess.PIPE)
+    enc = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
+                            "-i", src, "-map", "0:v", "-map", "1:a", "-c:v", "libx264", "-crf", "19", "-preset", "veryfast", "-pix_fmt", "yuv420p",
+                            "-c:a", "copy", "-movflags", "+faststart", out], stdin=subprocess.PIPE)
+    cache = {}; i = 0; n = W * H * 3
+    while True:
+        buf = raw.stdout.read(n)
+        if len(buf) < n: break
+        t = i / FPS; i += 1
+        im = Image.frombuffer("RGB", (W, H), buf)
+        if t >= hook + 0.1:
+            ts = t + st0 + 0.25; cur = None
+            for j, m in enumerate(meta):
+                nxt = meta[j + 1][0] if j + 1 < len(meta) else 1e9
+                if m[0] - 0.1 <= ts <= min(m[1] + 0.4, nxt - 0.1): cur = j
+            if cur is not None:
+                a, b, txt, nm, col = meta[cur]; al = min(1.0, (ts - a + 0.1) / 0.15, (t - hook - 0.1) / 0.15)
+                key = (cur, round(al, 2))
+                if key not in cache: cache = {k: v for k, v in cache.items() if k[0] == cur}; cache[key] = reel_caption(W, txt, nm, col, al)
+                im = im.convert("RGBA"); im.alpha_composite(cache[key]); im = im.convert("RGB")
+        enc.stdin.write(im.tobytes())
+    enc.stdin.close(); assert enc.wait() == 0
+
 def split2(txt):
     """long LINE2 for vertical -> two balanced lines (returns list)"""
     if len(txt) <= 20: return [txt]
@@ -188,4 +256,7 @@ if __name__ == "__main__":
             y1, y2 = (58, 135) if TOP else (585, 662)
             th.alpha_composite(text_layer(1280, 720, [(l1, 640, y1, 52, (255, 214, 10, 255), 1180, 0), (l2, 640, y2, 76, (255, 255, 255, 255), 1220, 0)], 5.0))
             th.convert("RGB").save(base + "_thumb.jpg", quality=92)
+        elif mode == "captions":
+            src, srt, script, st0, out = sys.argv[2], sys.argv[3], sys.argv[4], float(sys.argv[5]), sys.argv[6]
+            burn_captions(src, srt, script, st0, out)
         print("ok", mode)

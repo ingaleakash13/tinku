@@ -46,6 +46,13 @@ A 45-episode animated kids series, one episode every Friday at 5 PM IST, publish
    keyword lines with the episode title, "📖 A new episode every Friday at 5 PM!", next episode title, CTA
    "Follow @iamtinku13 for the next episode 💛 | Share with a friend 👫 | Comment your favourite part 👇", 6–8 hashtags
    (#TinkuKiMahabharat #Mahabharat #MahabharatForKids #HindiKahani #KidsStories #IndianMythology #KidsCartoon #Reels).
+   **Since 21 Nov 2026 (owner): the Instagram Reel is NOT the full episode** — it is a 30 s vertical cut (copy
+   `tinku_friends/ep02/short.py` into the episode folder and adapt it: blurred background, sharp panel, big English captions with
+   the Hindi name tag) of the most dramatic 30 s, with the 2–3 s hook in front (`tinku_friends/hook.py short`), plus a cover
+   (`hook.py cover`) passed as videoThumbnailUrl. Its caption says "Full episode on YouTube — link in bio 🔗" (the YouTube
+   episode is unlisted, so the link in the Instagram bio is the way in). The full YouTube episode also opens with the
+   2–3 s hook (`hook.py full`, shift the .en.srt) and gets the `_thumb.jpg` as videoThumbnailUrl. Files:
+   `episodes/mahabharat/epNN_<slug>.mp4`, `_short.mp4`, `_cover.jpg`, `_thumb.jpg`, `.en.srt`.
 
 ## 45-episode plan (from the epic)
 1 राजा शांतनु और गंगा (done) · 2 देवव्रत की वापसी · 3 भीष्म प्रतिज्ञा · 4 सत्यवती के पुत्र · 5 अंबा, अंबिका, अंबालिका ·
@@ -93,7 +100,7 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
 - **Look & motion:** dancing/bouncing is fine in happy moments; talk gestures, blinking, lip-sync from voice loudness; camera moves
   (push-in, small shake on scary stings), circle-wipe between scenes, mood music (playful ukulele, spooky drone + pizzicato,
   comic boing reveal), SFX.
-- **Length:** full story 2:00–3:00 (a quick joke/riddle video may be 0:45–1:30); Short/Reel exactly ≤30 s (`short.py T0 T1 out.mp4`, 1080×1920, NO on-screen captions — the full video keeps its captions).
+- **Length:** full story 2:00–3:00 (a quick joke/riddle video may be 0:45–1:30); Short/Reel exactly ≤30 s (`short.py T0 T1 out.mp4`, 1080×1920, WITH big on-screen captions under the picture — speaker name tag + English line; owner's rule since 21 Nov 2026, because most Reels are watched muted).
 - **Original content only:** our own stories and dialogue; never adapt TV shows/films/books.
 - **Calendar events (owner's rule):** every publish day, first check this calendar. If an event falls ON the publish day or
   BEFORE the next publish day (i.e. it would otherwise be missed), make an ORIGINAL kid-friendly story themed on that event
@@ -153,7 +160,7 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
   Commit both and pass the raw URL as `videoThumbnailUrl` (cover.jpg for the Short+Reel post, thumb.jpg for the full video) —
   without it Instagram used the black first frame as the cover.
 - **Reel reach checklist:** Instagram is a parents' platform (13+) and most people watch muted — the hook text must tell the
-  story without sound; write the Reel caption for parents (search words + a question that invites comments); reply to every
+  story without sound (Shorts/Reels also carry big captions); write the Reel caption for parents (search words + a question that invites comments); reply to every
   comment in the first hour; 3–5 relevant hashtags beat 8 generic ones (#Shorts does nothing on Instagram); a loopable last
   second helps replays.
 - **Every post:** YouTube privacy PUBLIC (unlisted never shows in search/feeds), madeForKids true, isAiGeneratedContent/isAiGenerated true (honest labelling protects reach), category
