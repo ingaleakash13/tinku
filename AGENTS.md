@@ -104,7 +104,22 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
   comic boing reveal), SFX.
 - **Length:** full story 2:00–3:00 (a quick joke/riddle video may be 0:45–1:30); Short/Reel exactly ≤30 s (`short.py T0 T1 out.mp4`, 1080×1920, WITH big on-screen captions under the picture — speaker name tag + English line; owner's rule since 21 Nov 2026, because most Reels are watched muted).
 - **Original content only:** our own stories and dialogue; never adapt TV shows/films/books.
-- **Calendar events (owner's rule):** every publish day, first check this calendar. If an event falls ON the publish day or
+- **How to choose each story (owner, 21 Nov 2026 — festival FIRST, otherwise TRENDING):**
+  1. **Festival/event:** if an event in the calendar below falls ON the publish day or BEFORE the next publish slot, make an
+     ORIGINAL kid-friendly story on it — but still do the trend research (step 2) and borrow the trending format, title
+     style and search words for that festival (e.g. what "Diwali cartoon" videos are getting views this week).
+  2. **Trending (default):** research what kids' videos are trending NOW — YouTube searches (Hindi + English, e.g. "hindi
+     kahani cartoon", "kids cartoon story", "bhoot wali kahani", "bedtime story for kids", "funny cartoon for kids") filtered
+     to the last 7 days and sorted by views (WebSearch, or the Apify YouTube scraper via the apify connector). Note the top
+     5–10 videos: topic, format (story / joke / riddle / learning), length, hook, title words, thumbnail style, views.
+     Pick the strongest TOPIC + FORMAT that suits our cast and write OUR OWN original story on it.
+     **Never copy:** no other channel's story, script, dialogue, scene order, characters, names, music or thumbnails;
+     never use their video footage. Topics, formats, title keywords and thumbnail *styles* are fine to follow
+     (ideas aren't owned; exact copies get copyright strikes and YouTube's "reused content" penalty).
+     Log it in the "Trend log" below (date, trend found, our story) and don't repeat a topic used in the last 4 weeks.
+  3. **Fallback:** if trend research fails or finds nothing usable, make the next story from the plan below.
+  Use the trending search words in titles, tags and captions (SEO section).
+- **Calendar events:**  every publish day, first check this calendar. If an event falls ON the publish day or
   BEFORE the next publish day (i.e. it would otherwise be missed), make an ORIGINAL kid-friendly story themed on that event
   (add it to the plan as "(event)"). If several events qualify, pick the bigger one. If there is NO event, make the next story
   from the plan (or a fresh random original story — any genre — when the plan runs out). Re-check lunar-festival dates
@@ -168,7 +183,10 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
 - **Every post:** YouTube privacy PUBLIC (unlisted never shows in search/feeds), madeForKids true, isAiGeneratedContent/isAiGenerated true (honest labelling protects reach), category
   FILM_ANIMATION; publish at the scheduled slot (peak times: evenings, Sunday morning).
 
-## Story plan (continue in order; skip any already in episodes/tinku_friends; add more original stories when it runs out)
+## Trend log (newest first — date · trend found · our original story)
+- (empty — first trend-based run fills this in)
+
+## Story plan (FALLBACK when trend research finds nothing; continue in order; skip any already in episodes/tinku_friends; add more original stories when it runs out)
 (trend weekend 21–22 Nov 2026, owner's request — video-game wave, all done: ग्रैंड टिंकू एडवेंचर / Grand Tinku Adventure (H, Sat 09:00) · गोलू और आख़िरी बॉस / Golu vs the Final Boss (H, Sat 17:00) · Pinky and the Secret Level (E, Sun 09:00). Original game world only — no real game's name/logo/characters in the video; regular plan resumes Wed 25 Nov with 3 Golu's Giant Sneeze.)
 1 Let's Count 1 to 10 (done, old learning format) · 2 पार्क का भूत / The Park Ghost (H, spooky-funny) · 3 Golu's Giant Sneeze (E, funny) ·
 4 मोती खो गया / Moti Is Lost (H, friendship) · 5 Why Does the Moon Follow Us? (E, learning) · 6 आधी रात का राक्षस / The Midnight Fridge Monster (H, spooky-funny) ·
