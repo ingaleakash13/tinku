@@ -117,6 +117,10 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
      never use their video footage. Topics, formats, title keywords and thumbnail *styles* are fine to follow
      (ideas aren't owned; exact copies get copyright strikes and YouTube's "reused content" penalty).
      Log it in the "Trend log" below (date, trend found, our story) and don't repeat a topic used in the last 4 weeks.
+  0. **Promised story first:** if the previous video's ending teaser named a specific next story, make that one (keep the
+     promise), using the trending format and search words where they fit. (Wed 25 Nov 2026 = Golu's Giant Sneeze.)
+     From now on the ending teaser does NOT have to name a planned title: when the next story isn't decided yet, tease
+     generically ("Next time: a brand-new funny adventure!") and the outro card says "Next: a new story on <day>!".
   3. **Fallback:** if trend research fails or finds nothing usable, make the next story from the plan below.
   Use the trending search words in titles, tags and captions (SEO section).
 - **Calendar events:**  every publish day, first check this calendar. If an event falls ON the publish day or
