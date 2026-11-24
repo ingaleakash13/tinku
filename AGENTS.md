@@ -188,9 +188,6 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
   FILM_ANIMATION; publish at the scheduled slot (peak times: evenings).
 
 ## Pre-picked stories (owner-approved, from trend research 24 Nov 2026 — use these for these slots, then delete the line)
-- Fri 27 Nov 18:00 · नानी के गाँव में छत पर छम-छम! / The Jingle on Nani's Roof (H, spooky-funny): winter trip to Nani's village;
-  anklets jingle on the roof at midnight; Tinku + Pinky creep up with a torch; it's Nani's goat that ran off with Pinky's new
-  anklets. Trend: "90s नानी का गाँव / आधी रात छत पर कौन?" midnight-mystery videos (4.5M, 3.0M, 2.3M views this week).
 - Sat 28 Nov 17:00 · सब्ज़ियों की दौड़ / Sabzi Race (H, funny): Golu won't eat vegetables, then dreams Aloo, Gobhi and Karela challenge
   him to a race and keep winning. Trend: talking-vegetable stories (2.4M, 1.2M views).
 - Sun 29 Nov 17:00 · "Mine!" — Pinky and Golu's Big Toy Fight (E, feelings): a new toy, a tug-of-war, then they invent a game for
@@ -199,6 +196,7 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
   colony race; Moti becomes the engine. Trend: homemade clay-toy bike/tractor videos (~1M) — our own take, no clay tractor.
 
 ## Trend log (newest first — date · trend found · our original story)
+- 24 Nov 2026 (made live with the owner, scheduled Fri 27 Nov 18:00) · #1 trend "90s नानी के गाँव — आधी रात छत पर कौन बजाता था पायल?" (4.5M, 3.0M, 2.3M) → नानी के गाँव में छत पर छम-छम! / The Jingle on Nani's Roof (H): anklets jingling on the roof at midnight + a horned shadow on the stairs = Nani's goat Chameli wearing Pinky's new payal. New characters: Nani (voice nani_hi), Chameli the goat.
 - 24 Nov 2026 (Tue, first Tuesday story, made live with the owner) · winter fog-night stories ("सर्दियों की वो कोहरे वाली रात" 1.5M) → कोहरे में बड़ा भूत / The Giant Ghost in the Fog (H): a giant cat-shaped shadow with glowing eyes in the fog = Dadi's tiny flour-covered kitten Barfi on the wall in front of the streetlight (learning: small + near the light = big shadow; cat eyes shine).
 - 24 Nov 2026 · research for 25–29 Nov (YouTube, last 7 days, by views): 90s Nani-village midnight mystery (4.5M/3.0M/2.3M),
   winter fog night (1.5M), talking vegetables (2.4M/1.2M), homemade clay toys (1.0M/0.9M), sharing/good habits EN (2.4M/0.9M)

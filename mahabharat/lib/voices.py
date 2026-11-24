@@ -61,4 +61,5 @@ FRIENDS_VOICES = {
     "tinku_hi": ("hf_beta*0.5+hm_psi*0.5", 0.95, 1.65, 1.10),   # boy: blend of a female + male Hindi style
     "pinky_hi": ("hf_alpha", 0.95, 1.45, 1.12),   # measure F0 and adjust to target on first Hindi episode
     "golu_hi":  ("hf_beta", 0.92, 1.95, 1.22),
+    "nani_hi":  ("hf_alpha", 0.86, 1.0, 0.97),   # Nani (grandmother): warm, slower, lower; F0 target ~215 Hz
 }
