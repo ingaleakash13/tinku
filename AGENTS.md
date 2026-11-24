@@ -74,7 +74,7 @@ mystery, festivals. EVERY video is a NEW, complete story — no "Episode N" anyw
 Published every **Tuesday 17:00, Friday 18:00, Saturday 17:00 and Sunday 17:00 IST** (owner, 24 Nov 2026: Tuesday added, Wednesday dropped, Sunday moved to evening) via Metricool (blogId 8170191, Asia/Calcutta)
 (Friday is 18:00 so it doesn't clash with Tinku ki Mahabharat at 17:00):
   1. the full story video → YouTube (type "video", PUBLIC, madeForKids, isAiGeneratedContent, category EDUCATION or FILM_ANIMATION);
-  2. a 30-second vertical cut → ONE post with providers youtube (type "short") + instagram (type "REEL", isAiGenerated true).
+  2. a 30-second vertical cut → Instagram ONLY (type "REEL", isAiGenerated true). (Owner, 24 Nov 2026: NO YouTube Shorts any more.)
 Code: `tinku_friends/epNN/` (NN = running number for folders/files only; ep02 = reference story pipeline). Shared character/scenery
 code is in `mahabharat/lib/` (`tinku()`, `pinky()`, `golu()`, `moti()`, `park_bg()`, …). Friends sheet: `tinku_friends/friends_sheet.png`.
 (Earlier experiments: `tinku_friends/archive_colors_song/` = sung song version, `tinku_friends/3d_test/` = 3D test — owner chose
@@ -175,14 +175,14 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
   then 5–8 hashtags: 2 brand (#TinkuAndFriends #TinkuKiKahani), 3 niche (#HindiKahani #KidsStories #BhootKiKahani…),
   1–2 broad (#KidsCartoon #Reels), event hashtag for festival stories (#Diwali2027…). No banned/irrelevant tags.
 - **Captions + hashtags are written fresh for EVERY video** at upload time (full video and Short/Reel each get their own).
-- **Shorts:** title includes "#Shorts"; first 2 seconds of the Short must already show the hook (the cut starts mid-action).
+- **Reels:** (YouTube Shorts stopped 24 Nov 2026) the first 2 seconds of the Reel must already show the hook.
 - **Covers/thumbnails (every post):** `python3 tinku_friends/hook.py cover FULL.mp4 T "LINE1" "LINE2" episodes/tinku_friends/tf_epNN_<slug>`
   makes `_cover.jpg` (1080×1920, text inside the centre 3:4 so the Instagram grid crop keeps it) and `_thumb.jpg` (1280×720).
-  Commit both and pass the raw URL as `videoThumbnailUrl` (cover.jpg for the Short+Reel post, thumb.jpg for the full video) —
+  Commit both and pass the raw URL as `videoThumbnailUrl` (cover.jpg for the Reel post, thumb.jpg for the full video) —
   without it Instagram used the black first frame as the cover.
 - **Reel reach checklist:** Instagram is a parents' platform (13+) and most people watch muted — the hook text must tell the
   story without sound (Shorts/Reels also carry big captions); write the Reel caption for parents (search words + a question that invites comments); reply to every
-  comment in the first hour; 3–5 relevant hashtags beat 8 generic ones (#Shorts does nothing on Instagram); a loopable last
+  comment in the first hour; 3–5 relevant hashtags beat 8 generic ones (no #Shorts tag — Instagram only); a loopable last
   second helps replays.
 - **Every post:** YouTube privacy PUBLIC (unlisted never shows in search/feeds), madeForKids true, isAiGeneratedContent/isAiGenerated true (honest labelling protects reach), category
   FILM_ANIMATION; publish at the scheduled slot (peak times: evenings).
