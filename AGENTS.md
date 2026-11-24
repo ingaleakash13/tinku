@@ -105,10 +105,11 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
 - **Length:** full story 2:00–3:00 (a quick joke/riddle video may be 0:45–1:30); Short/Reel exactly ≤30 s (`short.py T0 T1 out.mp4`, 1080×1920, WITH big on-screen captions under the picture — speaker name tag + English line; owner's rule since 21 Nov 2026, because most Reels are watched muted).
 - **Original content only:** our own stories and dialogue; never adapt TV shows/films/books.
 - **How to choose each story (owner, 21 Nov 2026 — festival FIRST, otherwise TRENDING):**
-  0. **Promised story first:** if the previous video's ending teaser named a specific next story, make that one (keep the
-     promise), using the trending format and search words where they fit. (Wed 25 Nov 2026 = Golu's Giant Sneeze.)
-     From now on the ending teaser does NOT have to name a planned title: when the next story isn't decided yet, tease
-     generically ("Next time: a brand-new funny adventure!") and the outro card says "Next: a new story on <day>!".
+  0. **Owner's pre-picked stories first:** if the "Pre-picked stories" list below has an entry for today's slot, make
+     exactly that (still do the trend research for title/tag words). Otherwise, if the previous video's ending teaser
+     named a specific next story, make that one — unless the owner skipped it (Golu's Giant Sneeze: skipped by owner 24 Nov).
+     The ending teaser does NOT have to name a planned title: when the next story isn't decided yet, tease generically
+     ("Next time: a brand-new funny adventure!") and the outro card says "Next: a new story on <day>!".
   1. **Festival/event:** if an event in the calendar below falls ON the publish day or BEFORE the next publish slot, make an
      ORIGINAL kid-friendly story on it — but still do the trend research (step 2) and borrow the trending format, title
      style and search words for that festival (e.g. what "Diwali cartoon" videos are getting views this week).
@@ -186,12 +187,26 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
 - **Every post:** YouTube privacy PUBLIC (unlisted never shows in search/feeds), madeForKids true, isAiGeneratedContent/isAiGenerated true (honest labelling protects reach), category
   FILM_ANIMATION; publish at the scheduled slot (peak times: evenings, Sunday morning).
 
+## Pre-picked stories (owner-approved, from trend research 24 Nov 2026 — use these for these slots, then delete the line)
+- Wed 25 Nov 17:00 · नानी के गाँव में छत पर छम-छम! / The Jingle on Nani's Roof (H, spooky-funny): winter trip to Nani's village;
+  anklets jingle on the roof at midnight; Tinku + Pinky creep up with a torch; it's Nani's goat that ran off with Pinky's new
+  anklets. Trend: "90s नानी का गाँव / आधी रात छत पर कौन?" midnight-mystery videos (4.5M, 3.0M, 2.3M views this week).
+- Fri 27 Nov 18:00 · कबाड़ की गाड़ी / Junk-Box Go-Kart (H, adventure): Tinku + Golu build a car from boxes and old wheels for the
+  colony race; Moti becomes the engine. Trend: homemade clay-toy bike/tractor videos (~1M views) — our own take, no clay tractor.
+- Sat 28 Nov 17:00 · सब्ज़ियों की दौड़ / Sabzi Race (H, funny): Golu won't eat vegetables, then dreams Aloo, Gobhi and Karela challenge
+  him to a race and keep winning. Trend: talking-vegetable stories (2.4M, 1.2M views).
+- Sun 29 Nov 09:00 · "Mine!" — Pinky and Golu's Big Toy Fight (E, feelings): a new toy, a tug-of-war, then they invent a game for
+  two. Trend: sharing / good-habits cartoons in English (2.4M, 0.9M views).
+- Spare idea: कोहरे में सफ़ेद भूत / The White Ghost in the Fog (H, spooky-funny) — Golu in a quilt sleepwalking to the laddoos (winter trend).
+
 ## Trend log (newest first — date · trend found · our original story)
-- (empty — first trend-based run fills this in)
+- 24 Nov 2026 · research for 25–29 Nov (YouTube, last 7 days, by views): 90s Nani-village midnight mystery (4.5M/3.0M/2.3M),
+  winter fog night (1.5M), talking vegetables (2.4M/1.2M), homemade clay toys (1.0M/0.9M), sharing/good habits EN (2.4M/0.9M)
+  → pre-picked stories above.
 
 ## Story plan (FALLBACK when trend research finds nothing; continue in order; skip any already in episodes/tinku_friends; add more original stories when it runs out)
-(trend weekend 21–22 Nov 2026, owner's request — video-game wave, all done: ग्रैंड टिंकू एडवेंचर / Grand Tinku Adventure (H, Sat 09:00) · गोलू और आख़िरी बॉस / Golu vs the Final Boss (H, Sat 17:00) · Pinky and the Secret Level (E, Sun 09:00). Original game world only — no real game's name/logo/characters in the video; regular plan resumes Wed 25 Nov with 3 Golu's Giant Sneeze.)
-1 Let's Count 1 to 10 (done, old learning format) · 2 पार्क का भूत / The Park Ghost (H, spooky-funny) · 3 Golu's Giant Sneeze (E, funny) ·
+(trend weekend 21–22 Nov 2026, owner's request — video-game wave, all done: ग्रैंड टिंकू एडवेंचर / Grand Tinku Adventure (H, Sat 09:00) · गोलू और आख़िरी बॉस / Golu vs the Final Boss (H, Sat 17:00) · Pinky and the Secret Level (E, Sun 09:00). Original game world only — no real game's name/logo/characters in the video; from 25 Nov stories are trend-picked; see Pre-picked stories.)
+1 Let's Count 1 to 10 (done, old learning format) · 2 पार्क का भूत / The Park Ghost (H, spooky-funny) · 3 Golu's Giant Sneeze (E, funny — skipped by owner 24 Nov) ·
 4 मोती खो गया / Moti Is Lost (H, friendship) · 5 Why Does the Moon Follow Us? (E, learning) · 6 आधी रात का राक्षस / The Midnight Fridge Monster (H, spooky-funny) ·
 7 Pinky's Kite Contest (E, friendship) · 8 बारिश में बिल्ली / The Kitten in the Rain (H, kindness) · 9 Tinku's Fizzy Volcano (E, learning-funny) ·
 10 फुसफुसाता पेड़ / The Whispering Tree (H, mystery) · 11 Golu Is Scared of the Dark (E, feelings) · 12 आम चोर / The Mango Thief (H, funny mystery) ·
