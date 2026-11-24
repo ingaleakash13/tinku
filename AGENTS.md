@@ -73,7 +73,8 @@ mystery, festivals. EVERY video is a NEW, complete story — no "Episode N" anyw
 Published every **Tuesday 17:00, Friday 18:00, Saturday 17:00 and Sunday 17:00 IST** (owner, 24 Nov 2026: Tuesday added, Wednesday dropped, Sunday moved to evening) via Metricool (blogId 8170191, Asia/Calcutta)
 (Friday is 18:00 so it doesn't clash with Tinku ki Mahabharat at 17:00):
   1. the full story video → YouTube (type "video", PUBLIC, madeForKids, isAiGeneratedContent, category EDUCATION or FILM_ANIMATION);
-  2. a 30-second vertical cut → Instagram ONLY (type "REEL", isAiGenerated true). (Owner, 24 Nov 2026: NO YouTube Shorts any more.)
+  2. NO Reel cut from the story any more (owner, 24 Nov 2026). Instagram Reels are SEPARATE original 30-second videos
+     (see "Reels" below). (Also no YouTube Shorts.)
 Code: `tinku_friends/epNN/` (NN = running number for folders/files only; ep02 = reference story pipeline). Shared character/scenery
 code is in `mahabharat/lib/` (`tinku()`, `pinky()`, `golu()`, `moti()`, `park_bg()`, …). Friends sheet: `tinku_friends/friends_sheet.png`.
 (Earlier experiments: `tinku_friends/archive_colors_song/` = sung song version, `tinku_friends/3d_test/` = 3D test — owner chose
@@ -94,6 +95,9 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
     close-ups / wide shots / pans, not just characters standing side by side talking.
   * **NO hook at the start:** the video starts directly with the story (first frame = story, never black, no title card, no
     flash-forward hook). (The older hook-scene rule is withdrawn.)
+- **No sound-words (owner, 24 Nov 2026):** never use onomatopoeia like छम-छम, टन-टन, धप्प, झम-झम, "z-z-z" — not in the
+  narration/dialogue and not as on-screen text. Describe sounds in words instead ("पायल की आवाज़", "घंटियाँ बज उठीं") and let the
+  sound effects do the rest.
 - **Script first:** write the full script (story summary + every narration and dialogue line) and show it to the owner before
   animating while the format is new.
 - **No brand text in the video:** never show or say "Tinku & Friends" anywhere in the video or the Short/Reel (no badge, no title,
@@ -179,7 +183,9 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
   then 5–8 hashtags: 2 brand (#TinkuAndFriends #TinkuKiKahani), 3 niche (#HindiKahani #KidsStories #BhootKiKahani…),
   1–2 broad (#KidsCartoon #Reels), event hashtag for festival stories (#Diwali2027…). No banned/irrelevant tags.
 - **Captions + hashtags are written fresh for EVERY video** at upload time (full video and Short/Reel each get their own).
-- **Reels:** (YouTube Shorts stopped 24 Nov 2026) the Reel is a 30 s cut that starts mid-action at an exciting moment (no hook overlay).
+- **Reels (owner, 24 Nov 2026):** separate ORIGINAL 30-second vertical videos (1080×1920), NOT cuts of the stories or episodes:
+  clean jokes, short motivation for kids/parents, or tiny 30-second stories with our characters. Family-friendly only — this is
+  a kids' brand (no adult / "non-veg" jokes, no insults or body-shaming). Format to be agreed with the owner before automating.
 - **Covers/thumbnails (every post):** `python3 tinku_friends/hook.py cover FULL.mp4 T "LINE1" "LINE2" episodes/tinku_friends/tf_epNN_<slug>`
   makes `_cover.jpg` (1080×1920, text inside the centre 3:4 so the Instagram grid crop keeps it) and `_thumb.jpg` (1280×720).
   Commit both and pass the raw URL as `videoThumbnailUrl` (cover.jpg for the Reel post, thumb.jpg for the full video) —

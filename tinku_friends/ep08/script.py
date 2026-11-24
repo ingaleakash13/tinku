@@ -1,12 +1,13 @@
-# Tinku & Friends — NEW FORMAT story (narrator + full arc): नानी के गाँव में छत पर छम-छम! / The Jingle on Nani's Roof
+# Tinku & Friends — NEW FORMAT story (narrator + full arc): नानी के गाँव में आधी रात का राज़ / The Midnight Secret at Nani's Village
+# Owner (24 Nov 2026): no sound-words like छम-छम / टन-टन / धप्प in lines or on screen.
 # Hindi narration + dialogue, English captions. Trend: "90s नानी का गाँव — आधी रात छत पर कौन?" midnight mysteries.
 # Arc: Pinky WANTS to dance at tomorrow's fair in Nani's new anklets -> anklets vanish at midnight, chham-chham on the roof ->
 # horned shadow, kids flee -> sad morning, detective clues -> trap at night -> it's Chameli the goat (her bell broke, she
 # missed the jingle) -> chase, slip into hay, anklets fly, caught -> fair: Pinky dances, Chameli gets a new bell and dances too.
 # LINES = (scene, speaker, hindi, english_caption, pause_before_seconds, cue)
 
-STORY_HI = "नानी के गाँव में छत पर छम-छम!"
-STORY_EN = "The Jingle on Nani's Roof"
+STORY_HI = "नानी के गाँव में आधी रात का राज़"
+STORY_EN = "The Midnight Secret at Nani's Village"
 LANG = "hi"
 NEXT_EN = "Sabzi Race"
 NEXT = f"Next: {NEXT_EN}!"
@@ -20,14 +21,14 @@ LINES = [
     ("court",   "nani",     "आ गए मेरे बच्चे! पिंकी, देख तेरे लिए क्या लाई हूँ।", "My children are here! Pinky, look what I got for you.", 0.4, "gift"),
     ("court",   "pinky",    "नई पायल! कितनी सुंदर है, नानी!", "New anklets! They're so beautiful, Nani!", 0.5, "payal"),
     ("court",   "nani",     "कल गाँव में मेला है। तू इन्हें पहनकर स्टेज पर नाचेगी ना?", "Tomorrow there's a fair in the village. You'll wear them and dance on the stage, won't you?", 0.4, "fair"),
-    ("court",   "pinky",    "हाँ नानी! छम-छम-छम! मैं सबसे अच्छा नाचूँगी!", "Yes, Nani! Chham-chham-chham! I'll dance the best!", 0.4, "dance1"),
+    ("court",   "pinky",    "हाँ नानी! मैं इन्हें पहनकर सबसे अच्छा नाचूँगी!", "Yes, Nani! I'll wear them and dance the best!", 0.4, "dance1"),
     ("court",   "chameli",  "", "Meh-meh!", 0.5, "bleat1"),
-    ("court",   "narrator", "चमेली पायल की छम-छम को बड़े ध्यान से सुन रही थी।", "Chameli was listening very carefully to the chham-chham of the anklets.", 0.4, "n_listen"),
+    ("court",   "narrator", "चमेली पायल के घुँघरुओं की आवाज़ बड़े ध्यान से सुन रही थी।", "Chameli was listening very carefully to the sound of the anklet bells.", 0.4, "n_listen"),
     ("court",   "tinku",    "देखो, चमेली को भी पायल पसंद आ गई!", "Look, Chameli likes the anklets too!", 0.4, "likes"),
     ("court",   "nani",     "उसकी पुरानी घंटी टूट गई है ना, इसलिए आजकल बड़ी चुप-चुप रहती है।", "Her old bell broke, you see. That's why she's been so quiet lately.", 0.4, "bellbroke"),
     ("night",   "narrator", "रात हुई। पिंकी ने पायल खिड़की पर रख दी, और दोनों रज़ाई में घुसकर सो गए।", "Night fell. Pinky put the anklets on the window, and they snuggled under the quilt and fell asleep.", 2.2, "n_night"),
     ("night",   "narrator", "आधी रात को… अचानक छत से एक आवाज़ आई।", "At midnight... suddenly, a sound came from the roof.", 1.0, "n_midnight"),
-    ("night",   "pinky",    "टिंकू… टिंकू! उठो! सुनो… छम-छम!", "Tinku... Tinku! Wake up! Listen... chham-chham!", 2.6, "wake"),
+    ("night",   "pinky",    "टिंकू… टिंकू! उठो! सुनो… छत पर पायल की आवाज़!", "Tinku... Tinku! Wake up! Listen... anklets on the roof!", 2.6, "wake"),
     ("night",   "tinku",    "आधी रात को छत पर कौन होगा?", "Who'd be on the roof at midnight?", 0.5, "who"),
     ("night",   "pinky",    "मेरी पायल! खिड़की पर नहीं है!", "My anklets! They're not on the window!", 0.7, "gone"),
     ("night",   "tinku",    "चलो, टॉर्च लेकर देखते हैं। धीरे-धीरे।", "Come on, let's take the torch and look. Slowly.", 0.5, "torch1"),
@@ -46,24 +47,24 @@ LINES = [
     ("trap",    "narrator", "रात को दोनों रज़ाई ओढ़कर छत के कोने में छिप गए। टिंकू ने सीढ़ियों पर घंटियों वाली एक डोरी बाँध दी।", "That night they hid in a corner of the roof under a quilt. Tinku tied a string of little bells across the stairs.", 2.2, "n_trap"),
     ("trap",    "pinky",    "टिंकू, मुझे डर लग रहा है।", "Tinku, I'm scared.", 0.6, "scared"),
     ("trap",    "tinku",    "मैं यहीं हूँ। बस टॉर्च तैयार रखो।", "I'm right here. Just keep the torch ready.", 0.4, "ready"),
-    ("trap",    "narrator", "ठीक आधी रात को… छम… छम… छम… और फिर… टन-टन! डोरी की घंटियाँ बज उठीं!", "Right at midnight... chham... chham... chham... and then... ting-ting! The bells on the string rang!", 1.2, "n_bells"),
+    ("trap",    "narrator", "ठीक आधी रात को… फिर से पायल की आवाज़ आई… और फिर डोरी की घंटियाँ बज उठीं!", "Right at midnight... the anklet sound came again... and then the bells on the string rang!", 1.2, "n_bells"),
     ("trap",    "tinku",    "अभी! टॉर्च ऑन!", "NOW! Torch on!", 0.4, "torchon"),
     ("trap",    "pinky",    "अरे! ये तो… चमेली है!", "Hey! It's... Chameli!", 1.0, "itschameli"),
     ("trap",    "tinku",    "और उसके पैरों में तुम्हारी पायल! हा हा हा!", "And your anklets are on her legs! Ha ha ha!", 0.4, "onlegs"),
     ("trap",    "chameli",  "", "Meh-meh!", 0.3, "bleat2"),
-    ("chase",   "narrator", "पकड़े जाने के डर से चमेली पूरी छत पर भागने लगी। छम-छम-छम!", "Afraid of being caught, Chameli ran all over the roof. Chham-chham-chham!", 0.8, "n_chase"),
+    ("chase",   "narrator", "पकड़े जाने के डर से चमेली पूरी छत पर भागने लगी।", "Afraid of being caught, Chameli ran all over the roof.", 0.8, "n_chase"),
     ("chase",   "pinky",    "रुको चमेली! मेरी पायल!", "Stop, Chameli! My anklets!", 0.8, "stop"),
-    ("chase",   "narrator", "चमेली फिसली, और धप्प से घास के ढेर में! पायल उछलकर हवा में उड़ी…", "Chameli slipped and... thud! Into the hay pile! The anklets flew up into the air...", 1.4, "n_slip"),
+    ("chase",   "narrator", "चमेली फिसली, और सीधे घास के ढेर में जा गिरी! पायल उछलकर हवा में उड़ी…", "Chameli slipped and fell right into the hay pile! The anklets flew up into the air...", 1.4, "n_slip"),
     ("chase",   "tinku",    "पकड़ ली!", "Got them!", 0.6, "caught"),
     ("chase",   "nani",     "अरे-अरे! इतनी रात को ये क्या हो रहा है?", "Hey, hey! What's going on so late at night?", 1.6, "nanicomes"),
     ("chase",   "pinky",    "नानी, छत वाला भूत चमेली निकली! वो रोज़ रात मेरी पायल पहनकर नाचती थी!", "Nani, the roof ghost was Chameli! Every night she wore my anklets and danced!", 0.5, "explain"),
-    ("chase",   "nani",     "बेचारी! घंटी टूटने के बाद उसे छम-छम की आवाज़ याद आती होगी।", "Poor thing! She must have missed her jingle after her bell broke.", 0.5, "poor"),
+    ("chase",   "nani",     "बेचारी! घंटी टूटने के बाद उसे पायल की आवाज़ अच्छी लगने लगी होगी।", "Poor thing! After her bell broke, she must have loved the sound of the anklets.", 0.5, "poor"),
     ("mela",    "narrator", "अगली शाम गाँव का मेला रंग-बिरंगी रोशनी से जगमगा रहा था।", "The next evening, the village fair sparkled with colourful lights.", 2.4, "n_mela"),
-    ("mela",    "narrator", "पिंकी ने पायल पहनकर स्टेज पर सबसे सुंदर नाच दिखाया। छम-छम-छम!", "Pinky wore her anklets and danced the most beautiful dance on stage. Chham-chham-chham!", 0.5, "n_dance"),
+    ("mela",    "narrator", "पिंकी ने पायल पहनकर स्टेज पर सबसे सुंदर नाच दिखाया।", "Pinky wore her anklets and danced the most beautiful dance on stage.", 0.5, "n_dance"),
     ("mela",    "narrator", "और चमेली? नानी ने उसके गले में एक नई चमकदार घंटी बाँध दी थी।", "And Chameli? Nani had tied a shiny new bell around her neck.", 2.0, "n_bell"),
     ("mela",    "chameli",  "", "Meh-meh!", 0.4, "bleat3"),
     ("mela",    "tinku",    "देखो! चमेली भी पिंकी के साथ नाच रही है!", "Look! Chameli is dancing with Pinky too!", 0.5, "dance2"),
-    ("mela",    "pinky",    "छम-छम और टन-टन! हम दोनों की जोड़ी सुपरहिट!", "Chham-chham and ting-ting! We're a superhit pair!", 0.6, "superhit"),
+    ("mela",    "pinky",    "मेरी पायल और चमेली की घंटी! हम दोनों की जोड़ी सुपरहिट!", "My anklets and Chameli's bell! We're a superhit pair!", 0.6, "superhit"),
     ("mela",    "narrator", "उस रात नानी के गाँव में कोई भूत नहीं था… बस खूब सारी हँसी, और ढेर सारा प्यार।", "That night there was no ghost in Nani's village... just lots of laughter, and lots of love.", 1.4, "n_end"),
     ("mela",    "tinku",    "अगली बार देखना — गोलू और सब्ज़ियों की ज़बरदस्त दौड़!", "Next time: Golu's crazy race with the vegetables!", 1.0, "next"),
     ("mela",    "pinky",    "बाय-बाय दोस्तों!", "Bye-bye, friends!", 0.5, "bye1"),

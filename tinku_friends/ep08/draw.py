@@ -267,9 +267,13 @@ def torch_in_hand(c, hx, hy, ang=0.0):
     c.save(); c.translate(hx, hy); c.rotate(ang); rrect(c, -6, -10, 44, 20, 6); fs(c, "#e8322f", "#8a1a14", 2); rrect(c, 34, -13, 12, 26, 3); fs(c, "#cfd4e0", "#6a7080", 2); c.restore()
 
 def notes(c, x, y, t, t0, n=3, col="#ffffff"):
-    for k in range(n):
-        q = ((t - t0) * 0.7 + k / n) % 1
-        draw_text(c, "छम", x + 40 * math.sin(q * 6 + k * 2), y - 90 * q, 28, col, "#3a2a5a", 3, lang="hi", alpha=1 - q)
+    """little rising sparkles (no sound-words on screen — owner's rule)"""
+    for k in range(n + 2):
+        q = ((t - t0) * 0.7 + k / (n + 2)) % 1
+        px, py = x + 46 * math.sin(q * 6 + k * 2), y - 90 * q
+        c.save(); c.translate(px, py); c.rotate(q * 3); r = 9 * (1 - q) + 3
+        poly(c, [(0, -r), (r * 0.3, -r * 0.3), (r, 0), (r * 0.3, r * 0.3), (0, r), (-r * 0.3, r * 0.3), (-r, 0), (-r * 0.3, -r * 0.3)])
+        setc(c, (1, 0.92, 0.45, 1 - q)); c.fill(); c.restore()
 
 # ---------------------------------------------------------------- props
 def payal_feet(c, x, y, s=0.88):
@@ -447,7 +451,7 @@ def scene_court(c, t):
     if listen:
         for k in range(3):
             q = ((t * 0.8) + k / 3) % 1
-            draw_text(c, "छम", lerp(560, gx - 60, q), GY - 60 - 60 * math.sin(q * PI), 26, "#ffffff", "#5a3a7a", 3, lang="hi", alpha=1 - q)
+            ell(c, lerp(560, gx - 60, q), GY - 60 - 60 * math.sin(q * PI), 6, 6); setc(c, (1, 0.95, 0.6, 1 - q)); c.fill()
     if active(t, "bellbroke", 0, 0.6): bubble(c, gx + 30, GY - 230, t, "bell")
     if active(t, "dance1", 0, 0.6): notes(c, xs["pinky"], GY - 40, t, S("dance1"))
 
@@ -469,14 +473,10 @@ def scene_night(c, t):
     rrect(c, 60, 528, 520, 70, 8); fs(c, "#6a4a32", "#3a2a1a", 3)                     # bed front panel hides legs
     c.rectangle(40, 598, 560, 130); setc(c, "#3a3258"); c.fill()
     for lx in (70, 550): rrect(c, lx, 590, 20, 40, 4); fs(c, "#5a3a22")
-    if t < S("wake") - 0.4:
-        for k in range(3):   # zzz
-            q = ((t * 0.5) + k / 3) % 1
-            draw_text(c, "z", 330 + 40 * q, 440 - 80 * q, 24 + 14 * q, "#e8ecff", None, 0, lang="en", alpha=1 - q)
-    if T_CHHAM <= t <= S("torch1") + 1:
+    if T_CHHAM <= t <= S("torch1") + 1:   # the ceiling trembles a little with each step above
         for k in range(3):
             q = ((t - T_CHHAM) * 0.8 + k / 3) % 1
-            draw_text(c, "छम…", 640 + 220 * math.sin(k * 2.1), 120 - 40 * q, 34, "#e8ecff", "#2a2a5a", 4, lang="hi", alpha=0.85 * (1 - q))
+            ell(c, 640 + 220 * math.sin(k * 2.1), 30 + 20 * q, 10 * (1 - q) + 2, 4); setc(c, (0.9, 0.92, 1, 0.5 * (1 - q))); c.fill()
     if active(t, "gone", 0, 1.2):
         c.arc(1000, 382, 70 + 5 * math.sin(t * 8), 0, 2 * PI); setc(c, (1, 0.9, 0.3, 0.9)); c.set_line_width(5); c.stroke()
 
@@ -509,7 +509,6 @@ def scene_stairs(c, t):
 def scene_morning(c, t):
     courtyard(c, t, 0.0, morning=True)
     chameli(c, 1060, GY + 10, t, 1.0, face=-1, payal=False, closed=True)   # Chameli sleeping innocently
-    draw_text(c, "z", 1000, GY - 150 - 20 * math.sin(t), 26, "#7a6a9a", None, 0, lang="en")
     xs = {"tinku": 360, "pinky": 560}
     for i, n in enumerate(("tinku", "pinky")):
         a = talk(n, t, i); hop = 0.0; look = 0.3
@@ -592,7 +591,6 @@ def scene_chase(c, t):
     if t >= T_NANI:
         nx = lerp(-140, 200 if True else 0, ease(prog(t, T_NANI, T_NANI + 1.8)))
         nani(c, nx, GY + 30, t, 0.95, ((0.3, 0.4), (0.9, 1.3)) if not speaking("nani", t) else talk("nani", t, 3), mo("nani", t), 0.5, blink(t, 2.0), abs(math.sin(t * 7)) * 6 if nx < 190 else 0, lantern=True)
-    if t >= T_SLIP + 1.0: draw_text(c, "धप्प!", 1110, 470, 48, "#ffffff", "#8a5a1a", 5, lang="hi", alpha=1 - prog(t, T_SLIP + 1.8, T_SLIP + 2.6))
 
 def scene_mela(c, t):
     mela_bg(c, t)
