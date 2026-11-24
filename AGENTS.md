@@ -71,7 +71,7 @@ A 45-episode animated kids series, one episode every Friday at 5 PM IST, publish
 
 Standalone animated stories for kids (babies–Class 5): scary-but-safe, funny, learning, friendship, feelings, adventure,
 mystery, festivals. EVERY video is a NEW, complete story — no "Episode N" anywhere (not on screen, not in titles).
-Published every **Wednesday 17:00, Friday 18:00, Saturday 17:00 and Sunday 09:00 IST** via Metricool (blogId 8170191, Asia/Calcutta)
+Published every **Tuesday 17:00, Wednesday 17:00, Friday 18:00, Saturday 17:00 and Sunday 17:00 IST** (owner, 24 Nov 2026: Tuesday added, Sunday moved to evening) via Metricool (blogId 8170191, Asia/Calcutta)
 (Friday is 18:00 so it doesn't clash with Tinku ki Mahabharat at 17:00):
   1. the full story video → YouTube (type "video", PUBLIC, madeForKids, isAiGeneratedContent, category EDUCATION or FILM_ANIMATION);
   2. a 30-second vertical cut → ONE post with providers youtube (type "short") + instagram (type "REEL", isAiGenerated true).
@@ -171,7 +171,7 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
   "cartoon kahani", "kids story in hindi", "funny ghost story", "tinku and friends", "moral stories" is NOT used), plus the event
   name and year for festival stories (e.g. "diwali story for kids 2027").
 - **Instagram Reel caption:** line 1 hook (with 1–2 emojis), line 2–3 keyword-rich description (Instagram search reads captions),
-  CTA "Follow @iamtinku13 for new stories every Wed, Fri, Sat & Sun 💛 | Share with a friend 👫 | Comment your favourite part 👇",
+  CTA "Follow @iamtinku13 for new stories every Tue, Wed, Fri, Sat & Sun 💛 | Share with a friend 👫 | Comment your favourite part 👇",
   then 5–8 hashtags: 2 brand (#TinkuAndFriends #TinkuKiKahani), 3 niche (#HindiKahani #KidsStories #BhootKiKahani…),
   1–2 broad (#KidsCartoon #Reels), event hashtag for festival stories (#Diwali2027…). No banned/irrelevant tags.
 - **Captions + hashtags are written fresh for EVERY video** at upload time (full video and Short/Reel each get their own).
@@ -185,7 +185,7 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
   comment in the first hour; 3–5 relevant hashtags beat 8 generic ones (#Shorts does nothing on Instagram); a loopable last
   second helps replays.
 - **Every post:** YouTube privacy PUBLIC (unlisted never shows in search/feeds), madeForKids true, isAiGeneratedContent/isAiGenerated true (honest labelling protects reach), category
-  FILM_ANIMATION; publish at the scheduled slot (peak times: evenings, Sunday morning).
+  FILM_ANIMATION; publish at the scheduled slot (peak times: evenings).
 
 ## Pre-picked stories (owner-approved, from trend research 24 Nov 2026 — use these for these slots, then delete the line)
 - Wed 25 Nov 17:00 · नानी के गाँव में छत पर छम-छम! / The Jingle on Nani's Roof (H, spooky-funny): winter trip to Nani's village;
@@ -195,7 +195,7 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
   colony race; Moti becomes the engine. Trend: homemade clay-toy bike/tractor videos (~1M views) — our own take, no clay tractor.
 - Sat 28 Nov 17:00 · सब्ज़ियों की दौड़ / Sabzi Race (H, funny): Golu won't eat vegetables, then dreams Aloo, Gobhi and Karela challenge
   him to a race and keep winning. Trend: talking-vegetable stories (2.4M, 1.2M views).
-- Sun 29 Nov 09:00 · "Mine!" — Pinky and Golu's Big Toy Fight (E, feelings): a new toy, a tug-of-war, then they invent a game for
+- Sun 29 Nov 17:00 · "Mine!" — Pinky and Golu's Big Toy Fight (E, feelings): a new toy, a tug-of-war, then they invent a game for
   two. Trend: sharing / good-habits cartoons in English (2.4M, 0.9M views).
 - Spare idea: कोहरे में सफ़ेद भूत / The White Ghost in the Fog (H, spooky-funny) — Golu in a quilt sleepwalking to the laddoos (winter trend).
 
