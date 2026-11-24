@@ -48,10 +48,9 @@ A 45-episode animated kids series, one episode every Friday at 5 PM IST, publish
    (#TinkuKiMahabharat #Mahabharat #MahabharatForKids #HindiKahani #KidsStories #IndianMythology #KidsCartoon #Reels).
    **Since 21 Nov 2026 (owner): the Instagram Reel is NOT the full episode** — it is a 30 s vertical cut (copy
    `tinku_friends/ep02/short.py` into the episode folder and adapt it: blurred background, sharp panel, big English captions with
-   the Hindi name tag) of the most dramatic 30 s, with the 5–8 s complete hook scene in front (`tinku_friends/hook.py short`), plus a cover
+   the Hindi name tag) of the most dramatic 30 s, starting mid-action (no hook overlay — owner, 24 Nov 2026), plus a cover
    (`hook.py cover`) passed as videoThumbnailUrl. Its caption says "Full episode on YouTube — link in bio 🔗" (the YouTube
-   episode is unlisted, so the link in the Instagram bio is the way in). The full YouTube episode also opens with the
-   5–8 s complete hook scene (`hook.py full`, shift the .en.srt) and gets the `_thumb.jpg` as videoThumbnailUrl. Files:
+   episode is unlisted, so the link in the Instagram bio is the way in). The full YouTube episode starts directly with the story (no hook) and gets the `_thumb.jpg` as videoThumbnailUrl. Files:
    `episodes/mahabharat/epNN_<slug>.mp4`, `_short.mp4`, `_cover.jpg`, `_thumb.jpg`, `.en.srt`.
 
 ## 45-episode plan (from the epic)
@@ -84,14 +83,19 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
 - **Cast:** Tinku (7, glasses, yellow tee), Pinky (6, pigtails, pink frock), Golu (4, chubby, green dungarees), Moti (puppy, barks only).
   Do not redesign them (2D, normal). NOT every video needs every character: use only who the story needs — a solo moment,
   two friends, Moti alone, or one kid telling a funny joke/riddle to the camera are all fine. Vary it. New props/backgrounds/side characters in the same bright 2D style.
-- **Open with a HOOK SCENE, then start immediately:** every full video AND every Short/Reel opens with a flash-forward of the
-  most exciting/funny moment as ONE COMPLETE little scene of 5–8 s (owner, 21 Nov 2026): it starts just before the first line/
-  action of that beat and ends just after its last line — never cut mid-sentence or mid-action (take times from the .en.srt)
-  (push-in zoom, whoosh + boom sting, big curiosity text: yellow teaser line + white question,
-  e.g. "THE FINAL BOSS IS A PIGEON?!" / "Can Golu win without a fight?"), then a white flash cuts into the story. Suspense and
-  curiosity only — never spoil the ending, never a lie, never brand text. Make it with `tinku_friends/hook.py` on the finished
-  mp4s (`full` and `short` modes; the Short stays exactly 30 s; shift the .en.srt by the hook length). After the hook: still NO
-  title card, NO episode name, NO introductions — the story starts right away. The first frame must never be black.
+- **NEW STORY FORMAT (owner, 24 Nov 2026 — the 2-minute dialogue videos were "not stories"; story posting is PAUSED until the owner
+  approves a video in this format):**
+  * **Narrator storytelling:** a warm storyteller voice tells the story ("एक छोटे से गाँव में…"), describing places, actions and
+    feelings; the characters speak their own lines in between. Narration lines get captions too (name tag "कहानी").
+  * **A real story arc, 5–8 minutes:** a main character who WANTS something or has a real PROBLEM → 3–4 events/obstacles that get
+    bigger (each one changes the situation) → a twist → a big climax moment → a warm, satisfying ending (still no spoken moral
+    lecture). Emotion matters: worry, fear, sadness, laughter, joy. Every scene must move the story forward.
+  * **More action and scenes:** 6–10 different places; characters walk, run, carry and use things, react with expressions; camera
+    close-ups / wide shots / pans, not just characters standing side by side talking.
+  * **NO hook at the start:** the video starts directly with the story (first frame = story, never black, no title card, no
+    flash-forward hook). (The older hook-scene rule is withdrawn.)
+- **Script first:** write the full script (story summary + every narration and dialogue line) and show it to the owner before
+  animating while the format is new.
 - **No brand text in the video:** never show or say "Tinku & Friends" anywhere in the video or the Short/Reel (no badge, no title,
   no outro brand). Character names in captions are fine. End with a one-line teaser of the NEXT story (named if decided, otherwise a generic tease), "Bye-bye!" and the
   outro card ("Bye-bye!" / "See you next time!" / "Next: <next story title>" or "Next: a new story on <day>!"). No moral/conclusion summary.
@@ -102,7 +106,7 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
 - **Look & motion:** dancing/bouncing is fine in happy moments; talk gestures, blinking, lip-sync from voice loudness; camera moves
   (push-in, small shake on scary stings), circle-wipe between scenes, mood music (playful ukulele, spooky drone + pizzicato,
   comic boing reveal), SFX.
-- **Length:** full story 2:00–3:00 (a quick joke/riddle video may be 0:45–1:30); Short/Reel exactly ≤30 s (`short.py T0 T1 out.mp4`, 1080×1920, WITH big on-screen captions under the picture — speaker name tag + English line; owner's rule since 21 Nov 2026, because most Reels are watched muted).
+- **Length:** full story 5:00–8:00 (owner, 24 Nov 2026); Short/Reel exactly ≤30 s (`short.py T0 T1 out.mp4`, 1080×1920, WITH big on-screen captions under the picture — speaker name tag + English line; owner's rule since 21 Nov 2026, because most Reels are watched muted).
 - **Original content only:** our own stories and dialogue; never adapt TV shows/films/books.
 - **How to choose each story (owner, 21 Nov 2026 — festival FIRST, otherwise TRENDING):**
   0. **Owner's pre-picked stories first:** if the "Pre-picked stories" list below has an entry for today's slot, make
@@ -175,7 +179,7 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
   then 5–8 hashtags: 2 brand (#TinkuAndFriends #TinkuKiKahani), 3 niche (#HindiKahani #KidsStories #BhootKiKahani…),
   1–2 broad (#KidsCartoon #Reels), event hashtag for festival stories (#Diwali2027…). No banned/irrelevant tags.
 - **Captions + hashtags are written fresh for EVERY video** at upload time (full video and Short/Reel each get their own).
-- **Reels:** (YouTube Shorts stopped 24 Nov 2026) the first 2 seconds of the Reel must already show the hook.
+- **Reels:** (YouTube Shorts stopped 24 Nov 2026) the Reel is a 30 s cut that starts mid-action at an exciting moment (no hook overlay).
 - **Covers/thumbnails (every post):** `python3 tinku_friends/hook.py cover FULL.mp4 T "LINE1" "LINE2" episodes/tinku_friends/tf_epNN_<slug>`
   makes `_cover.jpg` (1080×1920, text inside the centre 3:4 so the Instagram grid crop keeps it) and `_thumb.jpg` (1280×720).
   Commit both and pass the raw URL as `videoThumbnailUrl` (cover.jpg for the Reel post, thumb.jpg for the full video) —
