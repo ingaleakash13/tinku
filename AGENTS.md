@@ -188,6 +188,8 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
   FILM_ANIMATION; publish at the scheduled slot (peak times: evenings).
 
 ## Pre-picked stories (owner-approved, from trend research 24 Nov 2026 — use these for these slots, then delete the line)
+- Tue 24 Nov 17:00 · कोहरे में सफ़ेद भूत / The White Ghost in the Fog (H, spooky-funny): on a foggy winter night a white shape floats
+  across the colony; it's Golu wrapped in a quilt, sleepwalking to the kitchen for laddoos. Trend: winter fog-night stories (1.5M).
 - Wed 25 Nov 17:00 · नानी के गाँव में छत पर छम-छम! / The Jingle on Nani's Roof (H, spooky-funny): winter trip to Nani's village;
   anklets jingle on the roof at midnight; Tinku + Pinky creep up with a torch; it's Nani's goat that ran off with Pinky's new
   anklets. Trend: "90s नानी का गाँव / आधी रात छत पर कौन?" midnight-mystery videos (4.5M, 3.0M, 2.3M views this week).
@@ -197,7 +199,6 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
   him to a race and keep winning. Trend: talking-vegetable stories (2.4M, 1.2M views).
 - Sun 29 Nov 17:00 · "Mine!" — Pinky and Golu's Big Toy Fight (E, feelings): a new toy, a tug-of-war, then they invent a game for
   two. Trend: sharing / good-habits cartoons in English (2.4M, 0.9M views).
-- Spare idea: कोहरे में सफ़ेद भूत / The White Ghost in the Fog (H, spooky-funny) — Golu in a quilt sleepwalking to the laddoos (winter trend).
 
 ## Trend log (newest first — date · trend found · our original story)
 - 24 Nov 2026 · research for 25–29 Nov (YouTube, last 7 days, by views): 90s Nani-village midnight mystery (4.5M/3.0M/2.3M),
