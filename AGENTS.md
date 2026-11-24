@@ -197,10 +197,9 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
   two. Trend: sharing / good-habits cartoons in English (2.4M, 0.9M views).
 - Tue 1 Dec 17:00 · कबाड़ की गाड़ी / Junk-Box Go-Kart (H, adventure): Tinku + Golu build a car from boxes and old wheels for the
   colony race; Moti becomes the engine. Trend: homemade clay-toy bike/tractor videos (~1M) — our own take, no clay tractor.
-- Spare idea: कोहरे में सफ़ेद भूत / The White Ghost in the Fog (H, spooky-funny) — on a foggy winter night a white shape floats across
-  the colony; it's Golu in a quilt sleepwalking to the laddoos (winter trend, 1.5M).
 
 ## Trend log (newest first — date · trend found · our original story)
+- 24 Nov 2026 (Tue, first Tuesday story, made live with the owner) · winter fog-night stories ("सर्दियों की वो कोहरे वाली रात" 1.5M) → कोहरे में बड़ा भूत / The Giant Ghost in the Fog (H): a giant cat-shaped shadow with glowing eyes in the fog = Dadi's tiny flour-covered kitten Barfi on the wall in front of the streetlight (learning: small + near the light = big shadow; cat eyes shine).
 - 24 Nov 2026 · research for 25–29 Nov (YouTube, last 7 days, by views): 90s Nani-village midnight mystery (4.5M/3.0M/2.3M),
   winter fog night (1.5M), talking vegetables (2.4M/1.2M), homemade clay toys (1.0M/0.9M), sharing/good habits EN (2.4M/0.9M)
   → pre-picked stories above.
