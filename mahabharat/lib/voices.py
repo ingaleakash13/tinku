@@ -62,4 +62,5 @@ FRIENDS_VOICES = {
     "pinky_hi": ("hf_alpha", 0.95, 1.45, 1.12),   # measure F0 and adjust to target on first Hindi episode
     "golu_hi":  ("hf_beta", 0.92, 1.95, 1.22),
     "nani_hi":  ("hf_alpha", 0.86, 1.0, 0.97),   # Nani (grandmother): warm, slower, lower; F0 target ~215 Hz
+    "narrator_hi": ("hm_omega", 0.9, 1.0, 1.0),   # storyteller (kahani narrator): warm adult male, F0 ~125 Hz
 }
