@@ -188,7 +188,7 @@ normal 2D characters and normal speaking voices; do not use singing, 3D or Kling
   FILM_ANIMATION; publish at the scheduled slot (peak times: evenings).
 
 ## Pre-picked stories (owner-approved, from trend research 24 Nov 2026 — use these for these slots, then delete the line)
-- Tue 24 Nov 17:00 · कोहरे में सफ़ेद भूत / The White Ghost in the Fog (H, spooky-funny): on a foggy winter night a white shape floats
+- Tue 1 Dec 17:00 · कोहरे में सफ़ेद भूत / The White Ghost in the Fog (H, spooky-funny): on a foggy winter night a white shape floats
   across the colony; it's Golu wrapped in a quilt, sleepwalking to the kitchen for laddoos. Trend: winter fog-night stories (1.5M).
 - Wed 25 Nov 17:00 · नानी के गाँव में छत पर छम-छम! / The Jingle on Nani's Roof (H, spooky-funny): winter trip to Nani's village;
   anklets jingle on the roof at midnight; Tinku + Pinky creep up with a torch; it's Nani's goat that ran off with Pinky's new
